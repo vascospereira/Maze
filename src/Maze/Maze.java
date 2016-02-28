@@ -15,6 +15,10 @@ public class Maze {
 		Dragon dragon = new Dragon();
 		dragon.DragonDeploy(table);
 
+		//Creating a new Sword
+		Sword sword = new Sword();
+		sword.SwordDeploy(table);
+		
 		//Printing Table
 		table.PrintTable();
 	}
