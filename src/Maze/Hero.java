@@ -6,8 +6,8 @@ public class Hero
 	int HeroX = 1;	//Hero position X
 	int HeroY = 1;	//Hero position Y
 	
-	public void HeroPosition(Table table)
+	public void HeroDeploy(Table table)
 	{
-		table.table[1][1] = Hero;
+		table.table[HeroY][HeroX] = Hero;
 	}
 }
