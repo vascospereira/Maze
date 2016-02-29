@@ -2,9 +2,9 @@ package Maze;
 
 public class Dragon 
 {
-	char Dragon = 'D'; //Dragon character
-	int DragonX = 1;	//Dragon position X
-	int DragonY = 3;	//Dragon position Y
+	private char Dragon = 'D'; //Dragon character
+	private int DragonX = 1;	//Dragon position X
+	private int DragonY = 3;	//Dragon position Y
 	
 	public void DragonDeploy(Table table)
 	{
