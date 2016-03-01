@@ -30,30 +30,10 @@ public class Maze {
 		
 		while(c != 'F' && c != 'f')
 		{
-			if(c == 'W' || c == 'w')
-			{
-				System.out.println("Up");
-				hero.HeroMoveUp(table);
-				table.PrintTable();
-			}
-			if(c == 'A' || c == 'a')
-			{
-				System.out.println("Left");
-				hero.HeroMoveLeft(table);
-				table.PrintTable();
-			}
-			if(c == 'S' || c == 's')
-			{
-				System.out.println("Down");
-				hero.HeroMoveDown(table);
-				table.PrintTable();
-			}
-			if(c == 'D' || c == 'd')
-			{
-				System.out.println("Right");
-				hero.HeroMoveRight(table);
-				table.PrintTable();
-			}
+			//HERO MOVING ACORDING TO CHAR GIVEN AND PRINTING TABLE
+			hero.HeroMove(table, c);
+			table.PrintTable();
+			
 			c = s.next().charAt(0);
 		}
 		

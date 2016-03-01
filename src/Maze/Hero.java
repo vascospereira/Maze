@@ -11,43 +11,60 @@ public class Hero
 		table.DeployPiece(HeroX, HeroY, Hero);
 	}
 	
-	public void HeroMoveUp(Table table)
+	public boolean HeroMove(Table table, char c)
 	{
-		int newposY =  HeroY -1;
-		
-		if(table.MovePiece(HeroX, HeroY, HeroX, newposY, Hero) == true)
+		if(c == 'W' || c == 'w')
 		{
-			HeroY = newposY;
+			int newposY =  HeroY -1;
+			
+			if(table.MovePiece(HeroX, HeroY, HeroX, newposY, Hero) == true)
+			{
+				HeroY = newposY;
+				System.out.println("Up");
+				return true;
+			}
+			return false;
 		}
-	}
-	
-	public void HeroMoveDown(Table table)
-	{
-		int newposY =  HeroY +1;
-		
-		if(table.MovePiece(HeroX, HeroY, HeroX, newposY, Hero) == true)
+		if(c == 'A' || c == 'a')
 		{
-			HeroY = newposY;
+			int newposX =  HeroX -1;
+			
+			if(table.MovePiece(HeroX, HeroY, newposX, HeroY, Hero) == true)
+			{
+				HeroX = newposX;
+				System.out.println("Left");
+				return true;
+			}
+			return false;
+			
+			
 		}
-	}
-	
-	public void HeroMoveLeft(Table table)
-	{
-		int newposX =  HeroX -1;
-		
-		if(table.MovePiece(HeroX, HeroY, newposX, HeroY, Hero) == true)
+		if(c == 'S' || c == 's')
 		{
-			HeroX = newposX;
+			int newposY =  HeroY +1;
+			
+			if(table.MovePiece(HeroX, HeroY, HeroX, newposY, Hero) == true)
+			{
+				HeroY = newposY;
+				System.out.println("Down");
+				return true;
+			}
+			return false;
+			
 		}
-	}
-	
-	public void HeroMoveRight(Table table)
-	{
-		int newposX =  HeroX +1;
-		
-		if(table.MovePiece(HeroX, HeroY, newposX, HeroY, Hero) == true)
+		if(c == 'D' || c == 'd')
 		{
-			HeroX = newposX;
+			int newposX =  HeroX +1;
+			
+			if(table.MovePiece(HeroX, HeroY, newposX, HeroY, Hero) == true)
+			{
+				HeroX = newposX;
+				System.out.println("Right");
+				return true;
+			}
+			return false;
+			
 		}
+		return false;
 	}
 }
