@@ -49,16 +49,19 @@ public class Table
 			
 			return true;
 		}
-		else if((table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A') ||
+		else if((table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A')||
+				(table[nPosY][nPosX] == 'd' && Hero.getHeroState() == 'A')||
 				(table[nPosY][nPosX] == 'd' && Hero.getHeroState() == 'H'))
 		{
-			if (table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A') 
+			if ((table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A')||
+					(table[nPosY][nPosX] == 'd' && Hero.getHeroState() == 'A')) 
 			{
 				table[posY][posX] = ' ';
 				table[nPosY][nPosX] = Dragon.deadDragon();
 				table[nPosY][nPosX] = c;
 				return true;
 			}
+			//This has the sleepy dragon problem
 			else
 			{
 				table[posY][posX] = ' ';
