@@ -16,4 +16,9 @@ public class Dragon
 		DRAGON = ' ';
 		return DRAGON;
 	}
+	
+	public static char getDragonState()
+	{
+		return DRAGON;
+	}
 }

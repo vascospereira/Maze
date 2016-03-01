@@ -1,5 +1,7 @@
 package Maze;
 
+import Maze.GameState.State;
+
 public class Table 
 {
 	private char table[][] = 
@@ -38,11 +40,18 @@ public class Table
 			table[nPosY][nPosX] = Hero.heroArmed();
 			return true;
 		}
-		if(table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A')
+		else if(table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A')
 		{
 			table[posY][posX] = ' ';
 			table[nPosY][nPosX] = Dragon.deadDragon();
-			table[nPosY][nPosX] = Hero.heroArmed();
+			table[nPosY][nPosX] = c;
+			return true;
+		}
+		else if(table[nPosY][nPosX] == 'S' && Dragon.getDragonState() == ' ')
+		{
+			table[posY][posX] = ' ';
+			table[nPosY][nPosX] = c;
+			GameState.setState(State.WON);
 			return true;
 		}
 		else if(table[nPosY][nPosX] == ' ')
