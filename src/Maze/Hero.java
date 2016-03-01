@@ -8,17 +8,15 @@ public class Hero
 	
 	public void HeroDeploy(Table table)
 	{
-		table.table[HeroY][HeroX] = Hero;
+		table.DeployPiece(HeroX, HeroY, Hero);
 	}
 	
 	public void HeroMoveUp(Table table)
 	{
 		int newposY =  HeroY -1;
 		
-		if(table.table[newposY][HeroX] == ' ')
+		if(table.MovePiece(HeroX, HeroY, HeroX, newposY, Hero) == true)
 		{
-			table.table[HeroY][HeroX] = ' ';
-			table.table[newposY][HeroX] = Hero;
 			HeroY = newposY;
 		}
 	}
@@ -27,10 +25,8 @@ public class Hero
 	{
 		int newposY =  HeroY +1;
 		
-		if(table.table[newposY][HeroX] == ' ')
+		if(table.MovePiece(HeroX, HeroY, HeroX, newposY, Hero) == true)
 		{
-			table.table[HeroY][HeroX] = ' ';
-			table.table[newposY][HeroX] = Hero;
 			HeroY = newposY;
 		}
 	}
@@ -39,10 +35,8 @@ public class Hero
 	{
 		int newposX =  HeroX -1;
 		
-		if(table.table[HeroY][newposX] == ' ')
+		if(table.MovePiece(HeroX, HeroY, newposX, HeroY, Hero) == true)
 		{
-			table.table[HeroY][HeroX] = ' ';
-			table.table[HeroY][newposX] = Hero;
 			HeroX = newposX;
 		}
 	}
@@ -51,10 +45,8 @@ public class Hero
 	{
 		int newposX =  HeroX +1;
 		
-		if(table.table[HeroY][newposX] == ' ')
+		if(table.MovePiece(HeroX, HeroY, newposX, HeroY, Hero) == true)
 		{
-			table.table[HeroY][HeroX] = ' ';
-			table.table[HeroY][newposX] = Hero;
 			HeroX = newposX;
 		}
 	}

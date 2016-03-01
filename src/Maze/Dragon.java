@@ -8,6 +8,6 @@ public class Dragon
 	
 	public void DragonDeploy(Table table)
 	{
-		table.table[DragonY][DragonX] = Dragon;
+		table.DeployPiece(DragonX, DragonY, Dragon);
 	}
 }

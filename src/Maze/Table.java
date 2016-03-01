@@ -2,7 +2,7 @@ package Maze;
 
 public class Table 
 {
-	char table[][] = 
+	private char table[][] = 
 		{
 				{'X','X','X','X','X','X','X','X','X','X'},
 				{'X',' ',' ',' ',' ',' ',' ',' ',' ','X'},
@@ -28,6 +28,29 @@ public class Table
 			}
 			System.out.println();
 		}
+	}
+	
+	public boolean MovePiece(int posx, int posy, int nposx, int nposy, char c)
+	{
+		if(table[nposy][nposx] == ' ')
+		{
+			table[posy][posx] = ' ';
+			table[nposy][nposx] = c;
+			return true;
+		}
+		else
+			return false;
+	}
+	
+	public boolean DeployPiece(int posx, int posy, char c)
+	{
+		if(table[posy][posx] == ' ')
+		{
+			table[posy][posx] = c;
+			return true;
+		}
+		else
+			return false;
 	}
 
 }
