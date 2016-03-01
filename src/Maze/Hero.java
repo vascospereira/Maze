@@ -2,24 +2,35 @@ package Maze;
 
 public class Hero 
 {
-	private char Hero = 'H'; //Hero character
+	private static char HERO = 'H'; //Hero character
 	private int HeroX = 1;	//Hero position X
 	private int HeroY = 1;	//Hero position Y
 	
+	static public char heroArmed()
+	{
+		HERO = 'A';
+		return HERO;
+	}
+	
+	static public char getHeroState()
+	{
+		return HERO;
+	}
+	
 	public void HeroDeploy(Table table)
 	{
-		table.DeployPiece(HeroX, HeroY, Hero);
+		table.DeployPiece(HeroX, HeroY, HERO);
 	}
 	
 	public boolean HeroMove(Table table, char c)
 	{
 		if(c == 'W' || c == 'w')
 		{
-			int newposY =  HeroY -1;
+			int newPosY =  HeroY - 1;
 			
-			if(table.MovePiece(HeroX, HeroY, HeroX, newposY, Hero) == true)
+			if(table.MovePiece(HeroX, HeroY, HeroX, newPosY, HERO) == true)
 			{
-				HeroY = newposY;
+				HeroY = newPosY;
 				System.out.println("Up");
 				return true;
 			}
@@ -27,11 +38,11 @@ public class Hero
 		}
 		if(c == 'A' || c == 'a')
 		{
-			int newposX =  HeroX -1;
+			int newPosX =  HeroX - 1;
 			
-			if(table.MovePiece(HeroX, HeroY, newposX, HeroY, Hero) == true)
+			if(table.MovePiece(HeroX, HeroY, newPosX, HeroY, HERO) == true)
 			{
-				HeroX = newposX;
+				HeroX = newPosX;
 				System.out.println("Left");
 				return true;
 			}
@@ -41,11 +52,11 @@ public class Hero
 		}
 		if(c == 'S' || c == 's')
 		{
-			int newposY =  HeroY +1;
+			int newPosY =  HeroY + 1;
 			
-			if(table.MovePiece(HeroX, HeroY, HeroX, newposY, Hero) == true)
+			if(table.MovePiece(HeroX, HeroY, HeroX, newPosY, HERO) == true)
 			{
-				HeroY = newposY;
+				HeroY = newPosY;
 				System.out.println("Down");
 				return true;
 			}
@@ -54,11 +65,11 @@ public class Hero
 		}
 		if(c == 'D' || c == 'd')
 		{
-			int newposX =  HeroX +1;
+			int newPosX =  HeroX + 1;
 			
-			if(table.MovePiece(HeroX, HeroY, newposX, HeroY, Hero) == true)
+			if(table.MovePiece(HeroX, HeroY, newPosX, HeroY, HERO) == true)
 			{
-				HeroX = newposX;
+				HeroX = newPosX;
 				System.out.println("Right");
 				return true;
 			}

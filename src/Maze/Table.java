@@ -30,23 +30,36 @@ public class Table
 		}
 	}
 	
-	public boolean MovePiece(int posx, int posy, int nposx, int nposy, char c)
+	public boolean MovePiece(int posX, int posY, int nPosX, int nPosY, char c)
 	{
-		if(table[nposy][nposx] == ' ')
+		if(table[nPosY][nPosX] == 'E')
 		{
-			table[posy][posx] = ' ';
-			table[nposy][nposx] = c;
+			table[posY][posX] = ' ';
+			table[nPosY][nPosX] = Hero.heroArmed();
+			return true;
+		}
+		if(table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A')
+		{
+			table[posY][posX] = ' ';
+			table[nPosY][nPosX] = Dragon.deadDragon();
+			table[nPosY][nPosX] = Hero.heroArmed();
+			return true;
+		}
+		else if(table[nPosY][nPosX] == ' ')
+		{
+			table[posY][posX] = ' ';
+			table[nPosY][nPosX] = c;
 			return true;
 		}
 		else
 			return false;
 	}
 	
-	public boolean DeployPiece(int posx, int posy, char c)
+	public boolean DeployPiece(int posX, int posY, char c)
 	{
-		if(table[posy][posx] == ' ')
+		if(table[posY][posX] == ' ')
 		{
-			table[posy][posx] = c;
+			table[posY][posX] = c;
 			return true;
 		}
 		else
