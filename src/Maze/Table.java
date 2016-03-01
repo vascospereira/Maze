@@ -49,12 +49,24 @@ public class Table
 			
 			return true;
 		}
-		else if(table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A')
+		else if((table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A') ||
+				(table[nPosY][nPosX] == 'd' && Hero.getHeroState() == 'H'))
 		{
-			table[posY][posX] = ' ';
-			table[nPosY][nPosX] = Dragon.deadDragon();
-			table[nPosY][nPosX] = c;
-			return true;
+			if (table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A') 
+			{
+				table[posY][posX] = ' ';
+				table[nPosY][nPosX] = Dragon.deadDragon();
+				table[nPosY][nPosX] = c;
+				return true;
+			}
+			else
+			{
+				table[posY][posX] = ' ';
+				table[nPosY][nPosX] = Dragon.getDragonState();
+				table[nPosY][nPosX] = c;
+				
+				return true;
+			}
 		}
 		else if(table[nPosY][nPosX] == 'S' && Dragon.getDragonState() == ' ')
 		{

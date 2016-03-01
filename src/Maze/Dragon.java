@@ -2,7 +2,7 @@ package Maze;
 
 public class Dragon 
 {
-	private static char DRAGON = 'D'; //Dragon character
+	private static char DRAGON = 'd'; //Dragon character
 	private int DragonX = 1;	//Dragon position X
 	private int DragonY = 3;	//Dragon position Y
 	
@@ -14,6 +14,12 @@ public class Dragon
 	public static char deadDragon()
 	{
 		DRAGON = ' ';
+		return DRAGON;
+	}
+	
+	public static char sleepDragon() 
+	{
+		DRAGON = 'd';
 		return DRAGON;
 	}
 	
