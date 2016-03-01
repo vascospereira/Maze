@@ -40,6 +40,15 @@ public class Table
 			table[nPosY][nPosX] = Hero.heroArmed();
 			return true;
 		}
+		else if(table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'H')
+		{
+			table[posY][posX] = ' ';
+			table[nPosY][nPosX] = Hero.deadHero();
+			table[nPosY][nPosX] = Dragon.getDragonState();
+			GameState.setState(State.LOST);
+			
+			return true;
+		}
 		else if(table[nPosY][nPosX] == 'D' && Hero.getHeroState() == 'A')
 		{
 			table[posY][posX] = ' ';

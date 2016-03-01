@@ -17,6 +17,10 @@ public class Hero
 		return HERO;
 	}
 	
+	public static char deadHero() {
+		HERO = ' ';
+		return HERO;
+	}
 	public void HeroDeploy(Table table)
 	{
 		table.DeployPiece(HeroX, HeroY, HERO);
@@ -78,4 +82,6 @@ public class Hero
 		}
 		return false;
 	}
+
+	
 }
