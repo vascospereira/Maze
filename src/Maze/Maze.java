@@ -1,60 +1,44 @@
 package Maze;
 
 import java.util.Scanner;
-
-import Maze.GameState.State;
+import Maze.Game.State;
 
 public class Maze {
 
 	public static void main(String[] args) 
 	{
-		//Creating Table
-		Table table = new Table();
-
-		//Creating a new Hero
-		Hero hero = new Hero();
-		hero.HeroDeploy(table);
-
-		//Creating a new Dragon
-		Dragon dragon = new Dragon();
-		dragon.DragonDeploy(table);
-
-		//Creating a new Sword
-		Sword sword = new Sword();
-		sword.SwordDeploy(table);
-		
-		//Printing Table
-		table.PrintTable();
-		
+		//CREATING OBJECT GAME, INITILIAZE() WILL SET GAME STATE TO PLAYING ALSO
+		//WILL ALLOCK MEMORY FOR OBJECTS, DEPLOY THEM AND PRINTING						
+		Game Maze = new Game();						
+		Maze.Initialize(); 							
 		
 		//INITIALIZING SCANNER
 		Scanner s = new Scanner(System.in);
 		char c = s.next().charAt(0);
 		
-		GameState.setState(State.PLAYING);
-		
-		while(c != 'F' && c != 'f' && GameState.getState() == State.PLAYING)
+		while(c != 'F' && c != 'f' && (Maze.getState() == State.PLAYING || Maze.getState() == State.SLAYED))
 		{
-			//HERO MOVING ACORDING TO CHAR GIVEN AND PRINTING TABLE
-			hero.HeroMove(table, c);
-			table.PrintTable();
+			//UPDATING THE GAME ACCORDING TO SCANNER CHARACTER, AND PRINTING GAME
+			Maze.Update(c);
+			Maze.Print();
 			
-			if(GameState.getState() == State.LOST)
+			//CHECKING GAME STATE
+			if(Maze.getState() == State.LOST)
 			{
 				System.out.println("You Lost!");
 				break;
 			}
-			if(GameState.getState() == State.WON)
+			if(Maze.getState() == State.WON)
 			{
 				System.out.println("You Win!");
 				break;
 			}
 			
-			
+			//CONSOLE PROMPT FOR NEXT MOVEMENT
 			c = s.next().charAt(0);
 		}
 		
-		//Closing Scanner and Returning
+		//CLOSING SCANNER AND RETURNING
 		s.close();
 		return;
 	}
