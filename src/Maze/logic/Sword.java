@@ -1,4 +1,4 @@
-package Maze;
+package Maze.logic;
 
 public class Sword 
 {

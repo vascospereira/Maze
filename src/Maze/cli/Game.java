@@ -1,15 +1,17 @@
-package Maze;
+package Maze.cli;
 
 import java.util.Scanner;
-import Maze.Game.State;
 
-public class Maze {
+import Maze.logic.Maze;
+import Maze.logic.Maze.State;
+
+public class Game {
 
 	public static void main(String[] args) 
 	{
 		//CREATING OBJECT GAME, INITILIAZE() WILL SET GAME STATE TO PLAYING ALSO
 		//WILL ALLOCK MEMORY FOR OBJECTS, DEPLOY THEM AND PRINTING						
-		Game Maze = new Game();						
+		Maze Maze = new Maze();						
 		Maze.Initialize(); 							
 		
 		//INITIALIZING SCANNER

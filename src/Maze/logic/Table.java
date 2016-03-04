@@ -1,4 +1,4 @@
-package Maze;
+package Maze.logic;
 
 public class Table 
 {
@@ -17,9 +17,9 @@ public class Table
 		};
 	final int  LINE_LENGHT = table[0].length;
 	final int  COLUMN_LENGTH = table.length;
-	
+
 	final char SPACE  =  ' ';
-	final char HERO   =	 'H';
+	final char HERO   =	'H';
 	final char DRAGON =  'D';
 	final char EXIT   =  'E';
 	final char SWORD  =  'S';
@@ -39,7 +39,7 @@ public class Table
 		}
 	}
 
-	
+
 	public boolean DeployPiece(int posX, int posY, char c)
 	{
 		if(table[posY][posX] == ' ')
@@ -50,12 +50,12 @@ public class Table
 		else
 			return false;
 	}
-	
+
 	public char getElem(int x, int y)
 	{
 		return table[y][x];
 	}
-	
+
 	public void setElem(int x, int y, char c)
 	{
 		table[y][x] = c;

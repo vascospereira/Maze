@@ -1,10 +1,10 @@
-package Maze;
+package Maze.logic;
 
 public class Dragon 
 {
 	private char DRAGON = 'D'; 	//Dragon character
 	private int DragonX = 1;	//Dragon position X
-	private int DragonY = 3;	//Dragon position Y
+	private int DragonY = 3;	//Dragon +position Y
 	
 	public void DragonDeploy(Table table)
 	{

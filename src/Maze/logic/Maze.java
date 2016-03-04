@@ -1,10 +1,10 @@
-package Maze;
+package Maze.logic;
 
 import java.util.Random;
 
-public class Game 
+public class Maze 
 {
-	enum State { PLAYING, WON, LOST, SLAYED };
+	public enum State { PLAYING, WON, LOST, SLAYED };
 
 	private State state;
 
@@ -214,6 +214,7 @@ public class Game
 						return true;
 					}
 				}
+				//RIGHT MOVEMENT
 				else if(move == 3)
 				{
 					int change = +1;
@@ -222,9 +223,7 @@ public class Game
 						return true;
 					}
 				}
-
 			}
-
 		}
 		else if(move == 2 && dragon.getDragonState() != table.DRASWO)
 		{
