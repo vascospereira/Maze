@@ -19,7 +19,7 @@ public class Table
 	final int  COLUMN_LENGTH = table.length;
 
 	final char SPACE  =  ' ';
-	final char HERO   =	'H';
+	final char HERO   =	 'H';
 	final char DRAGON =  'D';
 	final char EXIT   =  'E';
 	final char SWORD  =  'S';
