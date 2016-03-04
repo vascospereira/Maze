@@ -141,6 +141,12 @@ public class Game
 			//SIMPLY RETURNS FALSE FOR THE HERO CANNOT MAGICLLY TRESPASS THE DRAGON
 			return false;
 		}
+		//HERO FACES DRAGON SITTING ON SWORD
+		else if((Elem == table.DRASWO && Hero == table.HERO)||
+				(Elem == table.DRASWO && Hero == table.ARMOR))
+		{
+			return false;
+		}
 		//KILLING DRAGON AND ENTERING THE EXIT
 		else if(Elem == table.EXIT && getState() == State.SLAYED)
 		{
