@@ -16,6 +16,11 @@ public class Dragon
 		DRAGON = 'd';
 		return DRAGON;
 	}
+	public char awakeDragon() 
+	{
+		DRAGON = 'D';
+		return DRAGON;
+	}
 	
 	public char getDragonState()
 	{

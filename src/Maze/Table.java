@@ -25,6 +25,7 @@ public class Table
 	final char SWORD  =  'S';
 	final char SLEEPY =  'd';
 	final char ARMOR  =  'A';
+	final char DRASWO =  'F';
 
 	public void PrintTable()
 	{

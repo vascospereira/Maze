@@ -19,8 +19,13 @@ public class Maze {
 		while(c != 'F' && c != 'f' && (Maze.getState() == State.PLAYING || Maze.getState() == State.SLAYED))
 		{
 			//UPDATING THE GAME ACCORDING TO SCANNER CHARACTER, AND PRINTING GAME
-			Maze.Update(c);
-			Maze.Print();
+			Maze.UpdateHero(c);
+			if(Maze.getState() == State.PLAYING)
+			{
+				Maze.UpdateDragon();
+			}
+			
+			Maze.Print();		
 			
 			//CHECKING GAME STATE
 			if(Maze.getState() == State.LOST)
