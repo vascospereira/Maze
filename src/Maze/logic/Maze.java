@@ -172,21 +172,15 @@ public class Maze
 		int newPosY = dragon.getY();
 		char Dragon = dragon.getDragonState();
 
-		move = r.nextInt(3);
-		//System.out.println(move);
+		move = r.nextInt(2);
 
-		//SEM MOVIMENTO
+		//MOVIMENTO
 		if(move == 0 && Dragon != SLEEPY())
-		{
-			return false;
-		}
-		else if(move == 1 && Dragon != SLEEPY())
 		{
 			//MOVIMENTO OBRIGATORIO
 			while(true)
 			{	
 				move = r.nextInt(4);
-				//System.out.println(move);
 				//UPPER MOVEMENT
 				if(move == 0)
 				{
@@ -218,21 +212,58 @@ public class Maze
 				else return false;
 			}
 		}
-		else if(move == 2 && Dragon!= DRASWO())
+		else if(move == 0 && Dragon == SLEEPY())
 		{
-			if(Dragon == DRAGON())
+			move = r.nextInt(2);
+			if(move == 0)
 			{
-				dragon.sleepDragon();
-				table.setElem(newPosX, newPosY, SLEEPY());
-				System.out.println("Dragon is Sleeping!");
 				return false;
 			}
-			else if(Dragon == SLEEPY())
+			else if(move == 1)
 			{
-				dragon.awakeDragon();
-				table.setElem(newPosX, newPosY, DRAGON());
-				System.out.println("DRAGON AS AWAKEN!");
+				if(Dragon == DRAGON())
+				{
+					dragon.sleepDragon();
+					table.setElem(newPosX, newPosY, SLEEPY());
+					System.out.println("Dragon is Sleeping!");
+					return false;
+				}
+				else if(Dragon == SLEEPY())
+				{
+					dragon.awakeDragon();
+					table.setElem(newPosX, newPosY, DRAGON());
+					System.out.println("DRAGON AS AWAKEN!");
+					return false;
+				}
+				else
+					return false;
+			}
+		}
+		else if(move == 1 && Dragon != DRASWO())
+		{
+			move = r.nextInt(2);
+			if(move == 0)
+			{
 				return false;
+			}
+			else if(move == 1)
+			{
+				if(Dragon == DRAGON())
+				{
+					dragon.sleepDragon();
+					table.setElem(newPosX, newPosY, SLEEPY());
+					System.out.println("Dragon is Sleeping!");
+					return false;
+				}
+				else if(Dragon == SLEEPY())
+				{
+					dragon.awakeDragon();
+					table.setElem(newPosX, newPosY, DRAGON());
+					System.out.println("DRAGON AS AWAKEN!");
+					return false;
+				}
+				else
+					return false;
 			}
 			else 
 				return false;
