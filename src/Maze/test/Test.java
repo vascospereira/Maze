@@ -5,6 +5,12 @@ import Maze.logic.*;
 
 public class Test {
 
+	char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
+					{ 'X', ' ', ' ', 'H', 'E' }, 
+					{ 'X', ' ', 'X', 'D', 'X' },
+					{ 'X', 'S', ' ', ' ', 'X' }, 
+					{ 'X', 'X', 'X', 'X', 'X' } };
+	
 	@org.junit.Test
 	public void testMoveHeroToFreeCell() 
 	{
