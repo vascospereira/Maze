@@ -13,7 +13,15 @@ public class Maze
 	Dragon dragon;								//Object Dragon~
 	Sword sword;								//Object Sword
 	Random r;
-
+	
+	public Maze(){};
+		
+	public Maze(char[][] newMaze)
+	{
+		table.assertNewTable(newMaze);
+		assertNewElem();
+	}
+	
 	public void Initialize()
 	{
 		table = new Table();
@@ -318,8 +326,34 @@ public class Maze
 		}
 		return false;
 	}
+	public void assertNewElem()
+	{
+		int Column = Column();
+		int Line = Line();
+		
+		for(int i = 0; i < Line; i++)
+		{
+			for(int j = 0; j < Column; j++)
+			{
+				if(table.getElem(i,j) == 'S')
+					sword.setCoord(i, j);
+				else if(table.getElem(i, j) == 'H')
+					hero.setCoord(i, j);
+				else if(table.getElem(i,j) == 'D')
+					dragon.setCoord(i, j);
+			}
+		}
+	}
 
 	//MUTATIONAL FUNCTIONS
+	public int Column()
+	{
+		return table.Column();
+	}
+	public int Line()
+	{
+		return table.Line();
+	}
 	public boolean HeroMoveLeft()
 	{
 		return UpdateHero("Left");
