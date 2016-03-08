@@ -43,9 +43,9 @@ public class Maze
 		table.PrintTable();
 	}
 
-	public boolean UpdateHero(char c)
+	public boolean UpdateHero(String c)
 	{
-		if(c == 'W' || c == 'w')
+		if(c == "Up")
 		{
 			int newPosX =  0 + hero.getX();
 			int newPosY = -1 + hero.getY();
@@ -58,7 +58,7 @@ public class Maze
 			}
 			return false;
 		}
-		if(c == 'A' || c == 'a')
+		if(c == "Left")
 		{
 			int newPosX =  -1 + hero.getX();
 			int newPosY = 	0 + hero.getY();
@@ -73,7 +73,7 @@ public class Maze
 
 
 		}
-		if(c == 'S' || c == 's')
+		if(c == "Down")
 		{
 			int newPosX =   0 + hero.getX();
 			int newPosY =  +1 + hero.getY();
@@ -87,7 +87,7 @@ public class Maze
 			return false;
 
 		}
-		if(c == 'D' || c == 'd')
+		if(c == "Right")
 		{
 			int newPosX =  +1 + hero.getX();
 			int newPosY = 	0 + hero.getY();
@@ -225,14 +225,12 @@ public class Maze
 				{
 					dragon.sleepDragon();
 					table.setElem(newPosX, newPosY, SLEEPY());
-					System.out.println("Dragon is Sleeping!");
 					return false;
 				}
 				else if(Dragon == SLEEPY())
 				{
 					dragon.awakeDragon();
 					table.setElem(newPosX, newPosY, DRAGON());
-					System.out.println("DRAGON AS AWAKEN!");
 					return false;
 				}
 				else
@@ -288,6 +286,7 @@ public class Maze
 			table.setElem(dragon.getX(), dragon.getY(),SPACE());
 			table.setElem(newPosX, newPosY, DRASWO());
 			dragon.setCoord(newPosX, newPosY);
+			dragon.swordDragon();
 			return true;
 		}
 		//GETTING OUT OF THE SWORD
@@ -296,10 +295,11 @@ public class Maze
 			table.setElem(dragon.getX(), dragon.getY(),SWORD());
 			table.setElem(newPosX, newPosY, DRAGON());
 			dragon.setCoord(newPosX, newPosY);
+			dragon.noSwordDragon();
 			return true;
 		}
-		//DRAGON KILLING HERO
-		else if(Elem == HERO() && Dragon == DRAGON())
+		//DRAGON KILLING HERO, ARMED OR UNARMED
+		else if(Elem == HERO() && Dragon == DRAGON() || Elem == ARMOR() && Dragon == DRAGON())
 		{
 			table.setElem(dragon.getX(), dragon.getY(),SPACE());
 			table.setElem(newPosX, newPosY, DRAGON());
@@ -322,19 +322,19 @@ public class Maze
 	//MUTATIONAL FUNCTIONS
 	public boolean HeroMoveLeft()
 	{
-		return UpdateHero('A');
+		return UpdateHero("Left");
 	}
 	public boolean HeroMoveRight()
 	{
-		return UpdateHero('D');
+		return UpdateHero("Right");
 	}
 	public boolean HeroMoveUp()
 	{
-		return UpdateHero('W');
+		return UpdateHero("Up");
 	}
 	public boolean HeroMoveDown()
 	{
-		return UpdateHero('S');
+		return UpdateHero("Down");
 	}
 	public int HeroGetX()
 	{

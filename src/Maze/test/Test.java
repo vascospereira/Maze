@@ -10,10 +10,10 @@ public class Test {
 	{
 		Maze Maze  = new Maze();
 		Maze.Initialize();
-		Maze.UpdateHero('D');
+		Maze.HeroMoveRight();
 		assertEquals(2,Maze.HeroGetX());
 		assertEquals(1,Maze.HeroGetY());
-		Maze.UpdateHero('A');
+		Maze.HeroMoveLeft();
 		assertEquals(1,Maze.HeroGetX());
 		assertEquals(1,Maze.HeroGetY());
 		Maze.Print();
