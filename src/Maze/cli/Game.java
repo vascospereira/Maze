@@ -2,6 +2,7 @@ package Maze.cli;
 
 import java.util.Scanner;
 
+
 import Maze.logic.Maze;
 import Maze.logic.Maze.State;
 import Maze.logic.Table;

@@ -1,6 +1,7 @@
 package Maze.logic;
 
 import java.util.Random;
+
 import static Maze.logic.Table.*;
 
 public class Maze 
@@ -387,5 +388,9 @@ public class Maze
 	public Table getTable()
 	{
 		return table;
+	}
+	public char getHeroState()
+	{
+		return hero.getHeroState();
 	}
 }
