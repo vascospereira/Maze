@@ -6,17 +6,58 @@ import Maze.logic.*;
 public class Test {
 
 	@org.junit.Test
-	public void test() 
+	public void testMoveHeroToFreeCell() 
 	{
 		Maze Maze  = new Maze();
 		Maze.Initialize();
-		Maze.UpdateHero('D');
+		Maze.HeroMoveRight();
 		assertEquals(2,Maze.HeroGetX());
 		assertEquals(1,Maze.HeroGetY());
-		Maze.UpdateHero('A');
+		Maze.HeroMoveLeft();
 		assertEquals(1,Maze.HeroGetX());
 		assertEquals(1,Maze.HeroGetY());
 		Maze.Print();
 	}
 
+	@org.junit.Test
+	public void testMoveHeroAgainstWall() 
+	{
+		
+	}
+	
+	@org.junit.Test
+	public void testMoveHeroToSword() 
+	{
+
+	}
+	
+	@org.junit.Test
+	public void testUnarmedHeroDragon() 
+	{
+		
+	}
+	
+	@org.junit.Test
+	public void testArmedHeroDragon() 
+	{
+		
+	}
+
+	@org.junit.Test
+	public void testDragonExitWithSword() 
+	{
+		
+	}
+	
+	@org.junit.Test
+	public void testDragonExitSword() 
+	{
+		
+	}
+	
+	@org.junit.Test
+	public void testArmedDragonExitWithDragonLive() 
+	{
+		
+	}
 }
