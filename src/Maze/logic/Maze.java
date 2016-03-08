@@ -14,22 +14,23 @@ public class Maze
 	Sword sword;								//Object Sword
 	Random r;
 	
-	public Maze(){};
-		
-	public Maze(char[][] newMaze)
-	{
-		table.assertNewTable(newMaze);
-		assertNewElem();
-	}
-	
-	public void Initialize()
-	{
+	public Maze(){
 		table = new Table();
 		hero = new Hero();
 		dragon = new Dragon();
 		sword = new Sword();
 		r = new Random();
-
+	};
+		
+	public Maze(char[][] newMaze)
+	{
+		this();
+		table = new Table(newMaze);
+		retrieveElems();
+	}
+	
+	public void Initialize()
+	{
 		setState(State.PLAYING);				//Setting Game to play
 		hero.HeroDeploy(table);					//Deploy Hero in table
 		dragon.DragonDeploy(table);				//Deploy Dragon in table
@@ -326,14 +327,14 @@ public class Maze
 		}
 		return false;
 	}
-	public void assertNewElem()
+	public void retrieveElems()
 	{
-		int Column = Column();
-		int Line = Line();
+		int column = getColumn();
+		int line = getLine();
 		
-		for(int i = 0; i < Line; i++)
+		for(int i = 0; i < line; i++)
 		{
-			for(int j = 0; j < Column; j++)
+			for(int j = 0; j < column; j++)
 			{
 				if(table.getElem(i,j) == 'S')
 					sword.setCoord(i, j);
@@ -346,11 +347,11 @@ public class Maze
 	}
 
 	//MUTATIONAL FUNCTIONS
-	public int Column()
+	public int getColumn()
 	{
 		return table.Column();
 	}
-	public int Line()
+	public int getLine()
 	{
 		return table.Line();
 	}

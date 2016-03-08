@@ -15,8 +15,7 @@ public class Table
 				{'X',' ','X','X',' ',' ',' ',' ',' ','X'}, 
 				{'X','X','X','X','X','X','X','X','X','X'}
 		};
-	private int  LINE_LENGHT = table[0].length;
-	private int  COLUMN_LENGTH = table.length;
+	
 
 	private final char SPACE  =  ' ';
 	private final char HERO   =	 'H';
@@ -26,6 +25,13 @@ public class Table
 	private final char SLEEPY =  'd';
 	private final char ARMOR  =  'A';
 	private final char DRASWO =  'F';
+	
+	Table() {}
+	
+	Table(char[][] newMaze)
+	{
+		table = newMaze;
+	}
 	
 	public char SPACE()
 	{
@@ -63,9 +69,9 @@ public class Table
 
 	public void PrintTable()
 	{
-		for(int i = 0; i < LINE_LENGHT; i++)
+		for(int i = 0; i < table.length; i++)
 		{
-			for(int j = 0; j < COLUMN_LENGTH; j++)
+			for(int j = 0; j < table[0].length; j++)
 			{
 				System.out.print(table[i][j] + " ");
 			}
@@ -92,18 +98,13 @@ public class Table
 	{
 		table[y][x] = c;
 	}
-	public void assertNewTable(char[][] newMaze)
-	{
-		table = newMaze;
-		LINE_LENGHT = table[0].length;
-		COLUMN_LENGTH = table.length;
-	}
+
 	public int Column()
 	{
-		return COLUMN_LENGTH;
+		return table.length;
 	}
 	public int Line()
 	{
-		return LINE_LENGHT;
+		return table[0].length;
 	}
 }
