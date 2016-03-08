@@ -11,37 +11,33 @@ public class Game {
 	{
 		//CREATING OBJECT GAME, INITILIAZE() WILL SET GAME STATE TO PLAYING ALSO
 		//WILL ALLOCK MEMORY FOR OBJECTS, DEPLOY THEM AND PRINTING	
-		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
-				{ 'X', ' ', ' ', 'H', 'E' }, 
-				{ 'X', ' ', 'X', 'D', 'X' },
-				{ 'X', 'S', ' ', ' ', 'X' }, 
-				{ 'X', 'X', 'X', 'X', 'X' } };
 		
-		Maze Maze = new Maze(m1);						
+		Maze maze = new Maze();
+		maze.Initialize();
 		
 		//INITIALIZING SCANNER
 		Scanner s = new Scanner(System.in);
 		char c = s.next().charAt(0);
 		String p = Convert(c);
 		
-		while(p != "Close" && (Maze.getState() == State.PLAYING || Maze.getState() == State.SLAYED))
+		while(p != "Close" && (maze.getState() == State.PLAYING || maze.getState() == State.SLAYED))
 		{
 			//UPDATING THE GAME ACCORDING TO SCANNER CHARACTER, AND PRINTING GAME
-			Maze.UpdateHero(p);
-			if(Maze.getState() == State.PLAYING)
+			maze.UpdateHero(p);
+			if(maze.getState() == State.PLAYING)
 			{
-				Maze.UpdateDragon();
+				maze.UpdateDragon();
 			}
 			
-			Maze.Print();		
+			maze.Print();		
 			
 			//CHECKING GAME STATE
-			if(Maze.getState() == State.LOST)
+			if(maze.getState() == State.LOST)
 			{
 				System.out.println("You Lost!");
 				break;
 			}
-			if(Maze.getState() == State.WON)
+			if(maze.getState() == State.WON)
 			{
 				System.out.println("You Win!");
 				break;
