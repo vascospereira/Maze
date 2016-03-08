@@ -15,8 +15,8 @@ public class Table
 				{'X',' ','X','X',' ',' ',' ',' ',' ','X'}, 
 				{'X','X','X','X','X','X','X','X','X','X'}
 		};
-	final int  LINE_LENGHT = table[0].length;
-	final int  COLUMN_LENGTH = table.length;
+	private int  LINE_LENGHT = table[0].length;
+	private int  COLUMN_LENGTH = table.length;
 
 	private final char SPACE  =  ' ';
 	private final char HERO   =	 'H';
@@ -72,8 +72,7 @@ public class Table
 			System.out.println();
 		}
 	}
-
-
+	
 	public boolean DeployPiece(int posX, int posY, char c)
 	{
 		if(table[posY][posX] == ' ')
@@ -84,7 +83,6 @@ public class Table
 		else
 			return false;
 	}
-
 	public char getElem(int x, int y)
 	{
 		return table[y][x];
@@ -93,5 +91,19 @@ public class Table
 	public void setElem(int x, int y, char c)
 	{
 		table[y][x] = c;
+	}
+	public void assertNewTable(char[][] newMaze)
+	{
+		table = newMaze;
+		LINE_LENGHT = table[0].length;
+		COLUMN_LENGTH = table.length;
+	}
+	public int Column()
+	{
+		return COLUMN_LENGTH;
+	}
+	public int Line()
+	{
+		return LINE_LENGHT;
 	}
 }

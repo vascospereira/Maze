@@ -10,4 +10,9 @@ public class Sword
 	{
 		table.DeployPiece(SwordX, SwordY, Sword);
 	}
+	public void setCoord(int x, int y)
+	{
+		SwordX = x;
+		SwordY = y;
+	}
 }
