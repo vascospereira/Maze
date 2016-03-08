@@ -95,6 +95,10 @@ public class Table
 	public void assertNewTable(char[][] newMaze)
 	{
 		table = newMaze;
+		
+	}
+	public void atualizeSize()
+	{
 		LINE_LENGHT = table[0].length;
 		COLUMN_LENGTH = table.length;
 	}

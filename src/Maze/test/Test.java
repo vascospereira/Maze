@@ -14,13 +14,11 @@ public class Test {
 	@org.junit.Test
 	public void testMoveHeroToFreeCell() 
 	{
-		Maze Maze  = new Maze();
-		Maze.Initialize();
-		Maze.HeroMoveRight();
-		assertEquals(2,Maze.HeroGetX());
+		Maze Maze  = new Maze(m1);
+		assertEquals(3,Maze.HeroGetX());
 		assertEquals(1,Maze.HeroGetY());
 		Maze.HeroMoveLeft();
-		assertEquals(1,Maze.HeroGetX());
+		assertEquals(2,Maze.HeroGetX());
 		assertEquals(1,Maze.HeroGetY());
 		Maze.Print();
 	}

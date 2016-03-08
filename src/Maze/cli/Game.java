@@ -10,9 +10,14 @@ public class Game {
 	public static void main(String[] args) 
 	{
 		//CREATING OBJECT GAME, INITILIAZE() WILL SET GAME STATE TO PLAYING ALSO
-		//WILL ALLOCK MEMORY FOR OBJECTS, DEPLOY THEM AND PRINTING						
-		Maze Maze = new Maze();						
-		Maze.Initialize(); 							
+		//WILL ALLOCK MEMORY FOR OBJECTS, DEPLOY THEM AND PRINTING	
+		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
+				{ 'X', ' ', ' ', 'H', 'E' }, 
+				{ 'X', ' ', 'X', 'D', 'X' },
+				{ 'X', 'S', ' ', ' ', 'X' }, 
+				{ 'X', 'X', 'X', 'X', 'X' } };
+		
+		Maze Maze = new Maze(m1);						
 		
 		//INITIALIZING SCANNER
 		Scanner s = new Scanner(System.in);
