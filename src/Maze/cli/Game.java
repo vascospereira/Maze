@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Maze.logic.Maze;
 import Maze.logic.Maze.State;
+import Maze.logic.Table;
 
 public class Game {
 
@@ -14,6 +15,7 @@ public class Game {
 		
 		Maze maze = new Maze();
 		maze.initialize();
+		printTable(maze.getTable());
 		
 		//INITIALIZING SCANNER
 		Scanner s = new Scanner(System.in);
@@ -29,7 +31,7 @@ public class Game {
 				maze.updateDragon();
 			}
 			
-			maze.print();		
+			printTable(maze.getTable());
 			
 			//CHECKING GAME STATE
 			if(maze.getState() == State.LOST)
@@ -52,7 +54,8 @@ public class Game {
 		s.close();
 		return;
 	}
-	public static String convert(char c)
+	
+	private static String convert(char c)
 	{
 		if(c == 'f' || c == 'F')
 			return "Close";
@@ -66,6 +69,18 @@ public class Game {
 			return "Right";
 		else return "";
 		
+	}
+	
+	private static void printTable(Table table)
+	{
+		for(int y = 0; y < table.getHeight(); y++)
+		{
+			for(int x = 0; x < table.getWidth(); x++)
+			{
+				System.out.print(table.getElem(x, y) + " ");
+			}
+			System.out.println();
+		}
 	}
 
 }

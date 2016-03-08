@@ -17,14 +17,14 @@ public class Table
 		};
 	
 
-	public static final char SPACE  =  ' ';
-	public static final char HERO   =	'H';
-	public static final char DRAGON =  'D';
-	public static final char EXIT   =  'E';
-	public static final char SWORD  =  'S';
-	public static final char SLEEPY =  'd';
-	public static final char ARMOR  =  'A';
-	public static final char DRASWO =  'F';
+	public static final char SPACE  = ' ';
+	public static final char HERO   = 'H';
+	public static final char DRAGON = 'D';
+	public static final char EXIT   = 'E';
+	public static final char SWORD  = 'S';
+	public static final char SLEEPY = 'd';
+	public static final char ARMOR  = 'A';
+	public static final char DRASWO = 'F';
 	
 	Table() {}
 	
@@ -33,51 +33,7 @@ public class Table
 		table = newMaze;
 	}
 	
-	/*public char SPACE()
-	{
-		return SPACE;
-	}
-	public char HERO()
-	{
-		return HERO;
-	}
-	public char DRAGON()
-	{
-		return DRAGON;
-	}
-	public char EXIT()
-	{
-		return EXIT;
-	}
-	public char SWORD()
-	{
-		return SWORD;
-	}
-	public char ARMOR()
-	{
-		return ARMOR;
-	}
-	public char SLEEPY()
-	{
-		return SLEEPY;
-	}
-	public char DRASWO()
-	{
-		return DRASWO;
-	}*/
 	
-
-	public void printTable()
-	{
-		for(int i = 0; i < table.length; i++)
-		{
-			for(int j = 0; j < table[0].length; j++)
-			{
-				System.out.print(table[i][j] + " ");
-			}
-			System.out.println();
-		}
-	}
 	
 	public boolean deployPiece(int posX, int posY, char c)
 	{
@@ -99,11 +55,11 @@ public class Table
 		table[y][x] = c;
 	}
 
-	public int column()
+	public int getHeight()
 	{
 		return table.length;
 	}
-	public int line()
+	public int getWidth()
 	{
 		return table[0].length;
 	}

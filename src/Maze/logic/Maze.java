@@ -36,7 +36,6 @@ public class Maze
 		hero.heroDeploy(table);					//Deploy Hero in table
 		dragon.dragonDeploy(table);				//Deploy Dragon in table
 		sword.swordDeploy(table);				//Deploy Sword in table		
-		print();								//Printing Table
 	}
 
 	public void setState(State status)
@@ -47,11 +46,6 @@ public class Maze
 	public State getState()
 	{
 		return state;
-	}
-	
-	public void print()
-	{
-		table.printTable();
 	}
 
 	public boolean updateHero(String c)
@@ -153,8 +147,8 @@ public class Maze
 			return false;
 		}
 		//HERO FACES DRAGON SITTING ON SWORD
-		else if((Elem == Table.DRASWO && Hero == Table.HERO)||
-				(Elem == Table.DRASWO && Hero == Table.ARMOR))
+		else if((Elem == DRASWO && Hero == HERO)||
+				(Elem == DRASWO && Hero == ARMOR))
 		{
 			return false;
 		}
@@ -269,7 +263,7 @@ public class Maze
 				{
 					dragon.awakeDragon();
 					table.setElem(newPosX, newPosY, DRAGON);
-					System.out.println("DRAGON AS AWAKEN!");
+					System.out.println("DRAGON AWAKEN!");
 					return false;
 				}
 				else
@@ -352,11 +346,11 @@ public class Maze
 	//MUTATIONAL FUNCTIONS
 	public int getColumn()
 	{
-		return table.column();
+		return table.getHeight();
 	}
 	public int getLine()
 	{
-		return table.line();
+		return table.getWidth();
 	}
 	public boolean heroMoveLeft()
 	{
@@ -390,5 +384,8 @@ public class Maze
 	{
 		return dragon.getY();
 	}
-	
+	public Table getTable()
+	{
+		return table;
+	}
 }

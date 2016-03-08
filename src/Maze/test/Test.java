@@ -22,7 +22,6 @@ public class Test {
 		maze.heroMoveLeft();
 		assertEquals(2,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
-		maze.print();
 	}
 
 	@org.junit.Test
@@ -35,7 +34,6 @@ public class Test {
 		maze.heroMoveUp();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
-		maze.print();
 	}
 	
 	@org.junit.Test
@@ -48,7 +46,6 @@ public class Test {
 		maze.heroMoveUp();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
-		maze.print();
 	}
 	
 	@org.junit.Test
