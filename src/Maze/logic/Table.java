@@ -18,14 +18,48 @@ public class Table
 	final int  LINE_LENGHT = table[0].length;
 	final int  COLUMN_LENGTH = table.length;
 
-	final char SPACE  =  ' ';
-	final char HERO   =	 'H';
-	final char DRAGON =  'D';
-	final char EXIT   =  'E';
-	final char SWORD  =  'S';
-	final char SLEEPY =  'd';
-	final char ARMOR  =  'A';
-	final char DRASWO =  'F';
+	private final char SPACE  =  ' ';
+	private final char HERO   =	 'H';
+	private final char DRAGON =  'D';
+	private final char EXIT   =  'E';
+	private final char SWORD  =  'S';
+	private final char SLEEPY =  'd';
+	private final char ARMOR  =  'A';
+	private final char DRASWO =  'F';
+	
+	public char SPACE()
+	{
+		return SPACE;
+	}
+	public char HERO()
+	{
+		return HERO;
+	}
+	public char DRAGON()
+	{
+		return DRAGON;
+	}
+	public char EXIT()
+	{
+		return EXIT;
+	}
+	public char SWORD()
+	{
+		return SWORD;
+	}
+	public char ARMOR()
+	{
+		return ARMOR;
+	}
+	public char SLEEPY()
+	{
+		return SLEEPY;
+	}
+	public char DRASWO()
+	{
+		return DRASWO;
+	}
+	
 
 	public void PrintTable()
 	{
@@ -60,5 +94,4 @@ public class Table
 	{
 		table[y][x] = c;
 	}
-
 }

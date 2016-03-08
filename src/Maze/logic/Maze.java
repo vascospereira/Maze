@@ -10,7 +10,7 @@ public class Maze
 
 	Table table;								//Object Table
 	Hero hero;									//Object Hero
-	Dragon dragon;								//Object Dragon
+	Dragon dragon;								//Object Dragon~
 	Sword sword;								//Object Sword
 	Random r;
 
@@ -38,7 +38,6 @@ public class Maze
 	{
 		return state;
 	}
-
 	public void Print()
 	{
 		table.PrintTable();
@@ -110,55 +109,55 @@ public class Maze
 		char Hero = hero.getHeroState();
 
 		//HERO GATHERING THE SWORD
-		if(Elem == table.SWORD)
+		if(Elem == SWORD())
 		{
-			table.setElem(hero.getX(), hero.getY(), table.SPACE);
+			table.setElem(hero.getX(), hero.getY(), SPACE());
 			table.setElem(nPosX, nPosY, hero.heroArmed());
 			return true;
 		}
 
 		//CASE WHEN HERO UNARMED CONFRONTS DRAGON, DIES HORRIBLY
-		else if(Elem == table.DRAGON && Hero == table.HERO)
+		else if(Elem == DRAGON() && Hero == HERO())
 		{
-			table.setElem(hero.getX(), hero.getY(), table.SPACE);
+			table.setElem(hero.getX(), hero.getY(), SPACE());
 			setState(State.LOST);
 			return true;
 		}
 
 		//CASE WHEN HERO IS ARMED AND CONFRONTS SLEEPY OR AWAKEN DRAGON, DRAGON GETS CRIPPLED INT PIECES
-		else if((Elem == table.DRAGON && Hero == table.ARMOR)||
-				(Elem == table.SLEEPY && Hero == table.ARMOR))
+		else if((Elem == DRAGON() && Hero == ARMOR())||
+				(Elem == SLEEPY() && Hero == ARMOR()))
 		{
-			table.setElem(hero.getX(), hero.getY(), table.SPACE);
+			table.setElem(HeroGetX(), hero.getY(), SPACE());
 			table.setElem(nPosX, nPosY, Hero);
 			setState(State.SLAYED);
 			return true;
 		}
 
 		//SLEEPY DRGON AND HERO UNAMRMED
-		else if(Elem == table.SLEEPY && Hero == table.HERO)
+		else if(Elem == SLEEPY() && Hero == HERO())
 		{
 			//SIMPLY RETURNS FALSE FOR THE HERO CANNOT MAGICLLY TRESPASS THE DRAGON
 			return false;
 		}
 		//HERO FACES DRAGON SITTING ON SWORD
-		else if((Elem == table.DRASWO && Hero == table.HERO)||
-				(Elem == table.DRASWO && Hero == table.ARMOR))
+		else if((Elem == DRASWO() && Hero == HERO())||
+				(Elem == DRASWO() && Hero == ARMOR()))
 		{
 			return false;
 		}
 		//KILLING DRAGON AND ENTERING THE EXIT
-		else if(Elem == table.EXIT && getState() == State.SLAYED)
+		else if(Elem == EXIT() && getState() == State.SLAYED)
 		{
-			table.setElem(hero.getX(), hero.getY(), table.SPACE);
+			table.setElem(hero.getX(), hero.getY(), SPACE());
 			table.setElem(nPosX, nPosY, Hero);
 			setState(State.WON);
 			return true;
 		}
 		//NORMAL HERO MOVEMENT
-		else if(Elem == table.SPACE)
+		else if(Elem == SPACE())
 		{
-			table.setElem(hero.getX(), hero.getY(), table.SPACE);
+			table.setElem(hero.getX(), hero.getY(), SPACE());
 			table.setElem(nPosX, nPosY, Hero);
 			return true;
 		}
@@ -171,16 +170,17 @@ public class Maze
 		int move;
 		int newPosX = dragon.getX();
 		int newPosY = dragon.getY();
+		char Dragon = dragon.getDragonState();
 
 		move = r.nextInt(3);
 		//System.out.println(move);
 
 		//SEM MOVIMENTO
-		if(move == 0 && dragon.getDragonState() != table.SLEEPY)
+		if(move == 0 && Dragon != SLEEPY())
 		{
 			return false;
 		}
-		else if(move == 1 && dragon.getDragonState() != table.SLEEPY)
+		else if(move == 1 && Dragon != SLEEPY())
 		{
 			//MOVIMENTO OBRIGATORIO
 			while(true)
@@ -192,52 +192,45 @@ public class Maze
 				{
 					int change = -1;
 					if(DragonMove(newPosX, newPosY + change) == true)
-					{
 						return true;
-					}
 				}
 				//DOWN MOVEMENT
 				else if(move == 1)
 				{
 					int change = +1;
 					if(DragonMove(newPosX, newPosY + change) == true)
-					{
 						return true;
-					}
 				}
 				//LEFT MOVEMENT
 				else if(move == 2)
 				{
 					int change = -1;
 					if(DragonMove(newPosX+change, newPosY) == true)
-					{
 						return true;
-					}
 				}
 				//RIGHT MOVEMENT
 				else if(move == 3)
 				{
 					int change = +1;
 					if(DragonMove(newPosX+change, newPosY) == true)
-					{
 						return true;
-					}
 				}
+				else return false;
 			}
 		}
-		else if(move == 2 && dragon.getDragonState() != table.DRASWO)
+		else if(move == 2 && Dragon!= DRASWO())
 		{
-			if(dragon.getDragonState() == table.DRAGON)
+			if(Dragon == DRAGON())
 			{
 				dragon.sleepDragon();
-				table.setElem(dragon.getX(), dragon.getY(), table.SLEEPY);
+				table.setElem(newPosX, newPosY, SLEEPY());
 				System.out.println("Dragon is Sleeping!");
 				return false;
 			}
-			else if(dragon.getDragonState() == table.SLEEPY)
+			else if(Dragon == SLEEPY())
 			{
 				dragon.awakeDragon();
-				table.setElem(dragon.getX(), dragon.getY(), table.DRAGON);
+				table.setElem(newPosX, newPosY, DRAGON());
 				System.out.println("DRAGON AS AWAKEN!");
 				return false;
 			}
@@ -248,48 +241,46 @@ public class Maze
 	}
 	public boolean DragonMove(int newPosX, int newPosY)
 	{
+		char Elem = table.getElem(newPosX, newPosY);
+		char Dragon = dragon.getDragonState();
 		//FOR NORMAL DRAGON AND SPACE MOVEMENT
-		if((table.getElem(newPosX, newPosY) == table.SPACE) && 
-				(table.getElem(dragon.getX(), dragon.getY()) == table.DRAGON))
+		if(Elem == SPACE() && Dragon == DRAGON())
 		{
-			table.setElem(dragon.getX(), dragon.getY(),table.SPACE);
-			table.setElem(newPosX, newPosY, table.DRAGON);
+			table.setElem(dragon.getX(), dragon.getY(),SPACE());
+			table.setElem(newPosX, newPosY, DRAGON());
 			dragon.setCoord(newPosX, newPosY);
 			return true;
 		}
 		//FOR DRAGON TO SWORD MOVEMENT
-		else if(table.getElem(newPosX, newPosY) == table.SWORD)
+		else if(Elem == SWORD())
 		{
-			table.setElem(dragon.getX(), dragon.getY(),table.SPACE);
-			table.setElem(newPosX, newPosY, table.DRASWO);
+			table.setElem(dragon.getX(), dragon.getY(),SPACE());
+			table.setElem(newPosX, newPosY, DRASWO());
 			dragon.setCoord(newPosX, newPosY);
 			return true;
 		}
 		//GETTING OUT OF THE SWORD
-		else if((table.getElem(newPosX, newPosY) == table.SPACE) && 
-				(table.getElem(dragon.getX(), dragon.getY()) == table.DRASWO))
+		else if(Elem == SPACE() && Dragon == DRASWO())
 		{
-			table.setElem(dragon.getX(), dragon.getY(),table.SWORD);
-			table.setElem(newPosX, newPosY, table.DRAGON);
+			table.setElem(dragon.getX(), dragon.getY(),SWORD());
+			table.setElem(newPosX, newPosY, DRAGON());
 			dragon.setCoord(newPosX, newPosY);
 			return true;
 		}
 		//DRAGON KILLING HERO
-		else if((table.getElem(newPosX, newPosY) == table.HERO) && 
-				(table.getElem(dragon.getX(), dragon.getY()) == table.DRAGON))
+		else if(Elem == HERO() && Dragon == DRAGON())
 		{
-			table.setElem(dragon.getX(), dragon.getY(),table.SPACE);
-			table.setElem(newPosX, newPosY, table.DRAGON);
+			table.setElem(dragon.getX(), dragon.getY(),SPACE());
+			table.setElem(newPosX, newPosY, DRAGON());
 			dragon.setCoord(newPosX, newPosY);
 			setState(State.LOST);
 			return true;
 		}
 		//DRAGON KILLING HERO AND GETTING OUT OF SWORD
-		else if((table.getElem(newPosX, newPosY) == table.HERO) && 
-				(table.getElem(dragon.getX(), dragon.getY()) == table.DRASWO))
+		else if(Elem == HERO() && Dragon == DRASWO())
 		{
-			table.setElem(dragon.getX(), dragon.getY(),table.SWORD);
-			table.setElem(newPosX, newPosY, table.DRAGON);
+			table.setElem(dragon.getX(), dragon.getY(),SWORD());
+			table.setElem(newPosX, newPosY, DRAGON());
 			dragon.setCoord(newPosX, newPosY);
 			setState(State.LOST);
 			return true;
@@ -297,4 +288,69 @@ public class Maze
 		return false;
 	}
 
+	//MUTATIONAL FUNCTIONS
+	public boolean HeroMoveLeft()
+	{
+		return UpdateHero('A');
+	}
+	public boolean HeroMoveRight()
+	{
+		return UpdateHero('D');
+	}
+	public boolean HeroMoveUp()
+	{
+		return UpdateHero('W');
+	}
+	public boolean HeroMoveDown()
+	{
+		return UpdateHero('S');
+	}
+	public int HeroGetX()
+	{
+		return hero.getX();
+	}
+	public int HeroGetY()
+	{
+		return hero.getY();
+	}
+	public int DragonGetX()
+	{
+		return dragon.getX();
+	}
+	public int DragonGetY()
+	{
+		return dragon.getY();
+	}
+	public char SPACE()
+	{
+		return table.SPACE();
+	}
+	public char SLEEPY()
+	{
+		return table.SLEEPY();
+	}
+	public char HERO()
+	{
+		return table.HERO();
+	}
+	public char DRAGON()
+	{
+		return table.DRAGON();
+	}
+	public char EXIT()
+	{
+		return table.EXIT();
+	}
+	public char SWORD()
+	{
+		return table.SWORD();
+	}
+	public char ARMOR()
+	{
+		return table.ARMOR();
+	}
+	public char DRASWO()
+	{
+		return table.DRASWO();
+	}
 }
