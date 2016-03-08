@@ -34,8 +34,8 @@ public class Maze
 		setState(State.PLAYING);				//Setting Game to play
 		hero.HeroDeploy(table);					//Deploy Hero in table
 		dragon.DragonDeploy(table);				//Deploy Dragon in table
-		sword.SwordDeploy(table);				//Deploy Sword in table
-		Print();								//Printing Table
+		sword.SwordDeploy(table);				//Deploy Sword in table		
+		Print();//Printing Table
 	}
 
 	public void setState(State status)
