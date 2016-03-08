@@ -17,14 +17,14 @@ public class Table
 		};
 	
 
-	private final char SPACE  =  ' ';
-	private final char HERO   =	 'H';
-	private final char DRAGON =  'D';
-	private final char EXIT   =  'E';
-	private final char SWORD  =  'S';
-	private final char SLEEPY =  'd';
-	private final char ARMOR  =  'A';
-	private final char DRASWO =  'F';
+	public static final char SPACE  =  ' ';
+	public static final char HERO   =	'H';
+	public static final char DRAGON =  'D';
+	public static final char EXIT   =  'E';
+	public static final char SWORD  =  'S';
+	public static final char SLEEPY =  'd';
+	public static final char ARMOR  =  'A';
+	public static final char DRASWO =  'F';
 	
 	Table() {}
 	
@@ -33,7 +33,7 @@ public class Table
 		table = newMaze;
 	}
 	
-	public char SPACE()
+	/*public char SPACE()
 	{
 		return SPACE;
 	}
@@ -64,10 +64,10 @@ public class Table
 	public char DRASWO()
 	{
 		return DRASWO;
-	}
+	}*/
 	
 
-	public void PrintTable()
+	public void printTable()
 	{
 		for(int i = 0; i < table.length; i++)
 		{
@@ -79,7 +79,7 @@ public class Table
 		}
 	}
 	
-	public boolean DeployPiece(int posX, int posY, char c)
+	public boolean deployPiece(int posX, int posY, char c)
 	{
 		if(table[posY][posX] == ' ')
 		{
@@ -99,11 +99,11 @@ public class Table
 		table[y][x] = c;
 	}
 
-	public int Column()
+	public int column()
 	{
 		return table.length;
 	}
-	public int Line()
+	public int line()
 	{
 		return table[0].length;
 	}

@@ -33,8 +33,8 @@ public class Hero
 		return HERO;
 	}
 	
-	public void HeroDeploy(Table table)
+	public void heroDeploy(Table table)
 	{
-		table.DeployPiece(HeroX, HeroY, HERO);
+		table.deployPiece(HeroX, HeroY, HERO);
 	}
 }

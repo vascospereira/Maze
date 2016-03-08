@@ -6,9 +6,9 @@ public class Sword
 	private int SwordX = 1;		//Sword position X
 	private int SwordY = 8;		//Sword position Y
 	
-	public void SwordDeploy(Table table)
+	public void swordDeploy(Table table)
 	{
-		table.DeployPiece(SwordX, SwordY, Sword);
+		table.deployPiece(SwordX, SwordY, Sword);
 	}
 	public void setCoord(int x, int y)
 	{

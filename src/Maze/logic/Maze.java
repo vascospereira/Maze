@@ -1,6 +1,7 @@
 package Maze.logic;
 
 import java.util.Random;
+import static Maze.logic.Table.*;
 
 public class Maze 
 {
@@ -8,11 +9,11 @@ public class Maze
 
 	private State state;
 
-	Table table;								//Object Table
-	Hero hero;									//Object Hero
-	Dragon dragon;								//Object Dragon~
-	Sword sword;								//Object Sword
-	Random r;
+	private Table table;								//Object Table
+	private Hero hero;									//Object Hero
+	private Dragon dragon;								//Object Dragon
+	private Sword sword;								//Object Sword
+	private Random r;
 	
 	public Maze(){
 		table = new Table();
@@ -29,13 +30,13 @@ public class Maze
 		retrieveElems();
 	}
 	
-	public void Initialize()
+	public void initialize()
 	{
 		setState(State.PLAYING);				//Setting Game to play
-		hero.HeroDeploy(table);					//Deploy Hero in table
-		dragon.DragonDeploy(table);				//Deploy Dragon in table
-		sword.SwordDeploy(table);				//Deploy Sword in table		
-		Print();//Printing Table
+		hero.heroDeploy(table);					//Deploy Hero in table
+		dragon.dragonDeploy(table);				//Deploy Dragon in table
+		sword.swordDeploy(table);				//Deploy Sword in table		
+		print();								//Printing Table
 	}
 
 	public void setState(State status)
@@ -47,19 +48,20 @@ public class Maze
 	{
 		return state;
 	}
-	public void Print()
+	
+	public void print()
 	{
-		table.PrintTable();
+		table.printTable();
 	}
 
-	public boolean UpdateHero(String c)
+	public boolean updateHero(String c)
 	{
 		if(c == "Up")
 		{
 			int newPosX =  0 + hero.getX();
 			int newPosY = -1 + hero.getY();
 
-			if(HeroMove(newPosX, newPosY) == true)
+			if(heroMove(newPosX, newPosY) == true)
 			{
 				hero.setCoord(newPosX, newPosY);
 				System.out.println("Up");
@@ -72,7 +74,7 @@ public class Maze
 			int newPosX =  -1 + hero.getX();
 			int newPosY = 	0 + hero.getY();
 
-			if(HeroMove(newPosX, newPosY) == true)
+			if(heroMove(newPosX, newPosY) == true)
 			{
 				hero.setCoord(newPosX, newPosY);
 				System.out.println("Left");
@@ -87,7 +89,7 @@ public class Maze
 			int newPosX =   0 + hero.getX();
 			int newPosY =  +1 + hero.getY();
 
-			if(HeroMove(newPosX, newPosY) == true)
+			if(heroMove(newPosX, newPosY) == true)
 			{
 				hero.setCoord(newPosX, newPosY);
 				System.out.println("Down");
@@ -101,7 +103,7 @@ public class Maze
 			int newPosX =  +1 + hero.getX();
 			int newPosY = 	0 + hero.getY();
 
-			if(HeroMove(newPosX, newPosY) == true)
+			if(heroMove(newPosX, newPosY) == true)
 			{
 				hero.setCoord(newPosX, newPosY);
 				System.out.println("Right");
@@ -112,61 +114,62 @@ public class Maze
 		}
 		return false;
 	}
-	public boolean HeroMove(int nPosX, int nPosY)
+	
+	public boolean heroMove(int nPosX, int nPosY)
 	{
 		char Elem = table.getElem(nPosX, nPosY);
 		char Hero = hero.getHeroState();
 
 		//HERO GATHERING THE SWORD
-		if(Elem == SWORD())
+		if(Elem == Table.SWORD)
 		{
-			table.setElem(hero.getX(), hero.getY(), SPACE());
+			table.setElem(hero.getX(), hero.getY(), Table.SPACE);
 			table.setElem(nPosX, nPosY, hero.heroArmed());
 			return true;
 		}
 
 		//CASE WHEN HERO UNARMED CONFRONTS DRAGON, DIES HORRIBLY
-		else if(Elem == DRAGON() && Hero == HERO())
+		else if(Elem == Table.DRAGON && Hero == Table.HERO)
 		{
-			table.setElem(hero.getX(), hero.getY(), SPACE());
+			table.setElem(hero.getX(), hero.getY(), Table.SPACE);
 			setState(State.LOST);
 			return true;
 		}
 
 		//CASE WHEN HERO IS ARMED AND CONFRONTS SLEEPY OR AWAKEN DRAGON, DRAGON GETS CRIPPLED INT PIECES
-		else if((Elem == DRAGON() && Hero == ARMOR())||
-				(Elem == SLEEPY() && Hero == ARMOR()))
+		else if((Elem == Table.DRAGON && Hero == Table.ARMOR)||
+				(Elem == Table.SLEEPY && Hero == Table.ARMOR))
 		{
-			table.setElem(HeroGetX(), hero.getY(), SPACE());
+			table.setElem(heroGetX(), hero.getY(), Table.SPACE);
 			table.setElem(nPosX, nPosY, Hero);
 			setState(State.SLAYED);
 			return true;
 		}
 
 		//SLEEPY DRGON AND HERO UNAMRMED
-		else if(Elem == SLEEPY() && Hero == HERO())
+		else if(Elem == SLEEPY && Hero == HERO)
 		{
 			//SIMPLY RETURNS FALSE FOR THE HERO CANNOT MAGICLLY TRESPASS THE DRAGON
 			return false;
 		}
 		//HERO FACES DRAGON SITTING ON SWORD
-		else if((Elem == DRASWO() && Hero == HERO())||
-				(Elem == DRASWO() && Hero == ARMOR()))
+		else if((Elem == Table.DRASWO && Hero == Table.HERO)||
+				(Elem == Table.DRASWO && Hero == Table.ARMOR))
 		{
 			return false;
 		}
 		//KILLING DRAGON AND ENTERING THE EXIT
-		else if(Elem == EXIT() && getState() == State.SLAYED)
+		else if(Elem == EXIT && getState() == State.SLAYED)
 		{
-			table.setElem(hero.getX(), hero.getY(), SPACE());
+			table.setElem(hero.getX(), hero.getY(), SPACE);
 			table.setElem(nPosX, nPosY, Hero);
 			setState(State.WON);
 			return true;
 		}
 		//NORMAL HERO MOVEMENT
-		else if(Elem == SPACE())
+		else if(Elem == SPACE)
 		{
-			table.setElem(hero.getX(), hero.getY(), SPACE());
+			table.setElem(hero.getX(), hero.getY(), SPACE);
 			table.setElem(nPosX, nPosY, Hero);
 			return true;
 		}
@@ -174,7 +177,7 @@ public class Maze
 			return false;
 	}
 
-	public boolean UpdateDragon()
+	public boolean updateDragon()
 	{
 		int move;
 		int newPosX = dragon.getX();
@@ -184,7 +187,7 @@ public class Maze
 		move = r.nextInt(2);
 
 		//MOVIMENTO
-		if(move == 0 && Dragon != SLEEPY())
+		if(move == 0 && Dragon != SLEEPY)
 		{
 			//MOVIMENTO OBRIGATORIO
 			while(true)
@@ -194,34 +197,34 @@ public class Maze
 				if(move == 0)
 				{
 					int change = -1;
-					if(DragonMove(newPosX, newPosY + change) == true)
+					if(dragonMove(newPosX, newPosY + change) == true)
 						return true;
 				}
 				//DOWN MOVEMENT
 				else if(move == 1)
 				{
 					int change = +1;
-					if(DragonMove(newPosX, newPosY + change) == true)
+					if(dragonMove(newPosX, newPosY + change) == true)
 						return true;
 				}
 				//LEFT MOVEMENT
 				else if(move == 2)
 				{
 					int change = -1;
-					if(DragonMove(newPosX+change, newPosY) == true)
+					if(dragonMove(newPosX+change, newPosY) == true)
 						return true;
 				}
 				//RIGHT MOVEMENT
 				else if(move == 3)
 				{
 					int change = +1;
-					if(DragonMove(newPosX+change, newPosY) == true)
+					if(dragonMove(newPosX+change, newPosY) == true)
 						return true;
 				}
 				else return false;
 			}
 		}
-		else if(move == 0 && Dragon == SLEEPY())
+		else if(move == 0 && Dragon == SLEEPY)
 		{
 			move = r.nextInt(2);
 			if(move == 0)
@@ -230,23 +233,23 @@ public class Maze
 			}
 			else if(move == 1)
 			{
-				if(Dragon == DRAGON())
+				if(Dragon == DRAGON)
 				{
 					dragon.sleepDragon();
-					table.setElem(newPosX, newPosY, SLEEPY());
+					table.setElem(newPosX, newPosY, SLEEPY);
 					return false;
 				}
-				else if(Dragon == SLEEPY())
+				else if(Dragon == SLEEPY)
 				{
 					dragon.awakeDragon();
-					table.setElem(newPosX, newPosY, DRAGON());
+					table.setElem(newPosX, newPosY, DRAGON);
 					return false;
 				}
 				else
 					return false;
 			}
 		}
-		else if(move == 1 && Dragon != DRASWO())
+		else if(move == 1 && Dragon != DRASWO)
 		{
 			move = r.nextInt(2);
 			if(move == 0)
@@ -255,17 +258,17 @@ public class Maze
 			}
 			else if(move == 1)
 			{
-				if(Dragon == DRAGON())
+				if(Dragon == DRAGON)
 				{
 					dragon.sleepDragon();
-					table.setElem(newPosX, newPosY, SLEEPY());
+					table.setElem(newPosX, newPosY, SLEEPY);
 					System.out.println("Dragon is Sleeping!");
 					return false;
 				}
-				else if(Dragon == SLEEPY())
+				else if(Dragon == SLEEPY)
 				{
 					dragon.awakeDragon();
-					table.setElem(newPosX, newPosY, DRAGON());
+					table.setElem(newPosX, newPosY, DRAGON);
 					System.out.println("DRAGON AS AWAKEN!");
 					return false;
 				}
@@ -277,50 +280,50 @@ public class Maze
 		}
 		return false;
 	}
-	public boolean DragonMove(int newPosX, int newPosY)
+	public boolean dragonMove(int newPosX, int newPosY)
 	{
 		char Elem = table.getElem(newPosX, newPosY);
 		char Dragon = dragon.getDragonState();
 		//FOR NORMAL DRAGON AND SPACE MOVEMENT
-		if(Elem == SPACE() && Dragon == DRAGON())
+		if(Elem == SPACE && Dragon == DRAGON)
 		{
-			table.setElem(dragon.getX(), dragon.getY(),SPACE());
-			table.setElem(newPosX, newPosY, DRAGON());
+			table.setElem(dragon.getX(), dragon.getY(),SPACE);
+			table.setElem(newPosX, newPosY, DRAGON);
 			dragon.setCoord(newPosX, newPosY);
 			return true;
 		}
 		//FOR DRAGON TO SWORD MOVEMENT
-		else if(Elem == SWORD())
+		else if(Elem == SWORD)
 		{
-			table.setElem(dragon.getX(), dragon.getY(),SPACE());
-			table.setElem(newPosX, newPosY, DRASWO());
+			table.setElem(dragon.getX(), dragon.getY(),SPACE);
+			table.setElem(newPosX, newPosY, DRASWO);
 			dragon.setCoord(newPosX, newPosY);
 			dragon.swordDragon();
 			return true;
 		}
 		//GETTING OUT OF THE SWORD
-		else if(Elem == SPACE() && Dragon == DRASWO())
+		else if(Elem == SPACE && Dragon == DRASWO)
 		{
-			table.setElem(dragon.getX(), dragon.getY(),SWORD());
-			table.setElem(newPosX, newPosY, DRAGON());
+			table.setElem(dragon.getX(), dragon.getY(),SWORD);
+			table.setElem(newPosX, newPosY, DRAGON);
 			dragon.setCoord(newPosX, newPosY);
 			dragon.noSwordDragon();
 			return true;
 		}
 		//DRAGON KILLING HERO, ARMED OR UNARMED
-		else if(Elem == HERO() && Dragon == DRAGON() || Elem == ARMOR() && Dragon == DRAGON())
+		else if(Elem == HERO && Dragon == DRAGON || Elem == ARMOR && Dragon == DRAGON)
 		{
-			table.setElem(dragon.getX(), dragon.getY(),SPACE());
-			table.setElem(newPosX, newPosY, DRAGON());
+			table.setElem(dragon.getX(), dragon.getY(),SPACE);
+			table.setElem(newPosX, newPosY, DRAGON);
 			dragon.setCoord(newPosX, newPosY);
 			setState(State.LOST);
 			return true;
 		}
 		//DRAGON KILLING HERO AND GETTING OUT OF SWORD
-		else if(Elem == HERO() && Dragon == DRASWO())
+		else if(Elem == HERO && Dragon == DRASWO)
 		{
-			table.setElem(dragon.getX(), dragon.getY(),SWORD());
-			table.setElem(newPosX, newPosY, DRAGON());
+			table.setElem(dragon.getX(), dragon.getY(),SWORD);
+			table.setElem(newPosX, newPosY, DRAGON);
 			dragon.setCoord(newPosX, newPosY);
 			setState(State.LOST);
 			return true;
@@ -336,11 +339,11 @@ public class Maze
 		{
 			for(int j = 0; j < column; j++)
 			{
-				if(table.getElem(i,j) == 'S')
+				if(table.getElem(i,j) == SWORD)
 					sword.setCoord(i, j);
-				else if(table.getElem(i, j) == 'H')
+				else if(table.getElem(i, j) == HERO)
 					hero.setCoord(i, j);
-				else if(table.getElem(i,j) == 'D')
+				else if(table.getElem(i,j) == DRAGON)
 					dragon.setCoord(i, j);
 			}
 		}
@@ -349,74 +352,43 @@ public class Maze
 	//MUTATIONAL FUNCTIONS
 	public int getColumn()
 	{
-		return table.Column();
+		return table.column();
 	}
 	public int getLine()
 	{
-		return table.Line();
+		return table.line();
 	}
-	public boolean HeroMoveLeft()
+	public boolean heroMoveLeft()
 	{
-		return UpdateHero("Left");
+		return updateHero("Left");
 	}
-	public boolean HeroMoveRight()
+	public boolean heroMoveRight()
 	{
-		return UpdateHero("Right");
+		return updateHero("Right");
 	}
-	public boolean HeroMoveUp()
+	public boolean heroMoveUp()
 	{
-		return UpdateHero("Up");
+		return updateHero("Up");
 	}
-	public boolean HeroMoveDown()
+	public boolean heroMoveDown()
 	{
-		return UpdateHero("Down");
+		return updateHero("Down");
 	}
-	public int HeroGetX()
+	public int heroGetX()
 	{
 		return hero.getX();
 	}
-	public int HeroGetY()
+	public int heroGetY()
 	{
 		return hero.getY();
 	}
-	public int DragonGetX()
+	public int dragonGetX()
 	{
 		return dragon.getX();
 	}
-	public int DragonGetY()
+	public int dragonGetY()
 	{
 		return dragon.getY();
 	}
-	public char SPACE()
-	{
-		return table.SPACE();
-	}
-	public char SLEEPY()
-	{
-		return table.SLEEPY();
-	}
-	public char HERO()
-	{
-		return table.HERO();
-	}
-	public char DRAGON()
-	{
-		return table.DRAGON();
-	}
-	public char EXIT()
-	{
-		return table.EXIT();
-	}
-	public char SWORD()
-	{
-		return table.SWORD();
-	}
-	public char ARMOR()
-	{
-		return table.ARMOR();
-	}
-	public char DRASWO()
-	{
-		return table.DRASWO();
-	}
+	
 }

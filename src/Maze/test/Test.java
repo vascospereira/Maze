@@ -11,29 +11,44 @@ public class Test {
 					{ 'X', 'S', ' ', ' ', 'X' }, 
 					{ 'X', 'X', 'X', 'X', 'X' } };
 	
+	
 	@org.junit.Test
 	public void testMoveHeroToFreeCell() 
 	{
 		Maze maze = new Maze(m1);
-		maze.Initialize();
-		assertEquals(3,maze.HeroGetX());
-		assertEquals(1,maze.HeroGetY());
-		maze.HeroMoveLeft();
-		assertEquals(2,maze.HeroGetX());
-		assertEquals(1,maze.HeroGetY());
-		maze.Print();
+		maze.initialize();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		maze.heroMoveLeft();
+		assertEquals(2,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		maze.print();
 	}
 
 	@org.junit.Test
 	public void testMoveHeroAgainstWall() 
 	{
-		
+		Maze maze = new Maze(m1);
+		maze.initialize();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		maze.heroMoveUp();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		maze.print();
 	}
 	
 	@org.junit.Test
 	public void testMoveHeroToSword() 
 	{
-
+		Maze maze = new Maze(m1);
+		maze.initialize();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		maze.heroMoveUp();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		maze.print();
 	}
 	
 	@org.junit.Test

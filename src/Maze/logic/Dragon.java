@@ -6,9 +6,9 @@ public class Dragon
 	private int DragonX = 1;	//Dragon position X
 	private int DragonY = 3;	//Dragon +position Y
 	
-	public void DragonDeploy(Table table)
+	public void dragonDeploy(Table table)
 	{
-		table.DeployPiece(DragonX, DragonY, DRAGON);
+		table.deployPiece(DragonX, DragonY, DRAGON);
 	}
 	
 	public void sleepDragon() 

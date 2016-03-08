@@ -13,23 +13,23 @@ public class Game {
 		//WILL ALLOCK MEMORY FOR OBJECTS, DEPLOY THEM AND PRINTING	
 		
 		Maze maze = new Maze();
-		maze.Initialize();
+		maze.initialize();
 		
 		//INITIALIZING SCANNER
 		Scanner s = new Scanner(System.in);
 		char c = s.next().charAt(0);
-		String p = Convert(c);
+		String p = convert(c);
 		
 		while(p != "Close" && (maze.getState() == State.PLAYING || maze.getState() == State.SLAYED))
 		{
 			//UPDATING THE GAME ACCORDING TO SCANNER CHARACTER, AND PRINTING GAME
-			maze.UpdateHero(p);
+			maze.updateHero(p);
 			if(maze.getState() == State.PLAYING)
 			{
-				maze.UpdateDragon();
+				maze.updateDragon();
 			}
 			
-			maze.Print();		
+			maze.print();		
 			
 			//CHECKING GAME STATE
 			if(maze.getState() == State.LOST)
@@ -45,14 +45,14 @@ public class Game {
 			
 			//CONSOLE PROMPT FOR NEXT MOVEMENT
 			c = s.next().charAt(0);
-			p = Convert(c);
+			p = convert(c);
 		}
 		
 		//CLOSING SCANNER AND RETURNING
 		s.close();
 		return;
 	}
-	public static String Convert(char c)
+	public static String convert(char c)
 	{
 		if(c == 'f' || c == 'F')
 			return "Close";
