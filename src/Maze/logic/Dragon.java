@@ -11,15 +11,25 @@ public class Dragon
 		table.DeployPiece(DragonX, DragonY, DRAGON);
 	}
 	
-	public char sleepDragon() 
+	public void sleepDragon() 
 	{
 		DRAGON = 'd';
-		return DRAGON;
+		//return DRAGON;
 	}
-	public char awakeDragon() 
+	public void awakeDragon() 
 	{
 		DRAGON = 'D';
-		return DRAGON;
+		//return DRAGON;
+	}
+	public void swordDragon()
+	{
+		DRAGON = 'F';
+		//return DRAGON;
+	}
+	public void noSwordDragon()
+	{
+		DRAGON = 'D';
+		//return DRAGON;
 	}
 	
 	public char getDragonState()

@@ -17,11 +17,12 @@ public class Game {
 		//INITIALIZING SCANNER
 		Scanner s = new Scanner(System.in);
 		char c = s.next().charAt(0);
+		String p = Convert(c);
 		
-		while(c != 'F' && c != 'f' && (Maze.getState() == State.PLAYING || Maze.getState() == State.SLAYED))
+		while(p != "Close" && (Maze.getState() == State.PLAYING || Maze.getState() == State.SLAYED))
 		{
 			//UPDATING THE GAME ACCORDING TO SCANNER CHARACTER, AND PRINTING GAME
-			Maze.UpdateHero(c);
+			Maze.UpdateHero(p);
 			if(Maze.getState() == State.PLAYING)
 			{
 				Maze.UpdateDragon();
@@ -43,11 +44,27 @@ public class Game {
 			
 			//CONSOLE PROMPT FOR NEXT MOVEMENT
 			c = s.next().charAt(0);
+			p = Convert(c);
 		}
 		
 		//CLOSING SCANNER AND RETURNING
 		s.close();
 		return;
+	}
+	public static String Convert(char c)
+	{
+		if(c == 'f' || c == 'F')
+			return "Close";
+		else if(c == 'W' || c == 'w')
+			return "Up";
+		else if(c == 'A' || c == 'a')
+			return "Left";
+		else if(c == 'S' || c == 's')
+			return "Down";
+		else if(c == 'D' || c == 'd')
+			return "Right";
+		else return "";
+		
 	}
 
 }
