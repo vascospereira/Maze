@@ -99,18 +99,77 @@ public class Test {
 	@org.junit.Test
 	public void testDragonExitWithSword() 
 	{
-
+		Maze maze = new Maze(m2);
+		maze.initialize();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.HERO, maze.getHeroState());
+		assertEquals(State.PLAYING, maze.getState());
+		maze.heroMoveLeft();
+		assertEquals(2,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.ARMOR, maze.getHeroState());
+		assertEquals(State.PLAYING, maze.getState());
+		maze.heroMoveRight();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.ARMOR, maze.getHeroState());
+		assertEquals(State.PLAYING, maze.getState());
+		maze.heroMoveDown();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(2,maze.heroGetY());
+		assertEquals(State.SLAYED, maze.getState());
+		assertEquals(Table.ARMOR, maze.getHeroState());
+		maze.heroMoveUp();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.ARMOR, maze.getHeroState());
+		assertEquals(State.SLAYED, maze.getState());
+		maze.heroMoveRight();
+		assertEquals(4,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.ARMOR, maze.getHeroState());
+		assertEquals(State.WON, maze.getState());
 	}
 
 	@org.junit.Test
 	public void testDragonExitSword() 
 	{
-
+		Maze maze = new Maze(m2);
+		maze.initialize();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.HERO, maze.getHeroState());
+		assertEquals(State.PLAYING, maze.getState());
+		maze.heroMoveRight();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.HERO, maze.getHeroState());
+		assertEquals(State.PLAYING, maze.getState());
 	}
 
 	@org.junit.Test
 	public void testArmedDragonExitWithDragonLive() 
 	{
-
+		Maze maze = new Maze(m2);
+		maze.initialize();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.HERO, maze.getHeroState());
+		assertEquals(State.PLAYING, maze.getState());
+		maze.heroMoveLeft();
+		assertEquals(2,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.ARMOR, maze.getHeroState());
+		maze.heroMoveRight();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.ARMOR, maze.getHeroState());
+		maze.heroMoveRight();
+		assertEquals(3,maze.heroGetX());
+		assertEquals(1,maze.heroGetY());
+		assertEquals(Table.ARMOR, maze.getHeroState());
+		assertEquals(State.PLAYING, maze.getState());
+		
 	}
 }
