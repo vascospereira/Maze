@@ -1,8 +1,8 @@
 package Maze.logic;
 
 import java.util.Random;
-
 import static Maze.logic.Table.*;
+import java.util.ArrayList;
 
 public class Maze 
 {
@@ -15,6 +15,7 @@ public class Maze
 	private Dragon dragon;								//Object Dragon
 	private Sword sword;								//Object Sword
 	private Random r;
+	private ArrayList<Dragon> dragons;
 	
 	public Maze(){
 		table = new Table();
@@ -22,6 +23,7 @@ public class Maze
 		dragon = new Dragon();
 		sword = new Sword();
 		r = new Random();
+		//dragons = new ArrayList(Collection Dragon)
 	};
 		
 	public Maze(char[][] newMaze)
