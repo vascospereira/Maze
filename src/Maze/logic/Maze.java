@@ -340,6 +340,12 @@ public class Maze
 					hero.setCoord(i, j);
 				else if(table.getElem(i,j) == DRAGON)
 					dragon.setCoord(i, j);
+				else if(table.getElem(i, j) == ARMOR)
+				{
+					hero.setCoord(i, j);
+					hero.heroArmed();
+					sword.setCoord(i, j);
+				}
 			}
 		}
 	}

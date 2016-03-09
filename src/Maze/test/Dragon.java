@@ -124,6 +124,41 @@ public class Dragon
 			assertEquals(State.LOST, maze.getState());
 		}
 	}
+	@org.junit.Test(timeout = 1000)
+	public void DragonToArmor() 
+	{
+		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
+				{ 'X', ' ', ' ', ' ', 'E' }, 
+				{ 'X', ' ', 'X', 'A', 'X' },
+				{ 'X', 'S', 'X', 'D', 'X' }, 
+				{ 'X', 'X', 'X', 'X', 'X' } };
+		Maze maze = new Maze(m1);
+		maze.initialize();
+
+		assertEquals(3,maze.dragonGetX());
+		assertEquals(3,maze.dragonGetY());
+		assertEquals('D', maze.getDragonState());
+		assertEquals(State.PLAYING, maze.getState());
+
+
+		boolean outcome1 = false;
+		while(!outcome1)
+		{
+			maze.updateDragon();
+
+			if(maze.dragonGetX() == 3 && maze.dragonGetY() == 2)
+			{
+				outcome1 = true;
+			}
+		}
+		if(outcome1)
+		{
+			assertEquals(3,maze.dragonGetX());
+			assertEquals(2,maze.dragonGetY());
+			assertEquals('D', maze.getDragonState());
+			assertEquals(State.LOST, maze.getState());
+		}
+	}
 	@org.junit.Test (timeout=1000)
 	public void DragonToSleep() 
 	{
@@ -200,5 +235,45 @@ public class Dragon
 		{
 			assertEquals('D', maze.getDragonState());
 		}
+	}
+	@org.junit.Test (timeout=1000)
+	public void DragonNotMove() 
+	{
+		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
+				{ 'X', 'H', ' ', ' ', 'E' }, 
+				{ 'X', ' ', 'X', ' ', 'X' },
+				{ 'X', 'S', 'X', 'D', 'X' }, 
+				{ 'X', 'X', 'X', 'X', 'X' } };
+		Maze maze = new Maze(m1);
+		maze.initialize();
+
+		assertEquals(3,maze.dragonGetX());
+		assertEquals(3,maze.dragonGetY());
+		assertEquals('D', maze.getDragonState());
+		assertEquals(State.PLAYING, maze.getState());
+
+
+		boolean outcome1 = false, outcome2 = false;
+		while(!outcome1 && !outcome2)
+		{
+			outcome1 = false;
+			outcome2 = false;
+			
+			maze.updateDragon();
+			if(maze.getDragonState() == Table.DRAGON)
+			{
+				outcome1 = true;
+			}
+			
+			int x = maze.dragonGetX();
+			int y = maze.dragonGetY();
+			
+
+			if(maze.getDragonState() == Table.DRAGON && maze.dragonGetX() == x && maze.dragonGetY() == y)
+			{
+				outcome2 = true;
+			}
+		}
+		assertTrue(outcome2 && outcome1);
 	}
 }
