@@ -59,7 +59,7 @@ public class Maze
 			if(heroMove(newPosX, newPosY) == true)
 			{
 				hero.setCoord(newPosX, newPosY);
-				System.out.println("Up");
+				//System.out.println("Up");
 				return true;
 			}
 			return false;
@@ -72,7 +72,7 @@ public class Maze
 			if(heroMove(newPosX, newPosY) == true)
 			{
 				hero.setCoord(newPosX, newPosY);
-				System.out.println("Left");
+				//System.out.println("Left");
 				return true;
 			}
 			return false;
@@ -87,7 +87,7 @@ public class Maze
 			if(heroMove(newPosX, newPosY) == true)
 			{
 				hero.setCoord(newPosX, newPosY);
-				System.out.println("Down");
+				//System.out.println("Down");
 				return true;
 			}
 			return false;
@@ -101,7 +101,7 @@ public class Maze
 			if(heroMove(newPosX, newPosY) == true)
 			{
 				hero.setCoord(newPosX, newPosY);
-				System.out.println("Right");
+				//System.out.println("Right");
 				return true;
 			}
 			return false;
@@ -257,14 +257,14 @@ public class Maze
 				{
 					dragon.sleepDragon();
 					table.setElem(newPosX, newPosY, SLEEPY);
-					System.out.println("Dragon is Sleeping!");
+					//System.out.println("Dragon is Sleeping!");
 					return false;
 				}
 				else if(Dragon == SLEEPY)
 				{
 					dragon.awakeDragon();
 					table.setElem(newPosX, newPosY, DRAGON);
-					System.out.println("DRAGON AWAKEN!");
+					//System.out.println("DRAGON AWAKEN!");
 					return false;
 				}
 				else
@@ -392,5 +392,9 @@ public class Maze
 	public char getHeroState()
 	{
 		return hero.getHeroState();
+	}
+	public char getDragonState()
+	{
+		return dragon.getDragonState();
 	}
 }
