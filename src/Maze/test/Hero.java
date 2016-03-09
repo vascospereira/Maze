@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import Maze.logic.*;
 import Maze.logic.Maze.State;
 
-public class Test {
+public class Hero {
 
 	char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
 					{ 'X', ' ', ' ', 'H', 'E' }, 
