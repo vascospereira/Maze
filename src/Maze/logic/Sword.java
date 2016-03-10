@@ -15,4 +15,12 @@ public class Sword
 		SwordX = x;
 		SwordY = y;
 	}
+	public int getX()
+	{
+		return SwordX;
+	}
+	public int getY()
+	{
+		return SwordY;
+	}
 }

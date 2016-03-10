@@ -14,7 +14,7 @@ public class Game {
 		//CREATING OBJECT GAME, INITILIAZE() WILL SET GAME STATE TO PLAYING ALSO
 		//WILL ALLOCK MEMORY FOR OBJECTS, DEPLOY THEM AND PRINTING	
 		
-		Maze maze = new Maze();
+		Maze maze = new Maze(3);
 		maze.initialize();
 		printTable(maze.getTable());
 		
@@ -29,7 +29,7 @@ public class Game {
 			maze.updateHero(p);
 			if(maze.getState() == State.PLAYING)
 			{
-				maze.updateDragon();
+				maze.updateDragons();
 			}
 			
 			printTable(maze.getTable());

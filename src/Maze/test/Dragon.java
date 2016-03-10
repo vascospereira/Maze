@@ -26,7 +26,7 @@ public class Dragon
 		boolean outcome1 = false, outcome2 = false;
 		while(!outcome1 && !outcome2)
 		{
-			maze.updateDragon();
+			maze.updateDragon(maze.getDragon());
 			if(maze.dragonGetX() == 2 && maze.dragonGetY() == 3)
 			{
 				outcome1 = true;
@@ -75,7 +75,7 @@ public class Dragon
 		boolean outcome1 = false;
 		while(!outcome1)
 		{
-			maze.updateDragon();
+			maze.updateDragon(maze.getDragon());
 			if(maze.dragonGetX() == 2 && maze.dragonGetY() == 3)
 			{
 				outcome1 = true;
@@ -109,7 +109,7 @@ public class Dragon
 		boolean outcome1 = false;
 		while(!outcome1)
 		{
-			maze.updateDragon();
+			maze.updateDragon(maze.getDragon());
 
 			if(maze.dragonGetX() == 3 && maze.dragonGetY() == 2)
 			{
@@ -144,7 +144,7 @@ public class Dragon
 		boolean outcome1 = false;
 		while(!outcome1)
 		{
-			maze.updateDragon();
+			maze.updateDragon(maze.getDragon());
 
 			if(maze.dragonGetX() == 3 && maze.dragonGetY() == 2)
 			{
@@ -179,7 +179,7 @@ public class Dragon
 		boolean outcome1 = false;
 		while(!outcome1)
 		{
-			maze.updateDragon();
+			maze.updateDragon(maze.getDragon());
 
 			if(maze.getDragonState() == Table.SLEEPY)
 			{
@@ -211,7 +211,7 @@ public class Dragon
 		boolean outcome1 = false, outcome2 = false;
 		while(!outcome1)
 		{
-			maze.updateDragon();
+			maze.updateDragon(maze.getDragon());
 
 			if(maze.getDragonState() == Table.SLEEPY)
 			{
@@ -224,7 +224,7 @@ public class Dragon
 		}
 		while(!outcome2)
 		{
-			maze.updateDragon();
+			maze.updateDragon(maze.getDragon());
 
 			if(maze.getDragonState() == Table.DRAGON)
 			{
@@ -259,7 +259,7 @@ public class Dragon
 			outcome1 = false;
 			outcome2 = false;
 			
-			maze.updateDragon();
+			maze.updateDragon(maze.getDragon());
 			if(maze.getDragonState() == Table.DRAGON)
 			{
 				outcome1 = true;
