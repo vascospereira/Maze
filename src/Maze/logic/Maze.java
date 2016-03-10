@@ -68,10 +68,10 @@ public class Maze
 	{
 		if(noDragon(x,y) == true)
 		{
-			if(sword.getX() != x && sword.getY() != y && hero.getX() != x && hero.getY() != y && table.getElem(x, y) == Table.SPACE)
-				return true;
-			else
+			if((sword.getX() == x && sword.getY() == y) || (hero.getX() == x && hero.getY() == y) || table.getElem(x, y) != Table.SPACE)
 				return false;
+			else
+				return true;
 		}
 		else
 			return false;
@@ -81,7 +81,7 @@ public class Maze
 	{
 		for(int i = 0; i < dragons.size(); i++)
 		{
-			if(dragons.get(i).getX() == x || dragons.get(i).getY() == y)
+			if(dragons.get(i).getX() == x && dragons.get(i).getY() == y)
 				return false;
 		}
 		return true;
