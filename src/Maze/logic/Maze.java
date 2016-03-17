@@ -16,6 +16,7 @@ public class Maze
 	private ArrayList<Dragon> dragons;					//Object Dragons
 	private Random r;
 	private static boolean mazeBuilder = false;
+	
 
 	public Maze(int mazeSize)
 	{
@@ -30,10 +31,10 @@ public class Maze
 		dragons = new ArrayList<Dragon>();
 	}
 
-	public Maze(int n, int mazeSize)
+	public Maze(int numOfDragons, int mazeSize)
 	{
 		this(mazeSize);
-		while(n > 0)
+		while(numOfDragons > 0)
 		{
 			Dragon dragon = new Dragon();
 			int x;
@@ -47,14 +48,20 @@ public class Maze
 			}
 			dragon.setCoord(x, y);
 			dragons.add(dragon);
-			n--;
+			numOfDragons--;
 		}
 	}
 
-
+	/*
+	 * Constructor for tests
+	 */
 	public Maze(char[][] newMaze)
 	{
-		//this();
+		table = new Table();
+		hero = new Hero();
+		sword = new Sword();
+		r = new Random();
+		dragons = new ArrayList<Dragon>();
 		table = new Table(newMaze);
 		retrieveElems();
 	}
@@ -81,6 +88,7 @@ public class Maze
 			return false;
 
 	}
+	
 	public boolean noDragon(int x, int y)
 	{
 		for(int i = 0; i < dragons.size(); i++)
@@ -189,7 +197,7 @@ public class Maze
 		{
 			table.setElem(heroGetX(), hero.getY(), Table.SPACE);
 			table.setElem(nPosX, nPosY, Hero);
-			DeadDragon(nPosX, nPosY);
+			deadDragon(nPosX, nPosY);
 			return true;
 		}
 
@@ -420,7 +428,7 @@ public class Maze
 			dragons.get(i).dragonDeploy(table);
 		}
 	}
-	public void DeadDragon(int x, int y)
+	public void deadDragon(int x, int y)
 	{
 		if(dragons.size() == 1)
 		{

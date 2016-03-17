@@ -9,7 +9,7 @@ import Maze.logic.Table;
 
 public class Game {
 
-	final static int STANDARD = 10;
+	private final static int STANDARD = 10;
 	
 	public static void main(String[] args) 
 	{
@@ -30,8 +30,11 @@ public class Game {
 			else
 				s.next();
 			
-		} while (mazeSize != 0 && !(mazeSize % 2 == 1 && mazeSize >= 5));
+		} while (mazeSize != 0 && !(mazeSize % 2 == 1 && mazeSize >= 9));
 		
+		/*
+		 * Number of dragons
+		 */
 		do {
 			System.out.println("Number of Dragons <max of 3>? " );
 			if(s.hasNextInt())
