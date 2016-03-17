@@ -2,6 +2,8 @@ package Maze.logic;
 
 public class Table 
 {
+	private static int tableDim;
+	
 	private char table[][] = 
 		{
 				{'X','X','X','X','X','X','X','X','X','X'},
@@ -33,8 +35,6 @@ public class Table
 		table = newMaze;
 	}
 	
-	
-	
 	public boolean deployPiece(int posX, int posY, char c)
 	{
 		if(table[posY][posX] == ' ')
@@ -62,5 +62,23 @@ public class Table
 	public int getWidth()
 	{
 		return table[0].length;
+	}
+
+	public static void setTableDim(int dimenson) {
+		tableDim = dimenson;
+	}
+	public static int getTableDim()
+	{
+		return tableDim;
+	}
+
+	public void setTable(char[][] mazeTable) {
+
+		table = mazeTable;
+		
+	}
+	public char[][] getTable()
+	{
+		return table;
 	}
 }

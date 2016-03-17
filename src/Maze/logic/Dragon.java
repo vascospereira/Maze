@@ -3,12 +3,12 @@ package Maze.logic;
 public class Dragon 
 {
 	private char DRAGON = 'D'; 	//Dragon character
-	private int DragonX = 1;	//Dragon position X
-	private int DragonY = 3;	//Dragon +position Y
+	private int dragonX = 1;	//Dragon position X
+	private int dragonY = 3;	//Dragon +position Y
 	
 	public void dragonDeploy(Table table)
 	{
-		table.deployPiece(DragonX, DragonY, DRAGON);
+		table.deployPiece(dragonX, dragonY, DRAGON);
 	}
 	
 	public void sleepDragon() 
@@ -39,17 +39,17 @@ public class Dragon
 	
 	public int getX()
 	{
-		return DragonX;
+		return dragonX;
 	}
 	
 	public int getY()
 	{
-		return DragonY;
+		return dragonY;
 	}
 	
 	public void setCoord(int x, int y)
 	{
-		DragonX = x;
-		DragonY = y;
+		dragonX = x;
+		dragonY = y;
 	}
 }

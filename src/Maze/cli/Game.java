@@ -9,17 +9,59 @@ import Maze.logic.Table;
 
 public class Game {
 
+	final static int STANDARD = 10;
+	
 	public static void main(String[] args) 
 	{
-		//CREATING OBJECT GAME, INITILIAZE() WILL SET GAME STATE TO PLAYING ALSO
-		//WILL ALLOCK MEMORY FOR OBJECTS, DEPLOY THEM AND PRINTING	
-		
-		Maze maze = new Maze(3);
-		maze.initialize();
-		printTable(maze.getTable());
-		
-		//INITIALIZING SCANNER
 		Scanner s = new Scanner(System.in);
+		
+		int mazeSize = 1;
+		int numOfDragons = 1;
+		/*
+		 * Choose type of Table 
+		 */
+		do {
+			System.out.println("Maze size must be (ODD number >= 9)\n "
+					+ "or 0 (zero) for default Maze." );
+			if(s.hasNextInt())
+			{
+				mazeSize = s.nextInt();
+			}
+			else
+				s.next();
+			
+		} while (mazeSize != 0 && !(mazeSize % 2 == 1 && mazeSize >= 5));
+		
+		do {
+			System.out.println("Number of Dragons <max of 3>? " );
+			if(s.hasNextInt())
+			{
+				numOfDragons = s.nextInt();
+			}
+			else
+				s.next();	
+		} while (numOfDragons > 3);
+		
+		/*
+		 * Start Maze
+		 */
+		Maze maze = null;
+		
+		if(mazeSize == 0)
+		{
+			Table.setTableDim(STANDARD);
+			maze = new Maze(numOfDragons, STANDARD);//number of dragons 3
+			maze.initialize();
+			printTable(maze.getTable());
+		}
+		else
+		{
+			Maze.setMazeAutoBuilder(true);
+			maze = new Maze(numOfDragons, mazeSize);
+			maze.initialize();
+			printTable(maze.getTable());
+		}
+		
 		char c = s.next().charAt(0);
 		String p = convert(c);
 		
@@ -46,12 +88,10 @@ public class Game {
 				break;
 			}
 			
-			//CONSOLE PROMPT FOR NEXT MOVEMENT
 			c = s.next().charAt(0);
 			p = convert(c);
 		}
 		
-		//CLOSING SCANNER AND RETURNING
 		s.close();
 		return;
 	}
