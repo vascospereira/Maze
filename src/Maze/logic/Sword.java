@@ -1,4 +1,5 @@
 package Maze.logic;
+import java.util.Random;
 
 public class Sword 
 {
@@ -8,7 +9,20 @@ public class Sword
 	
 	public void swordDeploy(Table table)
 	{
-		table.deployPiece(SwordX, SwordY, Sword);
+		Random r = new Random();
+		while(true)
+		{
+			int x = r.nextInt(table.getHeight() - 2 ) +1;
+			int y = r.nextInt(table.getHeight() - 2 ) +1;
+			if(table.getElem(x, y) == Table.SPACE)
+			{
+				table.setElem(x, y, Sword);
+				SwordX = x;
+				SwordY = y;
+				break;
+			}
+			
+		}
 	}
 	
 	public void setCoord(int x, int y)

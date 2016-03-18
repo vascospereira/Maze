@@ -21,7 +21,7 @@ public class Game {
 		 * Choose type of Table 
 		 */
 		do {
-			System.out.println("Maze size must be (ODD number >= 9)\n "
+			System.out.println("Maze size must be (ODD number >= 5)\n "
 					+ "or 0 (zero) for default Maze." );
 			if(s.hasNextInt())
 			{
@@ -30,7 +30,7 @@ public class Game {
 			else
 				s.next();
 			
-		} while (mazeSize != 0 && !(mazeSize % 2 == 1 && mazeSize >= 9));
+		} while (mazeSize != 0 && !(mazeSize % 2 == 1 && mazeSize >= 5));
 		
 		/*
 		 * Number of dragons
