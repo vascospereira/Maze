@@ -4,10 +4,9 @@ import java.util.ArrayList;
 public abstract class MazeBuilder {
 
 
-	public static void generateMaze(int dimenson, Table maze) 
+	public static char[][] generateMaze(int dimenson) 
 	{
-		char[][] mazeTable = generator(dimenson, 0.75, 0.75);
-		maze.setTable(mazeTable);    
+		return generator(dimenson, 0.75, 0.75); 
 	}
 
 

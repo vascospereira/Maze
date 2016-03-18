@@ -15,25 +15,25 @@ public class Maze
 	private Sword sword;								//Object Sword
 	private ArrayList<Dragon> dragons;					//Object Dragons
 	private Random r;
-	private static boolean mazeBuilder = false;
 	
 
-	public Maze(int mazeSize)
+	public Maze()
 	{
 		table = new Table();
-		if(mazeBuilder)
-		{
-			MazeBuilder.generateMaze(mazeSize, table);
-		}
 		hero = new Hero();
 		sword = new Sword();
 		r = new Random();
 		dragons = new ArrayList<Dragon>();
 	}
 
-	public Maze(int numOfDragons, int mazeSize)
+	/*
+	 * Constructor for tests
+	 */
+	public Maze(char[][] newMaze, int numOfDragons)
 	{
-		this(mazeSize);
+		this();
+		table.setTable(newMaze);
+		retrieveElems();
 		while(numOfDragons > 0)
 		{
 			Dragon dragon = new Dragon();
@@ -51,18 +51,11 @@ public class Maze
 			numOfDragons--;
 		}
 	}
-
-	/*
-	 * Constructor for tests
-	 */
+	
 	public Maze(char[][] newMaze)
 	{
-		table = new Table();
-		hero = new Hero();
-		sword = new Sword();
-		r = new Random();
-		dragons = new ArrayList<Dragon>();
-		table = new Table(newMaze);
+		this();
+		table.setTable(newMaze);
 		retrieveElems();
 	}
 
@@ -503,13 +496,5 @@ public class Maze
 	public char getDragonState()
 	{
 		return dragons.get(0).getDragonState();
-	}
-
-	public static boolean isMazeAutoBuilder() {
-		return mazeBuilder;
-	}
-
-	public static void setMazeAutoBuilder(boolean mazeBuilder) {
-		Maze.mazeBuilder = mazeBuilder;
 	}
 }

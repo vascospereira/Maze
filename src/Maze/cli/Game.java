@@ -3,14 +3,14 @@ package Maze.cli;
 import java.util.Scanner;
 
 
+
+
 import Maze.logic.Maze;
+import Maze.logic.MazeBuilder;
 import Maze.logic.Maze.State;
 import Maze.logic.Table;
-
 public class Game {
 
-	private final static int STANDARD = 10;
-	
 	public static void main(String[] args) 
 	{
 		Scanner s = new Scanner(System.in);
@@ -48,19 +48,17 @@ public class Game {
 		/*
 		 * Start Maze
 		 */
-		Maze maze = null;
+		Maze maze;
 		
 		if(mazeSize == 0)
 		{
-			Table.setTableDim(STANDARD);
-			maze = new Maze(numOfDragons, STANDARD);//number of dragons 3
+			maze = new Maze();//number of dragons 3
 			maze.initialize();
 			printTable(maze.getTable());
 		}
 		else
 		{
-			Maze.setMazeAutoBuilder(true);
-			maze = new Maze(numOfDragons, mazeSize);
+			maze = new Maze(MazeBuilder.generateMaze(mazeSize), numOfDragons);
 			maze.initialize();
 			printTable(maze.getTable());
 		}
@@ -98,7 +96,7 @@ public class Game {
 		s.close();
 		return;
 	}
-	
+
 	private static String convert(char c)
 	{
 		if(c == 'f' || c == 'F')
