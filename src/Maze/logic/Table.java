@@ -27,6 +27,7 @@ public class Table
 	public static final char SLEEPY = 'd';
 	public static final char ARMOR  = 'A';
 	public static final char DRASWO = 'F';
+	public static final char WALL = 'X';
 	
 	Table() {}
 	
