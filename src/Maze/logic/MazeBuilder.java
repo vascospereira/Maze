@@ -101,19 +101,19 @@ public abstract class MazeBuilder {
 			System.out.println(side);
 			switch (side) {
 			case 0: 
-				if(testExit(0, r.nextInt(size - 2) + 1, side,maze) == true)
+				if(testExit(0, r.nextInt(size - 2) + 1, side,maze))
 					return;
 				break;
 			case 1: 
-				if(testExit(r.nextInt(size - 2) + 1, 0, side,maze) == true)
+				if(testExit(r.nextInt(size - 2) + 1, 0, side,maze))
 					return;
 				break;
 			case 2: 
-				if(testExit(size - 1, r.nextInt(size - 2) + 1, side,maze) == true)
+				if(testExit(size - 1, r.nextInt(size - 2) + 1, side,maze))
 					return;
 				break;
 			case 3: 
-				if(testExit(r.nextInt(size - 2) + 1, size - 1 ,side,maze) == true)
+				if(testExit(r.nextInt(size - 2) + 1, size - 1 ,side,maze))
 					return;
 				break;
 
