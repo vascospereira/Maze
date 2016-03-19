@@ -45,7 +45,7 @@ public class Game {
 		Maze maze;
 
 		if (mazeSize == 0) {
-			maze = new Maze();// number of dragons 3
+			maze = new Maze();
 			maze.initialize();
 			printTable(maze.getTable());
 		} else {
