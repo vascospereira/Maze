@@ -85,12 +85,17 @@ public abstract class MazeBuilder {
 				}
 			}
 		}
+		
 		deployExit(size,mazeOfChars);
 
 		return mazeOfChars;
 	}
 
 
+	/*
+	 * 
+	 * Deploy an exit in the table
+	 */
 	private static void deployExit(int size, char[][] maze) {
 
 		java.util.Random r = new java.util.Random();
@@ -125,39 +130,34 @@ public abstract class MazeBuilder {
 
 	}
 
-
+	/*
+	 * Test if exit has a possible position and if true deploys in the table
+	 */
 	private static boolean testExit(int x, int y, int side, char[][] maze) {
 		switch (side) {
 		case 0:
-			if(maze[y][x+1] == Table.SPACE)
-			{
+			if (maze[y][x + 1] == Table.SPACE) {
 				maze[y][x] = Table.EXIT;
 				return true;
-			}
-			else
+			} else
 				return false;
 		case 1:
-			if(maze[y+1][x] == Table.SPACE)
-			{
+			if (maze[y + 1][x] == Table.SPACE) {
 				maze[y][x] = Table.EXIT;
 				return true;
-			}
-			else return false;
+			} else
+				return false;
 		case 2:
-			if(maze[y][x-1] == Table.SPACE)
-			{
+			if (maze[y][x - 1] == Table.SPACE) {
 				maze[y][x] = Table.EXIT;
 				return true;
-			}
-			else
+			} else
 				return false;
 		case 3:
-			if(maze[y-1][x] == Table.SPACE)
-			{
+			if (maze[y - 1][x] == Table.SPACE) {
 				maze[y][x] = Table.EXIT;
 				return true;
-			}
-			else
+			} else
 				return false;
 		default:
 			break;
