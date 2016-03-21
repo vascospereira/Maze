@@ -2,6 +2,7 @@ package Maze.cli;
 
 import java.util.Scanner;
 
+
 import Maze.logic.Maze;
 import Maze.logic.MazeBuilder;
 import Maze.logic.Maze.State;
@@ -95,7 +96,7 @@ public class Game {
 		else if (c == 'S' || c == 's')
 			return "Down";
 		else if (c == 'D' || c == 'd')
-			return "Right";
+			return "Rigth";
 		else
 			return "";
 

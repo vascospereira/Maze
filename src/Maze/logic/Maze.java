@@ -170,7 +170,7 @@ public class Maze
 			return false;
 
 		}
-		if(c == "Right")
+		if(c == "Rigth")
 		{
 			int newPosX =  +1 + hero.getX();
 			int newPosY = 	0 + hero.getY();
@@ -520,5 +520,22 @@ public class Maze
 	public char getDragonState()
 	{
 		return dragons.get(0).getDragonState();
+	}
+
+
+	@Override
+	public String toString() 
+	{
+		String str = "";
+		
+		for (int y = 0; y < table.getHeight(); y++) 
+		{
+			for (int x = 0; x < table.getWidth(); x++) 
+			{
+				str += table.getElem(x, y) + " ";
+			}
+			str += "\n";
+		}
+		return str;
 	}
 }

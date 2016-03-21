@@ -103,7 +103,7 @@ public abstract class MazeBuilder {
 
 		while (true) 
 		{
-			System.out.println(side);
+			//System.out.println(side);
 			switch (side) {
 			case 0: 
 				if(testExit(0, r.nextInt(size - 2) + 1, side,maze))
