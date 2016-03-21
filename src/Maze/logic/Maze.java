@@ -52,6 +52,28 @@ public class Maze
 		}
 	}
 	
+	public Maze( int numOfDragons)
+	{
+		this();
+		retrieveElems();
+		while(numOfDragons > 0)
+		{
+			Dragon dragon = new Dragon();
+			int x;
+			int y;
+			while(true)
+			{
+				x = r.nextInt(table.getWidth());
+				y = r.nextInt(table.getHeight());
+				if(emptySpace(x,y) == true)
+					break;
+			}
+			dragon.setCoord(x, y);
+			dragons.add(dragon);
+			numOfDragons--;
+		}
+	}
+	
 	public Maze(char[][] newMaze)
 	{
 		this();

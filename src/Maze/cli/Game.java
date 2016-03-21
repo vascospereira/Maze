@@ -45,7 +45,7 @@ public class Game {
 		Maze maze;
 
 		if (mazeSize == 0) {
-			maze = new Maze();
+			maze = new Maze(1);
 			maze.initialize();
 			printTable(maze.getTable());
 		} else {
