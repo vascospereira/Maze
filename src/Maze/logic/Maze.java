@@ -526,16 +526,16 @@ public class Maze
 	@Override
 	public String toString() 
 	{
-		String str = "";
+		StringBuilder sb = new StringBuilder();
 		
 		for (int y = 0; y < table.getHeight(); y++) 
 		{
 			for (int x = 0; x < table.getWidth(); x++) 
 			{
-				str += table.getElem(x, y) + " ";
+				sb.append(table.getElem(x, y) + " ");
 			}
-			str += "\n";
+			sb.append("\n");
 		}
-		return str;
+		return sb.toString();
 	}
 }
