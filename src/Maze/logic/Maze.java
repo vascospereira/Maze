@@ -26,9 +26,7 @@ public class Maze
 		dragons = new ArrayList<Dragon>();
 	}
 
-	/*
-	 * Constructor for tests
-	 */
+
 	public Maze(char[][] newMaze, int numOfDragons)
 	{
 		this();
@@ -52,7 +50,7 @@ public class Maze
 		}
 	}
 	
-	public Maze( int numOfDragons)
+	public Maze(int numOfDragons)
 	{
 		this();
 		retrieveElems();
@@ -73,6 +71,10 @@ public class Maze
 			numOfDragons--;
 		}
 	}
+	
+	/*
+	 * Constructor for tests
+	 */
 	
 	public Maze(char[][] newMaze)
 	{
