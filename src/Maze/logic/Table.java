@@ -2,23 +2,6 @@ package Maze.logic;
 
 public class Table 
 {
-	private static int tableDim;
-	
-	private char table[][] = 
-		{
-				{'X','X','X','X','X','X','X','X','X','X'},
-				{'X',' ',' ',' ',' ',' ',' ',' ',' ','X'},
-				{'X',' ','X','X',' ','X',' ','X',' ','X'},
-				{'X',' ','X','X',' ','X',' ','X',' ','X'}, 
-				{'X',' ','X','X',' ','X',' ','X',' ','X'}, 
-				{'X',' ',' ',' ',' ',' ',' ','X',' ','E'},
-				{'X',' ','X','X',' ','X',' ','X',' ','X'}, 
-				{'X',' ','X','X',' ','X',' ','X',' ','X'}, 
-				{'X',' ','X','X',' ',' ',' ',' ',' ','X'}, 
-				{'X','X','X','X','X','X','X','X','X','X'}
-		};
-	
-
 	public static final char SPACE  = ' ';
 	public static final char HERO   = 'H';
 	public static final char DRAGON = 'D';
@@ -27,7 +10,20 @@ public class Table
 	public static final char SLEEPY = 'd';
 	public static final char ARMOR  = 'A';
 	public static final char DRASWO = 'F';
-	public static final char WALL = 'X';
+	public static final char WALL   = 'X';
+	
+	private static int tableDim;
+	
+	private char table[][] = { { 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' },
+							{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' }, 
+							{ 'X', ' ', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X' },
+							{ 'X', ' ', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X' }, 
+							{ 'X', ' ', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X' },
+							{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', 'X', ' ', 'E' }, 
+							{ 'X', ' ', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X' },
+							{ 'X', ' ', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X' }, 
+							{ 'X', ' ', 'X', 'X', ' ', ' ', ' ', ' ', ' ', 'X' },
+							{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' } };
 	
 	Table() {}
 	
@@ -36,6 +32,10 @@ public class Table
 		table = newMaze;
 	}
 	
+	public Table(Table table) {
+		this.table = table.getTable();
+	}
+
 	public boolean deployPiece(int posX, int posY, char c)
 	{
 		if(table[posY][posX] == ' ')
@@ -46,6 +46,7 @@ public class Table
 		else
 			return false;
 	}
+	
 	public char getElem(int x, int y)
 	{
 		return table[y][x];
@@ -60,6 +61,7 @@ public class Table
 	{
 		return table.length;
 	}
+	
 	public int getWidth()
 	{
 		return table[0].length;
@@ -81,5 +83,21 @@ public class Table
 	public char[][] getTable()
 	{
 		return table;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		for (int i = 0; i < table.length; i++) {
+			for (int j = 0; j < table.length; j++) {
+				sb.append(table[i][j] + " ");
+			}
+			sb.append("\n");
+		}
+		return sb.toString();
+	}
+	
+	public Table clone(){
+		return new Table(this);
 	}
 }

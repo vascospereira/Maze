@@ -1,11 +1,18 @@
 package Maze.logic;
 import java.util.Random;
 
-public class Sword 
+public class Sword extends Element
 {
-	private char Sword = 'S'; 	//Sword  character
-	private int SwordX = 1;		//Sword position X
-	private int SwordY = 7;		//Sword position Y
+	
+	public Sword(int y, int x) 
+	{
+		super(y, x, 'S');
+	}
+	
+	public Sword() 
+	{
+		this(1,7);
+	}
 	
 	public void swordDeploy(Table table)
 	{
@@ -16,26 +23,17 @@ public class Sword
 			int y = r.nextInt(table.getHeight() - 2 ) +1;
 			if(table.getElem(x, y) == Table.SPACE)
 			{
-				table.setElem(x, y, Sword);
-				SwordX = x;
-				SwordY = y;
+				table.setElem(x, y, this.getElem());
+				this.setX(x);
+				this.setY(y);
 				break;
 			}
 			
 		}
 	}
 	
-	public void setCoord(int x, int y)
-	{
-		SwordX = x;
-		SwordY = y;
-	}
-	public int getX()
-	{
-		return SwordX;
-	}
-	public int getY()
-	{
-		return SwordY;
+	@Override
+	public String toString() {
+		return super.toString();
 	}
 }

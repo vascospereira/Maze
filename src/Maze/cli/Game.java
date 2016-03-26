@@ -103,12 +103,7 @@ public class Game {
 	}
 
 	private static void printTable(Table table) {
-		for (int y = 0; y < table.getHeight(); y++) {
-			for (int x = 0; x < table.getWidth(); x++) {
-				System.out.print(table.getElem(x, y) + " ");
-			}
-			System.out.println();
-		}
+		System.out.print(table.toString());
 	}
 
 }

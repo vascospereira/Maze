@@ -1,40 +1,37 @@
 package Maze.logic;
 
-public class Hero 
+public class Hero extends Element
 {
-	private char HERO = 'H'; 	//Hero character
-	private int HeroX = 1;		//Hero first position X
-	private int HeroY = 1;		//Hero first position Y
 	
-	public int getX()
+	public Hero(int y, int x) 
 	{
-		return HeroX;
+		super(y, x, 'H');
 	}
 	
-	public int getY()
+	public Hero() 
 	{
-		return HeroY;
-	}
-	
-	public void setCoord(int x, int y)
-	{
-		HeroX = x;
-		HeroY = y;
+		this(1,1);
 	}
 	
 	public char heroArmed()
 	{
-		HERO = 'A';
-		return HERO;
+		this.setElem('A');
+		return this.getElem();
 	}
 	
 	public char getHeroState()
 	{
-		return HERO;
+		return this.getElem();
 	}
 	
 	public void heroDeploy(Table table)
 	{
-		table.deployPiece(HeroX, HeroY, HERO);
+		table.deployPiece(this.getX(), this.getY(), this.getElem());
 	}
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+	
 }

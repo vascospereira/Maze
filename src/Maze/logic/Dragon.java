@@ -1,55 +1,51 @@
 package Maze.logic;
 
-public class Dragon 
+public class Dragon extends Element
 {
-	private char DRAGON = 'D'; 	//Dragon character
-	private int dragonX = 1;	//Dragon position X
-	private int dragonY = 3;	//Dragon +position Y
+	
+	public Dragon(int y, int x) 
+	{
+		super(y, x, 'D');
+	}
+	
+	public Dragon() 
+	{
+		this(1,3);
+	}
 	
 	public void dragonDeploy(Table table)
 	{
-		table.deployPiece(dragonX, dragonY, DRAGON);
+		table.deployPiece(this.getX(), this.getY(), this.getElem());
 	}
 	
 	public void sleepDragon() 
 	{
-		DRAGON = 'd';
-		//return DRAGON;
+		this.setElem('d');
 	}
+	
 	public void awakeDragon() 
 	{
-		DRAGON = 'D';
-		//return DRAGON;
+		this.setElem('D');
 	}
+	
 	public void swordDragon()
 	{
-		DRAGON = 'F';
-		//return DRAGON;
+		this.setElem('F');
 	}
+	
 	public void noSwordDragon()
 	{
-		DRAGON = 'D';
-		//return DRAGON;
+		this.setElem('D');
 	}
 	
 	public char getDragonState()
 	{
-		return DRAGON;
+		return this.getElem();
 	}
 	
-	public int getX()
-	{
-		return dragonX;
+	@Override
+	public String toString() {
+		return super.toString();
 	}
-	
-	public int getY()
-	{
-		return dragonY;
-	}
-	
-	public void setCoord(int x, int y)
-	{
-		dragonX = x;
-		dragonY = y;
-	}
+
 }
