@@ -17,33 +17,30 @@ public class Game {
 		 * Choose type of Table
 		 */
 		do {
-			System.out.println("Maze size must be (ODD number >= 5)\n " + "or 0 (zero) for default Maze.");
+			System.out.println("Maze size must be (ODD number >= 5)\n" + "or 0 (zero) for default Maze.");
 			if (s.hasNextInt()) {
 				mazeSize = s.nextInt();
 			} else
 				s.next();
-
 		} while (mazeSize != 0 && !(mazeSize % 2 == 1 && mazeSize >= 5));
 		/*
-		 * Number of dragons
+		 * Number of dragons limited to 3
 		 */
-		if (mazeSize != 0) {
-			do {
-				System.out.println("Number of Dragons <max of 3>? ");
-				if (s.hasNextInt()) {
-					numOfDragons = s.nextInt();
-				} else
-					s.next();
-			} while (numOfDragons > 3);
-		}
+		do {
+			System.out.println("Number of Dragons <max of 3>? ");
+			if (s.hasNextInt()) {
+				numOfDragons = s.nextInt();
+			} else
+				s.next();
+		} while (numOfDragons > 3);
 
 		/*
 		 * Start Maze
 		 */
 		MazeGame maze;
-
+		
 		if (mazeSize == 0) {
-			maze = new MazeGame(1);
+			maze = new MazeGame(numOfDragons);
 			maze.initialize();
 			printTable(maze.getTable());
 		} else {
@@ -52,20 +49,19 @@ public class Game {
 			printTable(maze.getTable());
 		}
 
-		char c = s.next().charAt(0);
-		String p = convert(c);
+		char playerInput = s.next().charAt(0);
+		String move = convert(playerInput);
 
-		while (p != "Close" && (maze.getState() == State.PLAYING || maze.getState() == State.SLAYED)) {
+		while (move != "Close" && (maze.getState() == State.PLAYING || maze.getState() == State.SLAYED)) {
 			/*
 			 *  Updating the game accordingly with scanner, and printing Game
 			 */
-			maze.updateHero(p);
+			maze.updateHero(move);
 			if (maze.getState() == State.PLAYING) {
 				maze.updateDragons();
 			}
 
 			printTable(maze.getTable());
-
 			/*
 			 * Game State
 			 */
@@ -78,25 +74,25 @@ public class Game {
 				break;
 			}
 
-			c = s.next().charAt(0);
-			p = convert(c);
+			playerInput = s.next().charAt(0);
+			move = convert(playerInput);
 		}
 
 		s.close();
 		return;
 	}
 
-	private static String convert(char c) {
-		if (c == 'f' || c == 'F')
+	private static String convert(char input) {
+		if (input == 'f' || input == 'F')
 			return "Close";
-		else if (c == 'W' || c == 'w')
+		else if (input == 'W' || input == 'w')
 			return "Up";
-		else if (c == 'A' || c == 'a')
+		else if (input == 'A' || input == 'a')
 			return "Left";
-		else if (c == 'S' || c == 's')
+		else if (input == 'S' || input == 's')
 			return "Down";
-		else if (c == 'D' || c == 'd')
-			return "Rigth";
+		else if (input == 'D' || input == 'd')
+			return "Right";
 		else
 			return "";
 
