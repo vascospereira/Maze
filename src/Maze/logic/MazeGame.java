@@ -67,7 +67,7 @@ public class MazeGame
 	{
 		setState(State.PLAYING);				//Setting Game to play
 		hero.heroDeploy(table);					//Deploy Hero in table
-		deployDragons(dragons);					//Deploy Dragon in table
+		deployDragons(dragons);					//Deploy Dragons in table
 		sword.swordDeploy(table);				//Deploy Sword in table		
 	}
 	
@@ -499,6 +499,7 @@ public class MazeGame
 			updateDragon(dragons.get(i));
 		}
 	}
+	
 	public void deployDragons(ArrayList<Dragon> dragons)
 	{
 		for(int i = 0; i < dragons.size(); i++)
@@ -506,6 +507,7 @@ public class MazeGame
 			dragons.get(i).dragonDeploy(table);
 		}
 	}
+	
 	public void deadDragon(int x, int y)
 	{
 		if(dragons.size() == 1)

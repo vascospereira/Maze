@@ -192,7 +192,7 @@ public class Window {
 		RigthButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				updateGame("Rigth");
+				updateGame("Right");
 			}
 		});
 		RigthButton.setFont(new Font("Tahoma", Font.BOLD, 20));

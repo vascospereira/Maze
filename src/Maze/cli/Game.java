@@ -27,7 +27,7 @@ public class Game {
 		 * Number of dragons limited to 3
 		 */
 		do {
-			System.out.println("Number of Dragons <max of 3>? ");
+			System.out.println("Number of Dragons <max of 3> ");
 			if (s.hasNextInt()) {
 				numOfDragons = s.nextInt();
 			} else
@@ -56,24 +56,23 @@ public class Game {
 			/*
 			 *  Updating the game accordingly with scanner, and printing Game
 			 */
+
 			maze.updateHero(move);
+
 			if (maze.getState() == State.PLAYING) {
 				maze.updateDragons();
 			}
 
 			printTable(maze.getTable());
-			/*
-			 * Game State
-			 */
+			
 			if (maze.getState() == State.LOST) {
 				System.out.println("You Lost!");
 				break;
 			}
-			if (maze.getState() == State.WON) {
+			else if (maze.getState() == State.WON) {
 				System.out.println("You Win!");
 				break;
 			}
-
 			playerInput = s.next().charAt(0);
 			move = convert(playerInput);
 		}
@@ -95,7 +94,6 @@ public class Game {
 			return "Right";
 		else
 			return "";
-
 	}
 
 	private static void printTable(Table table) {
