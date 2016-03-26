@@ -14,6 +14,10 @@ public class Sword extends Element
 		this(1,7);
 	}
 	
+	public Sword(Sword sword) {
+		super(sword);
+	}
+
 	public void swordDeploy(Table table)
 	{
 		Random r = new Random();
@@ -21,9 +25,9 @@ public class Sword extends Element
 		{
 			int x = r.nextInt(table.getHeight() - 2 ) +1;
 			int y = r.nextInt(table.getHeight() - 2 ) +1;
-			if(table.getElem(x, y) == Table.SPACE)
+			if(table.getElemTable(x, y) == Table.SPACE)
 			{
-				table.setElem(x, y, this.getElem());
+				table.setElemTable(x, y, this.getElem());
 				this.setX(x);
 				this.setY(y);
 				break;
@@ -35,5 +39,10 @@ public class Sword extends Element
 	@Override
 	public String toString() {
 		return super.toString();
+	}
+
+	@Override
+	public Sword clone() {
+		return new Sword(this);
 	}
 }

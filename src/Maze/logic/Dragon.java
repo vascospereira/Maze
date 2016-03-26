@@ -13,9 +13,13 @@ public class Dragon extends Element
 		this(1,3);
 	}
 	
+	public Dragon(Dragon dragon) {
+		super(dragon);
+	}
+
 	public void dragonDeploy(Table table)
 	{
-		table.deployPiece(this.getX(), this.getY(), this.getElem());
+		table.deployElemTable(this.getX(), this.getY(), this.getElem());
 	}
 	
 	public void sleepDragon() 
@@ -48,4 +52,8 @@ public class Dragon extends Element
 		return super.toString();
 	}
 
+	@Override
+	public Dragon clone(){
+		return new Dragon(this);
+	}
 }

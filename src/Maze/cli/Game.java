@@ -1,11 +1,9 @@
 package Maze.cli;
 
 import java.util.Scanner;
-
-
-import Maze.logic.Maze;
+import Maze.logic.MazeGame;
 import Maze.logic.MazeBuilder;
-import Maze.logic.Maze.State;
+import Maze.logic.MazeGame.State;
 import Maze.logic.Table;
 
 public class Game {
@@ -26,7 +24,6 @@ public class Game {
 				s.next();
 
 		} while (mazeSize != 0 && !(mazeSize % 2 == 1 && mazeSize >= 5));
-
 		/*
 		 * Number of dragons
 		 */
@@ -43,14 +40,14 @@ public class Game {
 		/*
 		 * Start Maze
 		 */
-		Maze maze;
+		MazeGame maze;
 
 		if (mazeSize == 0) {
-			maze = new Maze(1);
+			maze = new MazeGame(1);
 			maze.initialize();
 			printTable(maze.getTable());
 		} else {
-			maze = new Maze(MazeBuilder.generateMaze(mazeSize), numOfDragons);
+			maze = new MazeGame(MazeBuilder.generateMaze(mazeSize), numOfDragons);
 			maze.initialize();
 			printTable(maze.getTable());
 		}
@@ -59,8 +56,9 @@ public class Game {
 		String p = convert(c);
 
 		while (p != "Close" && (maze.getState() == State.PLAYING || maze.getState() == State.SLAYED)) {
-			// UPDATING THE GAME ACCORDING TO SCANNER CHARACTER, AND PRINTING
-			// GAME
+			/*
+			 *  Updating the game accordingly with scanner, and printing Game
+			 */
 			maze.updateHero(p);
 			if (maze.getState() == State.PLAYING) {
 				maze.updateDragons();
@@ -68,7 +66,9 @@ public class Game {
 
 			printTable(maze.getTable());
 
-			// CHECKING GAME STATE
+			/*
+			 * Game State
+			 */
 			if (maze.getState() == State.LOST) {
 				System.out.println("You Lost!");
 				break;

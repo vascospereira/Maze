@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import java.awt.Font;
 
 import Maze.logic.*;
-import Maze.logic.Maze.State;
+import Maze.logic.MazeGame.State;
 
 public class Window {
 
@@ -40,7 +40,7 @@ public class Window {
 	 * Place for thegame components 
 	 */
 
-	private Maze maze;
+	private MazeGame maze;
 
 	/**
 	 * Launch the application.
@@ -126,7 +126,7 @@ public class Window {
 				{
 					if(dim == 0)
 					{
-						maze = new Maze(1);
+						maze = new MazeGame(1);
 						maze.initialize();
 						MazeArea.setText(maze.toString());
 						StateLabel.setText("Maze Created! Have Fun!");
@@ -135,7 +135,7 @@ public class Window {
 					}
 					else
 					{
-						maze = new Maze(MazeBuilder.generateMaze(dim), nodrag);
+						maze = new MazeGame(MazeBuilder.generateMaze(dim), nodrag);
 						maze.initialize();
 						MazeArea.setText(maze.toString());
 						StateLabel.setText("Maze Created! Have Fun!");

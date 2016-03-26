@@ -13,6 +13,10 @@ public class Hero extends Element
 		this(1,1);
 	}
 	
+	public Hero(Hero hero) {
+		super(hero);
+	}
+
 	public char heroArmed()
 	{
 		this.setElem('A');
@@ -26,12 +30,17 @@ public class Hero extends Element
 	
 	public void heroDeploy(Table table)
 	{
-		table.deployPiece(this.getX(), this.getY(), this.getElem());
+		table.deployElemTable(this.getX(), this.getY(), this.getElem());
 	}
 
 	@Override
 	public String toString() {
 		return super.toString();
+	}
+
+	@Override
+	public Hero clone() {
+		return new Hero(this);
 	}
 	
 }

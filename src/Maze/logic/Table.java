@@ -1,6 +1,6 @@
 package Maze.logic;
 
-public class Table 
+public class Table
 {
 	public static final char SPACE  = ' ';
 	public static final char HERO   = 'H';
@@ -33,10 +33,14 @@ public class Table
 	}
 	
 	public Table(Table table) {
-		this.table = table.getTable();
+		this.table = getTable();
 	}
 
-	public boolean deployPiece(int posX, int posY, char c)
+	private char[][] getTable() {
+		return table;
+	}
+
+	public boolean deployElemTable(int posX, int posY, char c)
 	{
 		if(table[posY][posX] == ' ')
 		{
@@ -47,12 +51,12 @@ public class Table
 			return false;
 	}
 	
-	public char getElem(int x, int y)
+	public char getElemTable(int x, int y)
 	{
 		return table[y][x];
 	}
 
-	public void setElem(int x, int y, char c)
+	public void setElemTable(int x, int y, char c)
 	{
 		table[y][x] = c;
 	}
@@ -80,17 +84,14 @@ public class Table
 		table = mazeTable;
 		
 	}
-	public char[][] getTable()
-	{
-		return table;
-	}
+	
 	
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < table.length; i++) {
-			for (int j = 0; j < table.length; j++) {
-				sb.append(table[i][j] + " ");
+		for (int y = 0; y < table.length; y++) {
+			for (int x = 0; x < table.length; x++) {
+				sb.append(table[y][x] + " ");
 			}
 			sb.append("\n");
 		}

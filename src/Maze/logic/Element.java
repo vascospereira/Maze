@@ -1,17 +1,22 @@
 package Maze.logic;
 
-public class Element {
+public abstract class Element {
 
 	private int y, x;
 	private char ELEM;
 	
 	public Element(int y, int x, char elem) {
-		super();
 		this.y = y;
 		this.x = x;
 		ELEM = elem;
 	}
 	
+	public Element(Element element) {
+		this.y = element.getY();
+		this.x = element.getX();
+		ELEM = element.getElem();
+	}
+
 	public int getY() {
 		return y;
 	}
@@ -41,10 +46,12 @@ public class Element {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Element: " + ELEM + "\n");
-		sb.append("Position X : " + x + "\n");
-		sb.append("Position Y : " + y + "\n");
+		sb.append("Position Y : " + x + "\n");
+		sb.append("Position X : " + y + "\n");
 		
 		return sb.toString();
 	}
+	
+	public abstract Element clone();
 	
 }

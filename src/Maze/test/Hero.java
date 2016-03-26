@@ -2,7 +2,7 @@ package Maze.test;
 
 import static org.junit.Assert.*;
 import Maze.logic.*;
-import Maze.logic.Maze.State;
+import Maze.logic.MazeGame.State;
 
 public class Hero {
 
@@ -22,7 +22,7 @@ public class Hero {
 	@org.junit.Test
 	public void testMoveHeroToFreeCell() 
 	{
-		Maze maze = new Maze(m1);
+		MazeGame maze = new MazeGame(m1);
 		maze.initialize();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
@@ -34,7 +34,7 @@ public class Hero {
 	@org.junit.Test
 	public void testMoveHeroAgainstWall() 
 	{
-		Maze maze = new Maze(m1);
+		MazeGame maze = new MazeGame(m1);
 		maze.initialize();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
@@ -46,7 +46,7 @@ public class Hero {
 	@org.junit.Test
 	public void testMoveHeroToSword() 
 	{
-		Maze maze = new Maze(m2);
+		MazeGame maze = new MazeGame(m2);
 		maze.initialize();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
@@ -61,7 +61,7 @@ public class Hero {
 	@org.junit.Test
 	public void testUnarmedHeroDragon() 
 	{
-		Maze maze = new Maze(m2);
+		MazeGame maze = new MazeGame(m2);
 		maze.initialize();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
@@ -76,7 +76,7 @@ public class Hero {
 	@org.junit.Test
 	public void testArmedHeroDragon() 
 	{
-		Maze maze = new Maze(m2);
+		MazeGame maze = new MazeGame(m2);
 		maze.initialize();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
@@ -99,7 +99,7 @@ public class Hero {
 	@org.junit.Test
 	public void testDragonExitWithSword() 
 	{
-		Maze maze = new Maze(m2);
+		MazeGame maze = new MazeGame(m2);
 		maze.initialize();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
@@ -135,7 +135,7 @@ public class Hero {
 	@org.junit.Test
 	public void testDragonExitSword() 
 	{
-		Maze maze = new Maze(m2);
+		MazeGame maze = new MazeGame(m2);
 		maze.initialize();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
@@ -151,7 +151,7 @@ public class Hero {
 	@org.junit.Test
 	public void testArmedDragonExitWithDragonLive() 
 	{
-		Maze maze = new Maze(m2);
+		MazeGame maze = new MazeGame(m2);
 		maze.initialize();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());

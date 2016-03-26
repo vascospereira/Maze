@@ -2,7 +2,7 @@ package Maze.test;
 
 import static org.junit.Assert.*;
 import Maze.logic.*;
-import Maze.logic.Maze.State;
+import Maze.logic.MazeGame.State;
 
 public class Dragon 
 {
@@ -14,7 +14,7 @@ public class Dragon
 				{ 'X', ' ', 'X', ' ', 'X' },
 				{ 'X', 'S', ' ', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
-		Maze maze = new Maze(m1);
+		MazeGame maze = new MazeGame(m1);
 		maze.initialize();
 
 		assertEquals(3,maze.dragonGetX());
@@ -63,7 +63,7 @@ public class Dragon
 				{ 'X', ' ', 'X', ' ', 'X' },
 				{ 'X', ' ', 'S', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
-		Maze maze = new Maze(m1);
+		MazeGame maze = new MazeGame(m1);
 		maze.initialize();
 
 		assertEquals(3,maze.dragonGetX());
@@ -97,7 +97,7 @@ public class Dragon
 				{ 'X', ' ', 'X', 'H', 'X' },
 				{ 'X', 'S', 'X', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
-		Maze maze = new Maze(m1);
+		MazeGame maze = new MazeGame(m1);
 		maze.initialize();
 
 		assertEquals(3,maze.dragonGetX());
@@ -132,7 +132,7 @@ public class Dragon
 				{ 'X', ' ', 'X', 'A', 'X' },
 				{ 'X', 'S', 'X', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
-		Maze maze = new Maze(m1);
+		MazeGame maze = new MazeGame(m1);
 		maze.initialize();
 
 		assertEquals(3,maze.dragonGetX());
@@ -167,7 +167,7 @@ public class Dragon
 				{ 'X', ' ', 'X', ' ', 'X' },
 				{ 'X', 'S', 'X', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
-		Maze maze = new Maze(m1);
+		MazeGame maze = new MazeGame(m1);
 		maze.initialize();
 
 		assertEquals(3,maze.dragonGetX());
@@ -199,7 +199,7 @@ public class Dragon
 				{ 'X', ' ', 'X', ' ', 'X' },
 				{ 'X', 'S', 'X', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
-		Maze maze = new Maze(m1);
+		MazeGame maze = new MazeGame(m1);
 		maze.initialize();
 
 		assertEquals(3,maze.dragonGetX());
@@ -244,7 +244,7 @@ public class Dragon
 				{ 'X', ' ', 'X', ' ', 'X' },
 				{ 'X', 'S', 'X', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
-		Maze maze = new Maze(m1);
+		MazeGame maze = new MazeGame(m1);
 		maze.initialize();
 
 		assertEquals(3,maze.dragonGetX());
