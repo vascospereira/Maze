@@ -1,5 +1,6 @@
 package Maze.test;
 
+
 import static org.junit.Assert.*;
 import Maze.logic.*;
 import Maze.logic.MazeGame.State;
