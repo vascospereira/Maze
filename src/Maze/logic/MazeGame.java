@@ -67,9 +67,9 @@ public class MazeGame
 	public void initialize()
 	{
 		setState(State.PLAYING);				//Setting Game to play
-		hero.heroDeploy(table);					//Deploy Hero in table
+		hero.clone().heroDeploy(table);					//Deploy Hero in table
 		deployDragons(dragons);					//Deploy Dragons in table
-		sword.swordDeploy(table);				//Deploy Sword in table		
+		sword.clone().swordDeploy(table);				//Deploy Sword in table		
 	}
 	
 	public void dragonsControler(int numOfDragons){
@@ -138,26 +138,6 @@ public class MazeGame
 
 	public Random getR() {
 		return r;
-	}
-
-	public void setTable(Table table) {
-		this.table = table;
-	}
-
-	public void setHero(Hero hero) {
-		this.hero = hero;
-	}
-
-	public void setSword(Sword sword) {
-		this.sword = sword;
-	}
-
-	public void setDragons(ArrayList<Dragon> dragons) {
-		this.dragons = dragons;
-	}
-
-	public void setR(Random r) {
-		this.r = r;
 	}
 
 	public boolean updateHero(Direction move)

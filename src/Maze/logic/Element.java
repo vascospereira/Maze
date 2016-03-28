@@ -45,10 +45,7 @@ public abstract class Element {
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Element: " + ELEM + "\n");
-		sb.append("Position Y : " + x + "\n");
-		sb.append("Position X : " + y + "\n");
-		
+		sb.append(ELEM);	
 		return sb.toString();
 	}
 	

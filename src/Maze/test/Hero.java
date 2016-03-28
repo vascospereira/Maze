@@ -23,7 +23,7 @@ public class Hero {
 	public void testMoveHeroToFreeCell() 
 	{
 		MazeGame maze = new MazeGame(m1);
-		maze.initialize();
+		maze.clone().initialize();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
 		maze.heroMoveLeft();
