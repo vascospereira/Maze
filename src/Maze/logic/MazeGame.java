@@ -1,6 +1,7 @@
 package Maze.logic;
 
 import java.util.Random;
+import Maze.cli.Game.Direction;
 import static Maze.logic.Table.*;
 import java.util.ArrayList;
 
@@ -159,9 +160,9 @@ public class MazeGame
 		this.r = r;
 	}
 
-	public boolean updateHero(String move)
+	public boolean updateHero(Direction move)
 	{
-		if(move == "Up")
+		if(move == Direction.UP)
 		{
 			int newPosX = hero.getX();
 			int newPosY = hero.getY() - 1;
@@ -173,7 +174,7 @@ public class MazeGame
 			}
 			return false;
 		}
-		else if(move == "Left")
+		else if(move == Direction.LEFT)
 		{
 			int newPosX = hero.getX() - 1;
 			int newPosY = hero.getY();
@@ -185,7 +186,7 @@ public class MazeGame
 			}
 			return false;
 		}
-		else if(move == "Down")
+		else if(move == Direction.DOWN)
 		{
 			int newPosX =  hero.getX();
 			int newPosY =  hero.getY() + 1;
@@ -198,7 +199,7 @@ public class MazeGame
 			return false;
 
 		}
-		else if(move == "Right")
+		else if(move == Direction.RIGHT)
 		{
 			int newPosX = hero.getX() + 1;
 			int newPosY = hero.getY();
@@ -538,19 +539,19 @@ public class MazeGame
 	}
 	public boolean heroMoveLeft()
 	{
-		return updateHero("Left");
+		return updateHero(Direction.LEFT);
 	}
 	public boolean heroMoveRight()
 	{
-		return updateHero("Right");
+		return updateHero(Direction.RIGHT);
 	}
 	public boolean heroMoveUp()
 	{
-		return updateHero("Up");
+		return updateHero(Direction.UP);
 	}
 	public boolean heroMoveDown()
 	{
-		return updateHero("Down");
+		return updateHero(Direction.DOWN);
 	}
 	public int heroGetX()
 	{

@@ -1,7 +1,7 @@
 package Maze.logic;
 import java.util.ArrayList;
 
-public abstract class MazeBuilder {
+public class MazeBuilder {
 
 
 	public static char[][] generateMaze(int dimenson) 

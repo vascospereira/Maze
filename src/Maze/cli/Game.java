@@ -8,9 +8,12 @@ import Maze.logic.Table;
 
 public class Game {
 
+	public enum Direction {UP, DOWN, RIGHT, LEFT, STOP};
+	static Direction move;
+	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
-
+		
 		int mazeSize = 1;
 		int numOfDragons = 1;
 		/*
@@ -35,7 +38,7 @@ public class Game {
 		} while (numOfDragons > 3);
 
 		/*
-		 * Start Maze
+		 * Start MazeGame
 		 */
 		MazeGame maze;
 		
@@ -50,15 +53,13 @@ public class Game {
 		}
 
 		char playerInput = s.next().charAt(0);
-		String move = convert(playerInput);
-
-		while (move != "Close" && (maze.getState() == State.PLAYING || maze.getState() == State.SLAYED)) {
-			/*
-			 *  Updating the game accordingly with scanner, and printing Game
-			 */
-
+		convert(playerInput);
+		/*
+		 *  Updating the game accordingly with scanner, and printing Game
+		 */
+		while (move != Direction.STOP && (maze.getState() == State.PLAYING || maze.getState() == State.SLAYED)) {
+		
 			maze.updateHero(move);
-
 			if (maze.getState() == State.PLAYING) {
 				maze.updateDragons();
 			}
@@ -73,27 +74,27 @@ public class Game {
 				System.out.println("You Win!");
 				break;
 			}
+			
 			playerInput = s.next().charAt(0);
-			move = convert(playerInput);
+			convert(playerInput);
 		}
 
 		s.close();
 		return;
 	}
-
-	private static String convert(char input) {
-		if (input == 'f' || input == 'F')
-			return "Close";
-		else if (input == 'W' || input == 'w')
-			return "Up";
+	
+	private static void convert(char input) {
+		if (input == 'W' || input == 'w')
+			move = Direction.UP;
 		else if (input == 'A' || input == 'a')
-			return "Left";
+			move = Direction.LEFT;
 		else if (input == 'S' || input == 's')
-			return "Down";
+			move = Direction.DOWN;
 		else if (input == 'D' || input == 'd')
-			return "Right";
-		else
-			return "";
+			move = Direction.RIGHT;
+		else if (input == 'f' || input == 'F')
+			move = Direction.STOP;
+		
 	}
 
 	private static void printTable(Table table) {

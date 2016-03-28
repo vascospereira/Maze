@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import java.awt.Font;
 
+import Maze.cli.Game.Direction;
 import Maze.logic.*;
 import Maze.logic.MazeGame.State;
 
@@ -169,7 +170,7 @@ public class Window {
 		UpButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				updateGame("Up");
+				updateGame(Direction.UP);
 			}
 		});
 		UpButton.setBounds(373, 119, 57, 57);
@@ -179,7 +180,7 @@ public class Window {
 		LeftButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				updateGame("Left");
+				updateGame(Direction.LEFT);
 			}
 		});
 		LeftButton.setEnabled(false);
@@ -192,7 +193,7 @@ public class Window {
 		RigthButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				updateGame("Right");
+				updateGame(Direction.RIGHT);
 			}
 		});
 		RigthButton.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -203,7 +204,7 @@ public class Window {
 		DownButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
-				updateGame("Down");
+				updateGame(Direction.DOWN);
 			}
 		});
 		DownButton.setEnabled(false);
@@ -238,7 +239,7 @@ public class Window {
 		RigthButton.setEnabled(false);
 	}
 	
-	public void updateGame(String move)
+	public void updateGame(Direction move)
 	{
 		maze.updateHero(move);
 		maze.updateDragons();
