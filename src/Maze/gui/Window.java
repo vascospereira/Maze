@@ -38,7 +38,7 @@ public class Window {
 	private JTextArea MazeArea;
 
 	/**
-	 * Place for thegame components 
+	 * Place for the game components 
 	 */
 
 	private MazeGame maze;

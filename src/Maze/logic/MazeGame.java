@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 public class MazeGame 
 {
+	/**
+	 *
+	 *Game States
+	 */
 	public enum State { PLAYING, WON, LOST, SLAYED };
 
 	private State state;
@@ -24,8 +28,10 @@ public class MazeGame
 		r = new Random();
 		dragons = new ArrayList<Dragon>();
 	}
-	/*
-	 * Random Maze Constructor
+	/**
+	 * Creates a MazeGame 
+	 * @param newMaze sets a newMaze
+	 * @param numOfDragons sets a number of dragons in the game
 	 */
 	public MazeGame(char[][] newMaze, int numOfDragons)
 	{
@@ -34,7 +40,10 @@ public class MazeGame
 		retrieveElems();
 		dragonsControler(numOfDragons);
 	}
-	
+	/**
+	 * Creates a MazeGame
+	 * @param numOfDragons sets a number of dragons inn the game
+	 */
 	public MazeGame(int numOfDragons)
 	{
 		this();
@@ -42,8 +51,9 @@ public class MazeGame
 		dragonsControler(numOfDragons);
 	}
 	
-	/*
-	 * Constructor for tests
+	/**
+	 * Creates a MazeGame for Tests
+	 * @param newMaze sets a new maze table 
 	 */
 	public MazeGame(char[][] newMaze)
 	{
@@ -52,8 +62,10 @@ public class MazeGame
 		retrieveElems();
 	}
 
-	/*
-	 * Copy constructor
+	/**
+	 * Constructor that copies a an object
+	 * 
+	 * @param maze sets a new maze game 
 	 */
 	public MazeGame(MazeGame maze) {
 		state = maze.getState();
@@ -64,6 +76,9 @@ public class MazeGame
 		r = maze.getR();
 	}
 
+	/**
+	 * Initializes the game
+	 */
 	public void initialize()
 	{
 		setState(State.PLAYING);				//Setting Game to play
@@ -71,7 +86,11 @@ public class MazeGame
 		deployDragons(dragons);					//Deploy Dragons in table
 		sword.clone().swordDeploy(table);				//Deploy Sword in table		
 	}
-	
+	/**
+	 * Controls number of dragons the user want in the game
+	 * 
+	 * @param numOfDragons sets number of dragons the user want in the game
+	 */
 	public void dragonsControler(int numOfDragons){
 		while(numOfDragons > 0)
 		{
@@ -91,6 +110,12 @@ public class MazeGame
 		}
 	}
 
+	/**
+	 * Verifies if exist an empty space
+	 * @param x X Element position in table
+	 * @param y Y Element position in table
+	 * @return true or false
+	 */
 	public boolean emptySpace(int x, int y)
 	{
 		if(noDragon(x,y) == true)
@@ -104,7 +129,12 @@ public class MazeGame
 			return false;
 
 	}
-	
+	/**
+	 * Confirm if exist more dragons
+	 * @param x X dragon position
+	 * @param y Y dragon position
+	 * @return true or false
+	 */
 	public boolean noDragon(int x, int y)
 	{
 		for(int i = 0; i < dragons.size(); i++)
@@ -115,27 +145,55 @@ public class MazeGame
 		return true;
 	}
 
+	/**
+	 * Sets Game status
+	 * @param status sets status game
+	 */
 	public void setState(State status)
 	{
 		state = status;
 	}
 
+	/**
+	 * Gets game state
+	 * 
+	 * @return game state
+	 */
 	public State getState(){
 		return state;
 	}
-	
+	/**
+	 * Gets hero Object
+	 * 
+	 * @return hero Object
+	 */
 	public Hero getHero() {
 		return hero;
 	}
 
+	/**
+	 * Gets sword Object
+	 * 
+	 * @return sword Object
+	 */
 	public Sword getSword() {
 		return sword;
 	}
 
+	/**
+	 * Gets dragons in the ArrayList
+	 * 
+	 * @return dragons in ArrayList
+	 */
 	public ArrayList<Dragon> getDragons() {
 		return dragons;
 	}
 
+	/**
+	 * Gets random value 
+	 * 
+	 * @return r random value
+	 */
 	public Random getR() {
 		return r;
 	}

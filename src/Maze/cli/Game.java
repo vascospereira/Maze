@@ -16,9 +16,7 @@ public class Game {
 		
 		int mazeSize = 1;
 		int numOfDragons = 1;
-		/*
-		 * Choose type of Table
-		 */
+		
 		do {
 			System.out.println("Maze size must be (ODD number >= 5)\n" + "or 0 (zero) for default Maze.");
 			if (s.hasNextInt()) {
@@ -26,9 +24,7 @@ public class Game {
 			} else
 				s.next();
 		} while (mazeSize != 0 && !(mazeSize % 2 == 1 && mazeSize >= 5));
-		/*
-		 * Number of dragons limited to 3
-		 */
+		
 		do {
 			System.out.println("Number of Dragons <max of 3> ");
 			if (s.hasNextInt()) {
@@ -37,9 +33,6 @@ public class Game {
 				s.next();
 		} while (numOfDragons > 3);
 
-		/*
-		 * Start MazeGame
-		 */
 		MazeGame maze;
 		
 		if (mazeSize == 0) {
@@ -54,9 +47,7 @@ public class Game {
 
 		char playerInput = s.next().charAt(0);
 		convert(playerInput);
-		/*
-		 *  Updating the game accordingly with scanner, and printing Game
-		 */
+		
 		while (move != Direction.STOP && (maze.getState() == State.PLAYING || maze.getState() == State.SLAYED)) {
 		
 			maze.updateHero(move);
