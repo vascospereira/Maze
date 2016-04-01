@@ -50,7 +50,7 @@ public class MazeGame
 		retrieveElems();
 		dragonsControler(numOfDragons);
 	}
-	
+
 	/**
 	 * Creates a MazeGame for Tests
 	 * @param newMaze sets a new maze table 
@@ -198,6 +198,12 @@ public class MazeGame
 		return r;
 	}
 
+	/**
+	 * Updates hero movements
+	 * 
+	 * @param move Direction movement
+	 * @return true or false
+	 */
 	public boolean updateHero(Direction move)
 	{
 		if(move == Direction.UP)
@@ -252,12 +258,19 @@ public class MazeGame
 		return false;
 	}
 
+	/**
+	 * Hero movements in the table 
+	 * 
+	 * @param nPosX sets new hero X position
+	 * @param nPosY sets new hero Y position 
+	 * @return true or false
+	 */
 	public boolean heroMove(int nPosX, int nPosY)
 	{
 		char Elem = table.getElemTable(nPosX, nPosY);
 		char Hero = hero.getHeroState();
 
-		/*
+		/**
 		 * Hero gather Sword
 		 */
 		if(Elem == Table.SWORD)
@@ -267,7 +280,7 @@ public class MazeGame
 			return true;
 		}
 
-		/*
+		/**
 		 * Case when Hero Unarmed Confronts Dragon, Dies Horribly
 		 */
 		else if(Elem == Table.DRAGON && Hero == Table.HERO)
@@ -277,7 +290,7 @@ public class MazeGame
 			return true;
 		}
 
-		/*
+		/**
 		 * Case when Hero Unarmed Confronts Sleepy or Awaken Dragon, Dragon Gets Crippled into pieces
 		 */
 		else if((Elem == Table.DRAGON && Hero == Table.ARMOR)||
@@ -289,15 +302,14 @@ public class MazeGame
 			return true;
 		}
 
-		/*
+		/**
 		 * Sleepy Dragon and Unarmed Hero
 		 */
 		else if(Elem == SLEEPY && Hero == HERO)
 		{
-			//SIMPLY RETURNS FALSE FOR THE HERO CANNOT MAGICLLY TRESPASS THE DRAGON
 			return false;
 		}
-		/*
+		/**
 		 * Hero faces Dragon sitting on Sword
 		 */
 		else if((Elem == DRASWO && Hero == HERO)||
@@ -305,7 +317,7 @@ public class MazeGame
 		{
 			return false;
 		}
-		/*
+		/**
 		 * Killing Dragon and exit
 		 */
 		else if(Elem == EXIT && getState() == State.SLAYED)
@@ -315,7 +327,7 @@ public class MazeGame
 			setState(State.WON);
 			return true;
 		}
-		/*
+		/**
 		 * Normal hero movement
 		 */
 		else if(Elem == SPACE)
@@ -328,6 +340,12 @@ public class MazeGame
 			return false;
 	}
 
+	/**
+	 * Updates Dragons movements
+	 * 
+	 * @param dragon Dragon to be updated
+	 * @return true or false
+	 */
 	public boolean updateDragon(Dragon dragon)
 	{
 		int move;
@@ -337,18 +355,18 @@ public class MazeGame
 
 		move = r.nextInt(2);
 
-		/*
+		/**
 		 * Movement
 		 */
 		if(move == 0 && Dragon != SLEEPY)
 		{
-			/*
+			/**
 			 * Compulsory move
 			 */
 			while(true)
 			{	
 				move = r.nextInt(4);
-				/*
+				/**
 				 * Upper movement
 				 */
 				if(move == 0)
@@ -357,7 +375,7 @@ public class MazeGame
 					if(dragonMove(dragon, newPosX, newPosY + change) == true)
 						return true;
 				}
-				/*
+				/**
 				 * Down movement
 				 */
 				else if(move == 1)
@@ -366,7 +384,7 @@ public class MazeGame
 					if(dragonMove(dragon, newPosX, newPosY + change) == true)
 						return true;
 				}
-				/*
+				/**
 				 * Left movement
 				 */
 				else if(move == 2)
@@ -375,7 +393,7 @@ public class MazeGame
 					if(dragonMove(dragon, newPosX + change, newPosY) == true)
 						return true;
 				}
-				/*
+				/**
 				 * Right movement
 				 */
 				else if(move == 3)
@@ -441,11 +459,19 @@ public class MazeGame
 		}
 		return false;
 	}
+	/**
+	 * Dragon movements in the table
+	 * 
+	 * @param dragon Dragon to move in the game
+	 * @param newPosX New Dragon X position
+	 * @param newPosY New Dragon Y position
+	 * @return true or false
+	 */
 	public boolean dragonMove(Dragon dragon, int newPosX, int newPosY)
 	{
 		char Elem = table.getElemTable(newPosX, newPosY);
 		char Dragon = dragon.getDragonState();
-		/*
+		/**
 		 * For normal Dragon and space movement
 		 */
 		if(Elem == SPACE && Dragon == DRAGON)
@@ -455,8 +481,8 @@ public class MazeGame
 			dragon.setCoord(newPosX, newPosY);
 			return true;
 		}
-		/*
-		 * FOR DRAGON TO SWORD MOVEMENT
+		/**
+		 * Dragon to Sword movement
 		 */
 		else if(Elem == SWORD)
 		{
@@ -466,8 +492,8 @@ public class MazeGame
 			dragon.swordDragon();
 			return true;
 		}
-		/*
-		 * GETTING OUT OF THE SWORD
+		/**
+		 * Getting out of the Sword
 		 */
 		else if(Elem == SPACE && Dragon == DRASWO)
 		{
@@ -477,8 +503,8 @@ public class MazeGame
 			dragon.noSwordDragon();
 			return true;
 		}
-		/*
-		 * DRAGON KILLING HERO, ARMED OR UNARMED
+		/**
+		 * Dragon killing Hero armed or not
 		 */
 		else if(Elem == HERO && Dragon == DRAGON || Elem == ARMOR && Dragon == DRAGON)
 		{
@@ -488,8 +514,8 @@ public class MazeGame
 			setState(State.LOST);
 			return true;
 		}
-		/*
-		 * DRAGON KILLING HERO AND GETTING OUT OF SWORD
+		/**
+		 * Dragon killing hero and getting out of Sword
 		 */
 		else if(Elem == HERO && Dragon == DRASWO)
 		{
@@ -501,7 +527,9 @@ public class MazeGame
 		}
 		return false;
 	}
-	
+	/**
+	 * Retrieves Elements and sets positions
+	 */
 	public void retrieveElems()
 	{
 		int column = getColumn();
@@ -531,6 +559,9 @@ public class MazeGame
 		}
 	}
 
+	/**
+	 * Updates Dragons in the ArrayList
+	 */
 	public void updateDragons()
 	{
 		for(int i = 0; i < dragons.size(); i++)
@@ -538,7 +569,12 @@ public class MazeGame
 			updateDragon(dragons.get(i));
 		}
 	}
-	
+
+	/**
+	 * Deploys ArraysList dragons in the table
+	 * 
+	 * @param dragons Dragons to be deployed in the maze
+	 */
 	public void deployDragons(ArrayList<Dragon> dragons)
 	{
 		for(int i = 0; i < dragons.size(); i++)
@@ -546,7 +582,12 @@ public class MazeGame
 			dragons.get(i).dragonDeploy(table);
 		}
 	}
-	
+
+	/**
+	 * Removes dead Dragons from ArrayList
+	 * @param x X Dragon position to be removed
+	 * @param y Y Dragon position to be removed
+	 */
 	public void deadDragon(int x, int y)
 	{
 		if(dragons.size() == 1)
@@ -567,69 +608,152 @@ public class MazeGame
 		}
 	}
 
+	/**
+	 * Gets column size
+	 * 
+	 * @return table height
+	 */
 	public int getColumn()
 	{
 		return table.getHeight();
 	}
+
+	/**
+	 * Gets line size
+	 * 
+	 * @return table width
+	 */
 	public int getLine()
 	{
 		return table.getWidth();
 	}
+	
+	/**
+	 * Moves hero left
+	 * 
+	 * @return true or false
+	 */
 	public boolean heroMoveLeft()
 	{
 		return updateHero(Direction.LEFT);
 	}
+	
+	/**
+	 * Moves hero right
+	 * 
+	 * @return true or false
+	 */
 	public boolean heroMoveRight()
 	{
 		return updateHero(Direction.RIGHT);
 	}
+	/**
+	 * Moves hero up
+	 * 
+	 * @return true or false
+	 */
 	public boolean heroMoveUp()
 	{
 		return updateHero(Direction.UP);
 	}
+	/**
+	 * Moves hero down
+	 * 
+	 * @return true or false
+	 */
 	public boolean heroMoveDown()
 	{
 		return updateHero(Direction.DOWN);
 	}
+	/**
+	 * Gets hero X position
+	 * 
+	 * @return X position
+	 */
 	public int heroGetX()
 	{
 		return hero.getX();
 	}
+	/**
+	 * Gets hero Y position
+	 * 
+	 * @return Y position
+	 */
 	public int heroGetY()
 	{
 		return hero.getY();
 	}
+	/**
+	 * Gets Dragon X position
+	 * 
+	 * @return X position
+	 */
 	public int dragonGetX()
 	{
 		return dragons.get(0).getX();
 	}
+	/**
+	 * Gets Dragon Y position
+	 * 
+	 * @return Y position
+	 */
 	public int dragonGetY()
 	{
 		return dragons.get(0).getY();
 	}
+	/**
+	 * Gets table
+	 * 
+	 * @return table
+	 */
 	public Table getTable()
 	{
 		return table;
 	}
+	/**
+	 * Gets Dragon at 0 position
+	 * 
+	 * @return dragon in the first ArrayList position
+	 */
 	public Dragon getDragon()
 	{
 		return dragons.get(0);
 	}
+	/**
+	 * Gets Hero state in the game
+	 * 
+	 * @return Hero state
+	 */
 	public char getHeroState()
 	{
 		return hero.getHeroState();
 	}
+	/**
+	 * Gets Dragon state in the game
+	 * 
+	 * @return Dragon state
+	 */
 	public char getDragonState()
 	{
 		return dragons.get(0).getDragonState();
 	}
 
+	/**
+	 * Converts table to a String Object
+	 * 
+	 * @return the table as a String Object
+	 */
 	@Override
 	public String toString() 
 	{
 		return table.toString();
 	}
-	
+
+	/**
+	 * Gets Hero state in the game
+	 * 
+	 * @return a MazeGame Object clone
+	 */
 	public MazeGame clone(){
 		return new MazeGame(this);
 	}
