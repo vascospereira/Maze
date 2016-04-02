@@ -21,7 +21,6 @@ public class TestTable {
 	{
 		Table maze = new Table();
 		maze.setTable(tableToSet);
-		System.out.println(maze.clone().toString());
 		assertEquals(tableToSet.length, maze.clone().getHeight());
 	}
 	
@@ -30,7 +29,6 @@ public class TestTable {
 	{
 		Table maze = new Table();
 		int size = maze.getWidth();
-		System.out.println(maze.clone().toString());
 		assertEquals(size, maze.clone().getWidth());
 	}
 	
@@ -41,7 +39,6 @@ public class TestTable {
 		Table maze = new Table(tableToTest);
 		maze.setElemTable(1, 1, 'D');
 		assertEquals('D', maze.getElemTable(1, 1));
-		System.out.println(maze.clone().toString());
 		assertEquals(size, maze.clone().getWidth());
 	}
 	
