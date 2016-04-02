@@ -12,8 +12,6 @@ public class Table
 	public static final char DRASWO = 'F';
 	public static final char WALL   = 'X';
 	
-	private static int tableDim;
-	
 	private char table[][] = { { 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' },
 							{ 'X', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'X' }, 
 							{ 'X', ' ', 'X', 'X', ' ', 'X', ' ', 'X', ' ', 'X' },
@@ -25,18 +23,18 @@ public class Table
 							{ 'X', ' ', 'X', 'X', ' ', ' ', ' ', ' ', ' ', 'X' },
 							{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' } };
 	
-	Table() {}
+	public Table() {}
 	
-	Table(char[][] newMaze)
+	public Table(char[][] newMaze)
 	{
 		table = newMaze;
 	}
 	
 	public Table(Table table) {
-		this.table = getTable();
+		this.table = table.getTable();
 	}
 
-	private char[][] getTable() {
+	public char[][] getTable() {
 		return table;
 	}
 
@@ -71,20 +69,9 @@ public class Table
 		return table[0].length;
 	}
 
-	public static void setTableDim(int dimenson) {
-		tableDim = dimenson;
-	}
-	public static int getTableDim()
-	{
-		return tableDim;
-	}
-
 	public void setTable(char[][] mazeTable) {
-
 		table = mazeTable;
-		
 	}
-	
 	
 	@Override
 	public String toString() {

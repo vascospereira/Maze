@@ -10,12 +10,13 @@ public class Dragon
 	public void DragonToEmptySpace() 
 	{
 		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
-				{ 'X', ' ', ' ', 'H', 'E' }, 
-				{ 'X', ' ', 'X', ' ', 'X' },
-				{ 'X', 'S', ' ', 'D', 'X' }, 
-				{ 'X', 'X', 'X', 'X', 'X' } };
+						{ 'X', ' ', ' ', 'H', 'E' }, 
+						{ 'X', ' ', 'X', ' ', 'X' },
+						{ 'X', 'S', ' ', 'D', 'X' }, 
+						{ 'X', 'X', 'X', 'X', 'X' } };
+		
 		MazeGame maze = new MazeGame(m1);
-		maze.initialize();
+		maze.setState(State.PLAYING);
 
 		assertEquals(3,maze.dragonGetX());
 		assertEquals(3,maze.dragonGetY());
@@ -63,7 +64,7 @@ public class Dragon
 				{ 'X', ' ', 'S', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
 		MazeGame maze = new MazeGame(m1);
-		maze.initialize();
+		maze.setState(State.PLAYING);
 
 		assertEquals(3,maze.dragonGetX());
 		assertEquals(3,maze.dragonGetY());
@@ -97,7 +98,7 @@ public class Dragon
 				{ 'X', 'S', 'X', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
 		MazeGame maze = new MazeGame(m1);
-		maze.initialize();
+		maze.setState(State.PLAYING);
 
 		assertEquals(3,maze.dragonGetX());
 		assertEquals(3,maze.dragonGetY());
@@ -132,7 +133,7 @@ public class Dragon
 				{ 'X', 'S', 'X', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
 		MazeGame maze = new MazeGame(m1);
-		maze.initialize();
+		maze.setState(State.PLAYING);
 
 		assertEquals(3,maze.dragonGetX());
 		assertEquals(3,maze.dragonGetY());
@@ -167,7 +168,7 @@ public class Dragon
 				{ 'X', 'S', 'X', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
 		MazeGame maze = new MazeGame(m1);
-		maze.initialize();
+		maze.setState(State.PLAYING);
 
 		assertEquals(3,maze.dragonGetX());
 		assertEquals(3,maze.dragonGetY());
@@ -200,7 +201,7 @@ public class Dragon
 				{ 'X', 'X', 'X', 'X', 'X' } };
 		
 		MazeGame maze = new MazeGame(m1);
-		maze.initialize();
+		maze.setState(State.PLAYING);
 
 		assertEquals(3,maze.dragonGetX());
 		assertEquals(3,maze.dragonGetY());
@@ -244,7 +245,7 @@ public class Dragon
 				{ 'X', 'S', 'X', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
 		MazeGame maze = new MazeGame(m1);
-		maze.initialize();
+		maze.setState(State.PLAYING);
 
 		assertEquals(3,maze.dragonGetX());
 		assertEquals(3,maze.dragonGetY());
