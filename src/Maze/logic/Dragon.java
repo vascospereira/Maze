@@ -13,7 +13,7 @@ public class Dragon extends Element
  */
 	public Dragon(int y, int x) 
 	{
-		super(y, x, 'D');
+		super(y, x, Table.DRAGON);
 	}
 	/**
 	 * Dragon default constructor 
@@ -51,28 +51,28 @@ public class Dragon extends Element
 	 */
 	public void sleepDragon() 
 	{
-		this.setElem('d');
+		this.setElem(Table.SLEEPY);
 	}
 	/**
 	 * Sets awake Dragon
 	 */
 	public void awakeDragon() 
 	{
-		this.setElem('D');
+		this.setElem(Table.DRAGON);
 	}
 	/**
 	 * Sets Dragon with Sword
 	 */
 	public void swordDragon()
 	{
-		this.setElem('F');
+		this.setElem(Table.DRASWO);
 	}
 	/**
 	 * Dragon gets out of sword
 	 */
 	public void noSwordDragon()
 	{
-		this.setElem('D');
+		this.setElem(Table.DRAGON);
 	}
 	/**
 	 * Gets Dragon state

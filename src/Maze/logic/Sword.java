@@ -14,7 +14,7 @@ public class Sword extends Element
 	 */
 	public Sword(int y, int x) 
 	{
-		super(y, x, 'S');
+		super(y, x, Table.SWORD);
 	}
 	/**
 	 * Default Sword constructor

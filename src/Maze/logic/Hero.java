@@ -13,7 +13,7 @@ public class Hero extends Element
 	 */
 	public Hero(int y, int x) 
 	{
-		super(y, x, 'H');
+		super(y, x, Table.HERO);
 	}
 	/**
 	 * Default Hero Constructor
@@ -37,7 +37,7 @@ public class Hero extends Element
 	 */
 	public char heroArmed()
 	{
-		this.setElem('A');
+		this.setElem(Table.ARMOR);
 		return this.getElem();
 	}
 	/**
