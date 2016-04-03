@@ -38,6 +38,11 @@ public class TestTable {
 		int size = tableToTest.length;
 		Table maze = new Table(tableToTest);
 		maze.setElemTable(1, 1, 'D');
+		maze.setElemTable(1, 3, 'S');
+		assertEquals('S', maze.getElemTable(1, 3));
+		
+		String table = str();
+		assertTrue(table.equals(maze.toString()));
 		assertEquals('D', maze.getElemTable(1, 1));
 		assertEquals(size, maze.clone().getWidth());
 	}
@@ -54,4 +59,14 @@ public class TestTable {
 		assertTrue(outcome2);	
 	}
 	
+	private String str() {
+		StringBuilder sb = new StringBuilder();
+		for (int y = 0; y < tableToTest.length; y++) {
+			for (int x = 0; x < tableToTest.length; x++) {
+				sb.append(tableToTest[y][x] + " ");
+			}
+			sb.append("\n");
+		}
+		return sb.toString();
+	}
 }

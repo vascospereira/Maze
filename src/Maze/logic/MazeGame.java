@@ -42,7 +42,7 @@ public class MazeGame
 	}
 	/**
 	 * Creates a MazeGame
-	 * @param numOfDragons sets a number of dragons inn the game
+	 * @param numOfDragons sets a number of dragons in the game
 	 */
 	public MazeGame(int numOfDragons)
 	{
@@ -187,6 +187,14 @@ public class MazeGame
 	 */
 	public ArrayList<Dragon> getDragons() {
 		return dragons;
+	}
+	/**
+	 * Gets number of Dragons created 
+	 * 
+	 * @return number of dragons created
+	 */
+	public int getNumOfDragons(){
+		return dragons.size();
 	}
 
 	/**
@@ -546,6 +554,12 @@ public class MazeGame
 				else if(table.getElemTable(i,j) == DRAGON)
 				{
 					Dragon dragon = new Dragon();
+					dragons.add(dragon);
+					dragon.setCoord(i, j);
+				}
+				else if(table.getElemTable(i,j) == DRASWO)
+				{
+					Dragon dragon = new Dragon(DRASWO);
 					dragons.add(dragon);
 					dragon.setCoord(i, j);
 				}

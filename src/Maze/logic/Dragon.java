@@ -17,6 +17,10 @@ public class Dragon extends Element
 		super(dragon);
 	}
 
+	public Dragon(char draswo) {
+		super(1,1,draswo);
+	}
+
 	public void dragonDeploy(Table table)
 	{
 		table.deployElemTable(this.getX(), this.getY(), this.getElem());

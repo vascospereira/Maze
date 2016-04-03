@@ -1,3 +1,4 @@
+
 package Maze.test;
 
 import static org.junit.Assert.*;
@@ -7,7 +8,7 @@ import Maze.logic.MazeGame.State;
 public class Dragons 
 {
 
-	@org.junit.Test (timeout=1000)
+	@org.junit.Test (timeout=2000)
 	public void DragonToEmptySpace() 
 	{
 		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
@@ -92,6 +93,75 @@ public class Dragons
 	}
 	
 	@org.junit.Test (timeout=1000)
+	public void dragonSwordToSpace() 
+	{
+		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
+						{ 'X', ' ', ' ', 'H', 'E' }, 
+						{ 'X', ' ', 'X', ' ', 'X' },
+						{ 'X', ' ', 'X', 'F', 'X' }, 
+						{ 'X', 'X', 'X', 'X', 'X' } };
+		MazeGame maze = new MazeGame(m1);
+		maze.setState(State.PLAYING);
+
+		assertEquals(3,maze.dragonGetX());
+		assertEquals(3,maze.dragonGetY());
+		assertEquals('F', maze.getDragonState());
+		assertEquals(State.PLAYING, maze.getState());
+
+
+		boolean outcome1 = false;
+		while(!outcome1)
+		{
+			maze.updateDragon(maze.getDragon());
+			if(maze.dragonGetX() == 3 && maze.dragonGetY() == 2)
+			{
+				outcome1 = true;
+			}
+		}
+		if(outcome1)
+		{
+			assertEquals(3,maze.dragonGetX());
+			assertEquals(2,maze.dragonGetY());
+			assertEquals('D', maze.getDragonState());
+			//System.out.println(i);
+		}
+	}
+	
+	@org.junit.Test (timeout=1000)
+	public void dragonSwordToHero() 
+	{
+		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
+						{ 'X', ' ', ' ', ' ', 'E' }, 
+						{ 'X', ' ', 'X', 'H', 'X' },
+						{ 'X', ' ', 'X', 'F', 'X' }, 
+						{ 'X', 'X', 'X', 'X', 'X' } };
+		MazeGame maze = new MazeGame(m1);
+		maze.setState(State.PLAYING);
+
+		assertEquals(3,maze.dragonGetX());
+		assertEquals(3,maze.dragonGetY());
+		assertEquals('F', maze.getDragonState());
+		assertEquals(State.PLAYING, maze.getState());
+
+
+		boolean outcome1 = false;
+		while(!outcome1)
+		{
+			maze.updateDragon(maze.getDragon());
+			if(maze.dragonGetX() == 3 && maze.dragonGetY() == 2)
+			{
+				outcome1 = true;
+			}
+		}
+		if(outcome1)
+		{
+			assertEquals(3,maze.dragonGetX());
+			assertEquals(2,maze.dragonGetY());
+			assertEquals(State.LOST, maze.getState());
+		}
+	}
+	
+	@org.junit.Test (timeout=1000)
 	public void dragonToHero() 
 	{
 		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
@@ -126,6 +196,7 @@ public class Dragons
 			assertEquals(State.LOST, maze.getState());
 		}
 	}
+	
 	@org.junit.Test(timeout = 1000)
 	public void dragonToArmor() 
 	{
@@ -161,6 +232,7 @@ public class Dragons
 			assertEquals(State.LOST, maze.getState());
 		}
 	}
+	
 	@org.junit.Test (timeout=1000)
 	public void dragonToSleep() 
 	{
@@ -193,6 +265,7 @@ public class Dragons
 			assertEquals('d', maze.getDragonState());
 		}
 	}
+	
 	@org.junit.Test (timeout=1000)
 	public void dragonToSleepAwake() 
 	{
@@ -238,8 +311,9 @@ public class Dragons
 			assertEquals('D', maze.getDragonState());
 		}
 	}
+	
 	@org.junit.Test (timeout=1000)
-	public void DragonNotMove() 
+	public void dragonNotMove() 
 	{
 		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
 				{ 'X', 'H', ' ', ' ', 'E' }, 
@@ -304,5 +378,8 @@ public class Dragons
 		dragon.clone().dragonDeploy(table);
 		assertEquals("D", dragon.toString());
 		assertEquals('D', table.getElemTable(1, 1));
+		
+		MazeGame dragonInMaze = new MazeGame(3);
+		assertEquals(3, dragonInMaze.getNumOfDragons());
 	}
 }

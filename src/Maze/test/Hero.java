@@ -29,6 +29,7 @@ public class Hero {
 		maze.heroMoveLeft();
 		assertEquals(2,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
+		assertEquals("H",maze.getHero().toString());
 	}
 
 	@org.junit.Test
