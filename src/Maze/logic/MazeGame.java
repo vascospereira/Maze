@@ -4,7 +4,11 @@ import java.util.Random;
 import Maze.cli.Game.Direction;
 import static Maze.logic.Table.*;
 import java.util.ArrayList;
-
+/**
+ * 
+ * MazeGame Class
+ *
+ */
 public class MazeGame 
 {
 	/**
@@ -18,7 +22,9 @@ public class MazeGame
 	private Sword sword;								//Object Sword
 	private ArrayList<Dragon> dragons;					//Object Dragons
 	private Random r;
-
+/**
+ * Maze Game default constructor, allocates space for new Elements
+ */
 	public MazeGame()
 	{
 		table = new Table();
@@ -80,6 +86,7 @@ public class MazeGame
 
 	/**
 	 * Initializes the game
+	 * and deploys Elements
 	 */
 	public void initialize()
 	{

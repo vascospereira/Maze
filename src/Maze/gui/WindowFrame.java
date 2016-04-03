@@ -17,7 +17,11 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+/**
+ * 
+ * WindowFrame Class extends JPanel
+ *
+ */
 @SuppressWarnings("serial")
 public class WindowFrame extends JPanel implements KeyListener, MouseListener {
 	private BufferedImage floor;
@@ -30,6 +34,9 @@ public class WindowFrame extends JPanel implements KeyListener, MouseListener {
 	private BufferedImage sword;
 	private BufferedImage exit;
 
+	/**
+	 * Create WindowFrame
+	 */
 	public WindowFrame() {
 		addKeyListener(this);
 		addMouseListener(this);
@@ -49,7 +56,9 @@ public class WindowFrame extends JPanel implements KeyListener, MouseListener {
 		}
 
 	}
-
+	/**
+	 * @Override paintComponent()
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -144,7 +153,9 @@ public class WindowFrame extends JPanel implements KeyListener, MouseListener {
 		
 
 	}
-
+	/**
+	 * @Override keyPressed()
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 
@@ -250,13 +261,17 @@ public class WindowFrame extends JPanel implements KeyListener, MouseListener {
 		// TODO Auto-generated method stub
 
 	}
-
+	/**
+	 * @Override mousePressed
+	 */
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		this.requestFocus();
 
 	}
-
+	/**
+	 * @Override mouseReleased
+	 */
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub

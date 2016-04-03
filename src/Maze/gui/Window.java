@@ -13,9 +13,17 @@ import java.awt.event.ActionEvent;
 
 import Maze.logic.*;
 
-
+/**
+ * 
+ * Window Class
+ *
+ */
 public class Window {
 
+	/**
+	 * Place for the game components 
+	 */
+	
 	private JFrame Window;
 	private JTextField NofDragonsField;
 	private JTextField DimensionsField;
@@ -30,9 +38,7 @@ public class Window {
 	private WindowFrame MazePanel;
 	//private JTextArea MazeArea;
 
-	/**
-	 * Place for the game components 
-	 */
+	
 
 	public enum DragonState { STATIC, MOVING }
 	static DragonState dragonState;

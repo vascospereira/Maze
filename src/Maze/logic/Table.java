@@ -1,5 +1,8 @@
 package Maze.logic;
-
+/**
+ * Table Class
+ * 
+ */
 public class Table
 {
 	public static final char SPACE  = ' ';
@@ -23,13 +26,22 @@ public class Table
 							{ 'X', ' ', 'X', 'X', ' ', ' ', ' ', ' ', ' ', 'X' },
 							{ 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X' } };
 	
+	/**
+	 * Default table constructor
+	 */
 	public Table() {}
-	
+	/**
+	 * Table constructor using an existing matrix
+	 * @param newMaze
+	 */
 	public Table(char[][] newMaze)
 	{
 		table = newMaze;
 	}
-	
+	/**
+	 * Table constructor copying another Table
+	 * @param table
+	 */
 	public Table(Table table) {
 		this.table = table.getTable();
 	}
@@ -112,7 +124,9 @@ public class Table
 	public void setTable(char[][] mazeTable) {
 		table = mazeTable;
 	}
-	
+	/**
+	 * @Override toString()
+	 */
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
@@ -124,7 +138,9 @@ public class Table
 		}
 		return sb.toString();
 	}
-	
+	/**
+	 * @Override clone()
+	 */
 	public Table clone(){
 		return new Table(this);
 	}

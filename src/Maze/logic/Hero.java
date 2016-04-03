@@ -1,18 +1,31 @@
 package Maze.logic;
-
+/**
+ * 
+ * Hero class, extends Element
+ *
+ */
 public class Hero extends Element
 {
-	
+	/**
+	 * Hero constructor on x and y position
+	 * @param y
+	 * @param x
+	 */
 	public Hero(int y, int x) 
 	{
 		super(y, x, 'H');
 	}
-	
+	/**
+	 * Default Hero Constructor
+	 */
 	public Hero() 
 	{
 		this(1,1);
 	}
-	
+	/**
+	 * Hero constructor, based uppon another Hero
+	 * @param hero
+	 */
 	public Hero(Hero hero) {
 		super(hero);
 	}
@@ -44,12 +57,16 @@ public class Hero extends Element
 	{
 		table.deployElemTable(this.getX(), this.getY(), this.getElem());
 	}
-
+	/**
+	 * @Override toString()
+	 */
 	@Override
 	public String toString() {
 		return super.toString();
 	}
-
+	/**
+	 * @Override clone()
+	 */
 	@Override
 	public Hero clone() {
 		return new Hero(this);

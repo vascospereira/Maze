@@ -1,23 +1,40 @@
 package Maze.logic;
-
+/**
+ * 
+ * Dragon Class, extends Element
+ *
+ */
 public class Dragon extends Element
 {
-	
+/**
+ * Dragon constructor in x and y	
+ * @param y
+ * @param x
+ */
 	public Dragon(int y, int x) 
 	{
 		super(y, x, 'D');
 	}
-	
+	/**
+	 * Dragon default constructor 
+	 */
 	public Dragon() 
 	{
 		this(1,3);
 	}
-	
+	/**
+	 * Dragon constructor using another Dragon
+	 * @param dragon
+	 */
 	public Dragon(Dragon dragon) {
 		super(dragon);
 	}
-
-	public Dragon(char draswo) {
+	/**
+	 * Dragon constructor with character
+	 * @param draswo
+	 */
+	public Dragon(char draswo) 
+	{
 		super(1,1,draswo);
 	}
 
@@ -50,7 +67,9 @@ public class Dragon extends Element
 	{
 		this.setElem('F');
 	}
-	
+	/**
+	 * Dragon gets out of sword
+	 */
 	public void noSwordDragon()
 	{
 		this.setElem('D');
@@ -64,12 +83,16 @@ public class Dragon extends Element
 	{
 		return this.getElem();
 	}
-	
+	/**
+	 * @Overrid toString()
+	 */
 	@Override
 	public String toString() {
 		return super.toString();
 	}
-
+	/**
+	 * @Overrid clone
+	 */
 	@Override
 	public Dragon clone(){
 		return new Dragon(this);

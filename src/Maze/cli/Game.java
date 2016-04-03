@@ -5,12 +5,22 @@ import Maze.logic.MazeGame;
 import Maze.logic.MazeBuilder;
 import Maze.logic.MazeGame.State;
 import Maze.logic.Table;
-
+/**
+ * Maze command line Interface
+ *
+ */
 public class Game {
-
+/**
+ * 
+ * Direction Enum
+ *
+ */
 	public enum Direction {UP, DOWN, RIGHT, LEFT, STOP};
 	static Direction move;
-	
+	/**
+	 * Main functions on the command line interface
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		
@@ -73,7 +83,10 @@ public class Game {
 		s.close();
 		return;
 	}
-	
+	/**
+	 * Convert characters to input Directions
+	 * @param input
+	 */
 	private static void convert(char input) {
 		if (input == 'W' || input == 'w')
 			move = Direction.UP;
@@ -87,7 +100,10 @@ public class Game {
 			move = Direction.STOP;
 		
 	}
-
+	/**
+	 * Print Table function
+	 * @param table
+	 */
 	private static void printTable(Table table) {
 		System.out.print(table.toString());
 	}

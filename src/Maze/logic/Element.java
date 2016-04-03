@@ -1,5 +1,8 @@
 package Maze.logic;
 
+/**
+ *Element class
+ */
 public abstract class Element {
 
 	private int y, x;

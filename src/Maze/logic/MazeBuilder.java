@@ -1,6 +1,10 @@
 package Maze.logic;
 import java.util.ArrayList;
-
+/**
+ * 
+ * MazeBuilder Class
+ *
+ */
 public class MazeBuilder {
 
 	/**

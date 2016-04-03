@@ -10,10 +10,17 @@ import Maze.logic.Table;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
+/**
+ * 
+ * Design Class
+ *
+ */
 @SuppressWarnings("serial")
 public class Design extends JDialog{
-
+	
+	/**
+	 * Space for Components
+	 */
 
 	private JButton btnHero;
 	private JButton btnDragon;
@@ -30,11 +37,19 @@ public class Design extends JDialog{
 
 	boolean valid = false;
 
+	/**
+	 * To check if it is possible to create Game from Design
+	 * @return true or false
+	 */
 	public boolean isValid()
 	{
 		return valid;
 	}
-
+	/**
+	 * Returns the Validity of Maze of the new Created Maze
+	 * @param maze
+	 * @return true or false
+	 */
 	public boolean isMazeValid(char[][] maze)
 	{
 		int hero = 0;
@@ -72,6 +87,10 @@ public class Design extends JDialog{
 			return true;
 	}
 
+	/**
+	 * Creating a Design Maze 
+	 * @param size
+	 */
 	public Design(int size)
 	{
 		super((java.awt.Frame) null, true);

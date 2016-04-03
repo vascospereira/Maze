@@ -1,19 +1,32 @@
 package Maze.logic;
 import java.util.Random;
-
+/**
+ * 
+ * Sword Class
+ *
+ */
 public class Sword extends Element
 {
-	
+	/**
+	 * Sword Constructor in x and y position
+	 * @param y
+	 * @param x
+	 */
 	public Sword(int y, int x) 
 	{
 		super(y, x, 'S');
 	}
-	
+	/**
+	 * Default Sword constructor
+	 */
 	public Sword() 
 	{
 		this(1,7);
 	}
-	
+	/**
+	 * Sword constructor, copying another existing already
+	 * @param sword
+	 */
 	public Sword(Sword sword) {
 		super(sword);
 	}
@@ -40,12 +53,16 @@ public class Sword extends Element
 			
 		}
 	}
-	
+	/**
+	 * @Override toString()
+	 */
 	@Override
 	public String toString() {
 		return super.toString();
 	}
-
+	/**
+	 * @Override clone()
+	 */
 	@Override
 	public Sword clone() {
 		return new Sword(this);

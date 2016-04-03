@@ -11,11 +11,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import Maze.logic.Table;
-
+/**
+ * DesignFrame Class, extends JPanel
+ */
 @SuppressWarnings("serial")
 public class DesignFrame extends JPanel implements  MouseListener, MouseMotionListener
 {
-
+	/**
+	 * Space for components
+	 */
 	private BufferedImage floor;
 	private BufferedImage wall;
 	private BufferedImage wallup;
@@ -29,7 +33,10 @@ public class DesignFrame extends JPanel implements  MouseListener, MouseMotionLi
 	static char[][] table;
 	private int size;
 
-
+	/**
+	 * Creating The DesingFrame
+	 * @param size
+	 */
 	public DesignFrame(int size)
 	{
 		filltable(size);
@@ -55,17 +62,10 @@ public class DesignFrame extends JPanel implements  MouseListener, MouseMotionLi
 		}	
 	}
 
-	public void printTable()
-	{
-		StringBuilder sb = new StringBuilder();
-		for (int y = 0; y < table.length; y++) {
-			for (int x = 0; x < table.length; x++) {
-				sb.append(table[y][x] + " ");
-			}
-			sb.append("\n");
-		}
-		System.out.print(sb);
-	}
+	/**
+	 * Function to create a maze with border and with the size given
+	 * @param size
+	 */
 
 	public void filltable(int size)
 	{
@@ -86,7 +86,10 @@ public class DesignFrame extends JPanel implements  MouseListener, MouseMotionLi
 		}
 		repaint();
 	}
-
+	/**
+	 * finds character c and replace with space
+	 * @param c
+	 */
 	public void findreplace(char c)
 	{
 
@@ -100,7 +103,9 @@ public class DesignFrame extends JPanel implements  MouseListener, MouseMotionLi
 		}
 		repaint();
 	}
-
+	/**
+	 * Refills borders of maze for misplaced invalid character
+	 */
 	public void assertable()
 	{
 		int y = 0;
@@ -139,7 +144,9 @@ public class DesignFrame extends JPanel implements  MouseListener, MouseMotionLi
 	}
 
 
-
+	/**
+	 * @Override paintComponent()
+	 */
 	@Override
 	public void paintComponent(Graphics g)
 	{
@@ -275,6 +282,9 @@ public class DesignFrame extends JPanel implements  MouseListener, MouseMotionLi
 
 	}
 
+	/**
+	 * @Override mousePressed()
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		int space = this.getHeight()/size;
@@ -334,6 +344,9 @@ public class DesignFrame extends JPanel implements  MouseListener, MouseMotionLi
 
 	}
 
+	/**
+	 * @Override mouseDragged()
+	 */
 	@Override
 	public void mouseDragged(MouseEvent e)
 	{
