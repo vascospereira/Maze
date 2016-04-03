@@ -18,6 +18,11 @@ public class Sword extends Element
 		super(sword);
 	}
 
+	/**
+	 * Deploys a Sword in the table
+	 * 
+	 * @param table Table where Sword will be deployed
+	 */
 	public void swordDeploy(Table table)
 	{
 		Random r = new Random();

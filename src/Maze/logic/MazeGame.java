@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class MazeGame 
 {
 	/**
-	 *
 	 *Game States
 	 */
 	public enum State { PLAYING, WON, LOST, SLAYED };
@@ -30,6 +29,7 @@ public class MazeGame
 	}
 	/**
 	 * Creates a MazeGame 
+	 * 
 	 * @param newMaze sets a newMaze
 	 * @param numOfDragons sets a number of dragons in the game
 	 */
@@ -42,6 +42,7 @@ public class MazeGame
 	}
 	/**
 	 * Creates a MazeGame
+	 * 
 	 * @param numOfDragons sets a number of dragons in the game
 	 */
 	public MazeGame(int numOfDragons)
@@ -53,6 +54,7 @@ public class MazeGame
 
 	/**
 	 * Creates a MazeGame for Tests
+	 * 
 	 * @param newMaze sets a new maze table 
 	 */
 	public MazeGame(char[][] newMaze)
@@ -112,6 +114,7 @@ public class MazeGame
 
 	/**
 	 * Verifies if exist an empty space
+	 * 
 	 * @param x X Element position in table
 	 * @param y Y Element position in table
 	 * @return true or false
@@ -131,6 +134,7 @@ public class MazeGame
 	}
 	/**
 	 * Confirm if exist more dragons
+	 * 
 	 * @param x X dragon position
 	 * @param y Y dragon position
 	 * @return true or false
@@ -147,6 +151,7 @@ public class MazeGame
 
 	/**
 	 * Sets Game status
+	 * 
 	 * @param status sets status game
 	 */
 	public void setState(State status)
@@ -599,6 +604,7 @@ public class MazeGame
 
 	/**
 	 * Removes dead Dragons from ArrayList
+	 * 
 	 * @param x X Dragon position to be removed
 	 * @param y Y Dragon position to be removed
 	 */

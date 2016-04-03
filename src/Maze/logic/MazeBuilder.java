@@ -3,28 +3,47 @@ import java.util.ArrayList;
 
 public class MazeBuilder {
 
-
+	/**
+	 * Function Maze generator
+	 * 
+	 * @param dimenson Dimension determined by user
+	 * @return The maze generated
+	 */
 	public static char[][] generateMaze(int dimenson) 
 	{
 		return generator(dimenson, 0.75, 0.75); 
 	}
 
-
+	/**
+	 * Generates a random maze
+	 * 
+	 * @param size Size of the maze
+	 * @param complexity Complexity maze
+	 * @param density Density of wall in the maze
+	 * @return Array with the maze
+	 */
 	public static char[][] generator(int size, double complexity, double density) 
 	{
 		java.util.Random rand = new java.util.Random();
-		/*Adjust complexity and density relative to maze size*/
+		/**
+		 * Adjust complexity and density relative to maze size
+		 * 
+		 */
 		complexity = (int) (complexity * (5 * (size + size)));
 		density = (int) (density * (size / 2 * size / 2));
 		boolean maze[][] = new boolean[size][size];
 
-		/*Fill borders*/
+		/**
+		 * Fill borders
+		 */
 		for (int i = 0; i < size; i++) 
 		{
 			maze[0][i] = maze[size - 1][i] = true;
 			maze[i][0] = maze[i][size - 1] = true;
 		}
-		/*Make aisles*/
+		/**
+		 * Make aisles
+		 */
 		for (int i = 0; i < density; i++) 
 		{
 
@@ -92,9 +111,11 @@ public class MazeBuilder {
 	}
 
 
-	/*
-	 * 
+	/**
 	 * Deploy an exit in the table
+	 * 
+	 * @param size Size of the maze
+	 * @param maze Random maze generated
 	 */
 	private static void deployExit(int size, char[][] maze) {
 
@@ -130,8 +151,14 @@ public class MazeBuilder {
 
 	}
 
-	/*
+	/**
 	 * Test if exit has a possible position and if true deploys in the table
+	 * 
+	 * @param x X position 
+	 * @param y Y position 
+	 * @param side Side of the maze where Exit will deployed
+	 * @param maze The random maze generated
+	 * @return true or false
 	 */
 	private static boolean testExit(int x, int y, int side, char[][] maze) {
 		switch (side) {

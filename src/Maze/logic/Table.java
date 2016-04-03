@@ -34,10 +34,23 @@ public class Table
 		this.table = table.getTable();
 	}
 
+	/**
+	 * Gets a table created
+	 * 
+	 * @return a table
+	 */
 	public char[][] getTable() {
 		return table;
 	}
 
+	/**
+	 * Verifies if is possible to deploy Elements in the table
+	 * 
+	 * @param posX X position to test
+	 * @param posY Y position to test 
+	 * @param c Element to be deployed
+	 * @return true or false
+	 */
 	public boolean deployElemTable(int posX, int posY, char c)
 	{
 		if(table[posY][posX] == ' ')
@@ -49,26 +62,53 @@ public class Table
 			return false;
 	}
 	
+	/**
+	 * Gets an Element in the table
+	 * 
+	 * @param x X position of the Element
+	 * @param y Y position of the Element
+	 * @return The Element
+	 */
 	public char getElemTable(int x, int y)
 	{
 		return table[y][x];
 	}
 
+	/**
+	 * Sets Element in the table
+	 * 
+	 * @param x X position
+	 * @param y Y position
+	 * @param c Element to set
+	 */
 	public void setElemTable(int x, int y, char c)
 	{
 		table[y][x] = c;
 	}
 
+	/**
+	 * Gets height of the table
+	 * 
+	 * @return Table height
+	 */
 	public int getHeight()
 	{
 		return table.length;
 	}
-	
+	/**
+	 * Gets width of the table
+	 * 
+	 * @return Table width
+	 */
 	public int getWidth()
 	{
 		return table[0].length;
 	}
 
+	/**
+	 * Sets a new table
+	 * @param mazeTable Table to set
+	 */
 	public void setTable(char[][] mazeTable) {
 		table = mazeTable;
 	}

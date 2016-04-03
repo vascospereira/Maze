@@ -21,21 +21,31 @@ public class Dragon extends Element
 		super(1,1,draswo);
 	}
 
+	/**
+	 * Deploys dragons in the table
+	 * @param table Table to be deployed the dragons
+	 */
 	public void dragonDeploy(Table table)
 	{
 		table.deployElemTable(this.getX(), this.getY(), this.getElem());
 	}
-	
+	/**
+	 * Sets Dragon to sleep
+	 */
 	public void sleepDragon() 
 	{
 		this.setElem('d');
 	}
-	
+	/**
+	 * Sets awake Dragon
+	 */
 	public void awakeDragon() 
 	{
 		this.setElem('D');
 	}
-	
+	/**
+	 * Sets Dragon with Sword
+	 */
 	public void swordDragon()
 	{
 		this.setElem('F');
@@ -45,7 +55,11 @@ public class Dragon extends Element
 	{
 		this.setElem('D');
 	}
-	
+	/**
+	 * Gets Dragon state
+	 * 
+	 * @return Dragon state
+	 */
 	public char getDragonState()
 	{
 		return this.getElem();
