@@ -341,7 +341,21 @@ public class DesignFrame extends JPanel implements  MouseListener, MouseMotionLi
 		int i = e.getX()/space;
 		int j = e.getY()/space;
 		if(Design.status == Design.ObjectState.WALL && (e.getModifiersEx() & MouseEvent.BUTTON1_DOWN_MASK) == MouseEvent.BUTTON1_DOWN_MASK)
+		{
 			table[j][i]=Table.WALL;
+			assertable();
+		}
+		else if(Design.status == Design.ObjectState.WALL && (e.getModifiersEx() & MouseEvent.BUTTON3_DOWN_MASK) == MouseEvent.BUTTON3_DOWN_MASK)
+		{
+			table[j][i]=Table.SPACE;
+			assertable();
+		}
+		else if(Design.status == Design.ObjectState.FLOOR && (e.getModifiersEx() & MouseEvent.BUTTON1_DOWN_MASK) == MouseEvent.BUTTON1_DOWN_MASK)
+		{
+			table[j][i]=Table.SPACE;
+			assertable();
+			
+		}
 		repaint();
 
 	}

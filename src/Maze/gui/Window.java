@@ -180,6 +180,7 @@ public class Window {
 				{
 					Design bldr = new Design(msize);
 					bldr.setVisible(true);
+					
 					if(bldr.isValid() == true)
 					{
 						maze = new MazeGame(DesignFrame.table);

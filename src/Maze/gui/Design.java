@@ -1,9 +1,8 @@
 package Maze.gui;
 import javax.swing.JDialog;
-import javax.swing.JLabel;
+
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import Maze.logic.Table;
@@ -151,6 +150,7 @@ public class Design extends JDialog{
 				if(isMazeValid(DesignFrame.table))
 				{
 					valid = true;
+					status = ObjectState.NULL;
 					SwingUtilities.getWindowAncestor(Design.this).dispose();
 				}
 				else
@@ -168,6 +168,7 @@ public class Design extends JDialog{
 			public void actionPerformed(ActionEvent e) 
 			{
 				valid = false;
+				status = ObjectState.NULL;
 				SwingUtilities.getWindowAncestor(Design.this).dispose();
 
 			}

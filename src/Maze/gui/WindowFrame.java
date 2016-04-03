@@ -140,6 +140,8 @@ public class WindowFrame extends JPanel implements KeyListener, MouseListener {
 			x = 0;
 			y += size;
 		}
+		
+		
 
 	}
 
