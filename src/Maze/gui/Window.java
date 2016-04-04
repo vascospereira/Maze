@@ -183,7 +183,8 @@ public class Window {
 				text.setText("11");
 				int option = JOptionPane.showOptionDialog(null, text, "Enter maze size", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);	
 				int msize = Integer.parseInt(text.getText());
-				
+				if(msize == 1)
+					return;
 				if(option == JOptionPane.OK_OPTION)
 				{
 					Design bldr = new Design(msize);
