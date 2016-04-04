@@ -241,6 +241,8 @@ public class Dragons
 				{ 'X', ' ', 'X', ' ', 'X' },
 				{ 'X', 'S', 'X', 'D', 'X' }, 
 				{ 'X', 'X', 'X', 'X', 'X' } };
+		
+		String m = str(m1);
 		MazeGame maze = new MazeGame(m1);
 		maze.setState(State.PLAYING);
 
@@ -248,7 +250,8 @@ public class Dragons
 		assertEquals(3,maze.dragonGetY());
 		assertEquals('D', maze.getDragonState());
 		assertEquals(State.PLAYING, maze.getState());
-
+		assertEquals(m, maze.toString());
+		maze.updateDragons();
 
 		boolean outcome1 = false;
 		while(!outcome1)
@@ -381,5 +384,16 @@ public class Dragons
 		
 		MazeGame dragonInMaze = new MazeGame(3);
 		assertEquals(3, dragonInMaze.getNumOfDragons());
+	}
+	
+	private String str(char[][] m) {
+		StringBuilder sb = new StringBuilder();
+		for (int y = 0; y < m.length; y++) {
+			for (int x = 0; x < m.length; x++) {
+				sb.append(m[y][x] + " ");
+			}
+			sb.append("\n");
+		}
+		return sb.toString();
 	}
 }

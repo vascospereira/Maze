@@ -2,7 +2,6 @@ package Maze.test;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import java.util.Arrays;
 import java.util.Random;
 
 import Maze.logic.MazeBuilder;
@@ -136,12 +135,4 @@ public class TestMazeBuilder {
 		}	
 	}
 	
-	public String str(char [][] maze) {
-		StringBuilder s = new StringBuilder();
-		for (char [] line : maze) {
-			s.append(Arrays.toString(line));
-			s.append("\n");
-		}
-		return s.toString();
-	}
 }
