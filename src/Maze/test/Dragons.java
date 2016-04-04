@@ -355,17 +355,23 @@ public class Dragons
 		assertTrue(outcome2 && outcome1);	
 	}
 	
+	
 	@org.junit.Test (timeout=1000)
 	public void dragonsTest() 
 	{
 		char[][] m1 = { { 'X', 'X', 'X', 'X', 'X' }, 
-						{ 'X', 'H', ' ', ' ', 'E' }, 
-						{ 'X', ' ', 'X', ' ', 'X' },
-						{ 'X', 'S', 'X', ' ', 'X' }, 
+						{ 'X', ' ', ' ', ' ', 'E' }, 
+						{ 'X', 'D', 'X', ' ', 'X' },
+						{ 'X', ' ', 'X', ' ', 'X' }, 
 						{ 'X', 'X', 'X', 'X', 'X' } };
 		
-		MazeGame maze = new MazeGame(m1,2);
+		MazeGame maze = new MazeGame(m1,3);
 		maze.setState(State.PLAYING);
+		
+		assertEquals(4, maze.getNumOfDragons());
+		maze.deadDragon(1, 2);
+		assertEquals(3, maze.getNumOfDragons());
+		
 	}
 	
 	@org.junit.Test
