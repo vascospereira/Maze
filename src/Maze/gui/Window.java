@@ -151,6 +151,8 @@ public class Window {
 				}
 				else
 				{
+					JOptionPane.showMessageDialog(null, "Size must be ODD number, minimum of 11. Number of Dragons must be from 1 to 3", "Invalid Maze", JOptionPane.WARNING_MESSAGE);	
+					
 				}
 			}
 		});
