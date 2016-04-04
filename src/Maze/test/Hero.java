@@ -23,7 +23,7 @@ public class Hero {
 	public void testMoveHeroToFreeCell() 
 	{
 		MazeGame maze = new MazeGame(m1);
-		maze.clone().initialize();
+		maze.clone();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
 		maze.heroMoveLeft();
@@ -48,6 +48,10 @@ public class Hero {
 	public void testMoveHeroToSword() 
 	{
 		MazeGame maze = new MazeGame(m2);
+		Sword sword = new Sword(1,1);
+		Table table = new Table(m2);
+		sword.swordDeploy(table);
+		assertEquals("S", sword.toString());
 		maze.initialize();
 		assertEquals(3,maze.heroGetX());
 		assertEquals(1,maze.heroGetY());
