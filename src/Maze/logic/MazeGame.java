@@ -374,7 +374,7 @@ public class MazeGame
 		char Dragon = dragon.getDragonState();
 
 		move = r.nextInt(2);
-
+		
 		/**
 		 * Movement
 		 */
@@ -385,6 +385,7 @@ public class MazeGame
 			 */
 			while(true)
 			{	
+				
 				move = r.nextInt(4);
 				/**
 				 * Upper movement
@@ -392,10 +393,12 @@ public class MazeGame
 				if(move == 0)
 				{
 					int change = -1;
-					if(dragonMove(dragon, newPosX, newPosY + change) == 3)
+					int result = dragonMove(dragon, newPosX, newPosY + change);
+					if(result == 3)
 						return false;
-					else if(dragonMove(dragon, newPosX, newPosY + change) == 0)
+					else if(result == 0)
 						return true;
+					
 				}
 				/**
 				 * Down movement
@@ -403,9 +406,12 @@ public class MazeGame
 				else if(move == 1)
 				{
 					int change = +1;
-					if(dragonMove(dragon, newPosX, newPosY + change) == 3)
+					int result = dragonMove(dragon, newPosX, newPosY + change);
+						
+					
+					if(result == 3)
 						return false;
-					else if(dragonMove(dragon, newPosX, newPosY + change) == 0)
+					else if(result == 0)
 						return true;
 				}
 				/**
@@ -414,9 +420,11 @@ public class MazeGame
 				else if(move == 2)
 				{
 					int change = -1;
-					if(dragonMove(dragon, newPosX, newPosY + change) == 3)
+					int result = dragonMove(dragon, newPosX + change, newPosY);
+
+					if(result == 3)
 						return false;
-					else if(dragonMove(dragon, newPosX + change, newPosY) == 0)
+					else if(result == 0)
 						return true;
 				}
 				/**
@@ -425,9 +433,11 @@ public class MazeGame
 				else if(move == 3)
 				{
 					int change = +1;
-					if(dragonMove(dragon, newPosX, newPosY + change) == 3)
+					int result = dragonMove(dragon, newPosX + change, newPosY);
+
+					if(result == 3)
 						return false;
-					else if(dragonMove(dragon, newPosX + change, newPosY) == 0)
+					else if(result == 0)
 						return true;
 				}
 				else return false;
@@ -506,7 +516,7 @@ public class MazeGame
 		{
 			return 3;
 		}
-		if(Elem == SPACE && Dragon == DRAGON)
+		else if(Elem == SPACE && Dragon == DRAGON)
 		{
 			table.setElemTable(dragon.getX(), dragon.getY(),SPACE);
 			table.setElemTable(newPosX, newPosY, DRAGON);

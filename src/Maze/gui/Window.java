@@ -129,7 +129,7 @@ public class Window {
 				int nodrag;
 				nodrag = Integer.parseInt(NofDragonsField.getText());
 
-				if((dim == 0) || (dim >= 11 && nodrag >= 1 && nodrag <= 3 && dim % 2 == 1))
+				if((dim == 0) || (dim >= 5 && nodrag >= 1 && nodrag <= 3 && dim % 2 == 1))
 				{
 					if(dim == 0)
 					{
@@ -151,7 +151,7 @@ public class Window {
 				}
 				else
 				{
-					JOptionPane.showMessageDialog(null, "Size must be ODD number, minimum of 11. Number of Dragons must be from 1 to 3", "Invalid Maze", JOptionPane.WARNING_MESSAGE);	
+					JOptionPane.showMessageDialog(null, "Size must be ODD number, minimum of 5. Number of Dragons must be from 1 to 3", "Invalid Maze", JOptionPane.WARNING_MESSAGE);	
 					
 				}
 			}
@@ -184,7 +184,11 @@ public class Window {
 				int option = JOptionPane.showOptionDialog(null, text, "Enter maze size", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);	
 				int msize = Integer.parseInt(text.getText());
 				if(msize == 1)
+				{
+					JOptionPane.showMessageDialog(null, "Can't Build Maze with 1 as a size", "Invalid Maze", JOptionPane.WARNING_MESSAGE);	
+					
 					return;
+				}
 				if(option == JOptionPane.OK_OPTION)
 				{
 					Design bldr = new Design(msize);
