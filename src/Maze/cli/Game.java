@@ -12,7 +12,7 @@ import Maze.logic.Table;
 public class Game {
 /**
  * 
- * Direction Enum
+ * Direction Enum type
  *
  */
 	public enum Direction {UP, DOWN, RIGHT, LEFT, STOP};
